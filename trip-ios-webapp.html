@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b5fff" />
+
+  <!-- iOS 當成 Web App 開啟相關設定 -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- 主畫面顯示名稱 -->
+  <meta name="apple-mobile-web-app-title" content="奧捷12天" />
+
+  <!-- 主畫面 App 圖示，圖檔放在同一個資料夾即可 -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+  <title>奧斯捷饗宴12天 行程網頁</title>
+
+  <style>
+    :root{
+      --bg:#f4f7fb;--card:#ffffff;--text:#1d2433;--muted:#667085;--line:#d9e2f0;
+      --brand:#0b5fff;--brand2:#13a3ff;--ok:#16a34a;--warn:#d97706;
+      --shadow:0 10px 30px rgba(10,37,64,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;
+      background:linear-gradient(180deg,#eaf2ff 0%,#f7f9fc 28%,#f4f7fb 100%);
+      color:var(--text)
+    }
+    .wrap{max-width:1080px;margin:0 auto;padding:18px 14px 80px}
+    .hero{
+      background:linear-gradient(135deg,#0b5fff 0%,#13a3ff 100%);
+      color:#fff;border-radius:24px;padding:24px 20px;box-shadow:var(--shadow)
+    }
+    .hero h1{margin:0 0 8px;font-size:28px}
+    .hero p{margin:0;opacity:.92;line-height:1.5}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .chip{
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.22);
+      padding:8px 12px;border-radius:999px;font-size:13px
+    }
+    .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 0}
+    .quick a{
+      display:block;text-decoration:none;color:#08336f;background:rgba(255,255,255,.95);
+      padding:12px;border-radius:16px;text-align:center;font-weight:700
+    }
+    .toolbar{display:grid;grid-template-columns:1.5fr .8fr .8fr;gap:10px;margin:18px 0}
+    input,select,button{
+      width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;
+      padding:12px 14px;font-size:15px
+    }
+    button{background:#0b5fff;color:#fff;font-weight:700;border:none;cursor:pointer}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+    .card{
+      background:var(--card);
+      border:1px solid rgba(6,24,44,.06);
+      border-radius:22px;padding:18px;box-shadow:var(--shadow)
+    }
+    .card h2{margin:0 0 12px;font-size:20px}
+    .sub{color:var(--muted);font-size:14px;line-height:1.55}
+    .flight{
+      display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;
+      padding:14px;border:1px solid var(--line);border-radius:18px;margin:10px 0;background:#fbfdff
+    }
+    .airport{font-weight:700;font-size:18px}
+    .meta{color:var(--muted);font-size:14px;line-height:1.5}
+    .arrow{font-size:24px;color:var(--brand)}
+    .checklist{display:grid;gap:10px;margin-top:10px}
+    .item{
+      display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);
+      padding:12px;border-radius:16px
+    }
+    .item input{width:20px;height:20px;margin-top:2px}
+    .item.done{background:#f0fdf4;border-color:#bbf7d0}
+    .item .t{font-weight:700}
+    .item .d{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.5}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+    .stat{
+      padding:12px;border-radius:18px;background:#f8fbff;border:1px solid var(--line);
+      text-align:center
+    }
+    .stat b{display:block;font-size:22px;color:var(--brand)}
+    .days{display:grid;gap:12px;margin-top:16px}
+    details.day{border:1px solid var(--line);border-radius:20px;background:#fff;overflow:hidden}
+    details.day[open]{box-shadow:var(--shadow)}
+    summary{
+      list-style:none;cursor:pointer;padding:16px 18px;display:flex;
+      justify-content:space-between;gap:10px;align-items:center
+    }
+    summary::-webkit-details-marker{display:none}
+    .left h3{margin:0 0 6px;font-size:18px}
+    .left p{margin:0;color:var(--muted);font-size:14px}
+    .tag{
+      background:#eef4ff;color:#0b5fff;border-radius:999px;
+      padding:6px 10px;font-size:12px;font-weight:700;white-space:nowrap
+    }
+    .body{padding:0 18px 18px}
+    .kv{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0}
+    .box{background:#f8fbff;border:1px solid var(--line);border-radius:16px;padding:12px}
+    .box .k{font-size:12px;color:var(--muted);margin-bottom:6px}
+    .box .v{font-weight:700;line-height:1.5}
+    ul{margin:8px 0 0 18px;padding:0}
+    li{margin:6px 0;line-height:1.5}
+    .notice{display:grid;gap:10px}
+    .notice .n{
+      padding:12px 14px;border-radius:16px;border-left:5px solid var(--brand);background:#f8fbff
+    }
+    .footer{margin-top:18px;color:var(--muted);font-size:13px;line-height:1.6}
+    .publish{display:grid;gap:10px;margin-top:10px}
+    .publish .step{
+      padding:12px 14px;border-radius:16px;background:#f8fbff;border:1px solid var(--line)
+    }
+    .small{font-size:12px;color:var(--muted)}
+    code{
+      background:#eef4ff;padding:2px 6px;border-radius:8px;color:#0b3ea9
+    }
+    @media (max-width: 860px){
+      .grid,.toolbar,.quick,.kv,.stats{grid-template-columns:1fr}
+      .flight{grid-template-columns:1fr;text-align:left}
+      .arrow{text-align:center;transform:rotate(90deg)}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>奧斯捷饗宴 12 天</h1>
+      <p>一頁掌握航班、行前準備、每日行程與注意事項；可用 iPhone Safari 加入主畫面，當成旅遊專用小 App 使用。</p>
+      <div class="chips">
+        <div class="chip">出發：2026/07/15</div>
+        <div class="chip">抵台：2026/07/24</div>
+        <div class="chip">航司：中華航空 CI67 / CI64</div>
+        <div class="chip">捷克・奧地利・斯洛伐克</div>
+      </div>
+      <div class="quick">
+        <a href="#flight">航班資訊</a>
+        <a href="#prep">行前準備</a>
+        <a href="#days">每日行程</a>
+        <a href="#notes">注意事項</a>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <input id="searchInput" placeholder="搜尋城市、景點、餐食，例如：維也納、國王湖、自由活動" />
+      <select id="cityFilter">
+        <option value="">全部城市</option>
+      </select>
+      <button id="resetBtn">重設篩選</button>
+    </div>
+
+    <section class="grid">
+      <div class="card" id="flight">
+        <h2>航班資訊</h2>
+        <div class="sub">以下為參考航班，實際航班時間及轉機點仍以行前說明會資料為準。</div>
+
+        <div class="flight">
+          <div>
+            <div class="airport">TPE 桃園</div>
+            <div class="meta">2026/07/15（三）23:30<br>中華航空 CI67</div>
+          </div>
+          <div class="arrow">→</div>
+          <div>
+            <div class="airport">PRG 布拉格</div>
+            <div class="meta">2026/07/16（四）07:35<br>飛行參考時間 14 小時 05 分</div>
+          </div>
+        </div>
+
+        <div class="flight">
+          <div>
+            <div class="airport">VIE 維也納</div>
+            <div class="meta">2026/07/23（四）11:25<br>中華航空 CI64</div>
+          </div>
+          <div class="arrow">→</div>
+          <div>
+            <div class="airport">TPE 桃園</div>
+            <div class="meta">2026/07/24（五）05:30<br>飛行參考時間 12 小時 05 分</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="prep">
+        <h2>行前準備</h2>
+        <div class="sub">勾選後會自動保存在此裝置，下次打開仍可延續。</div>
+        <div class="checklist" id="checklist"></div>
+        <div class="stats">
+          <div class="stat"><b id="doneCount">0</b>已完成</div>
+          <div class="stat"><b id="todoCount">0</b>待準備</div>
+          <div class="stat"><b>20G</b>內含網卡</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="days" style="margin-top:16px">
+      <h2>每日行程</h2>
+      <div class="sub">可搜尋景點或城市，也可以展開各天查看餐食、住宿與提醒。</div>
+      <div class="days" id="daysContainer"></div>
+    </section>
+
+    <section class="grid" style="margin-top:16px">
+      <div class="card" id="notes">
+        <h2>注意事項</h2>
+        <div class="notice">
+          <div class="n"><b>機上過夜</b><br><span class="small">建議穿舒適寬鬆衣物與好走鞋，並攜帶口罩、眼罩、空水瓶與保暖外套。</span></div>
+          <div class="n"><b>特殊需求</b><br><span class="small">若需特殊餐食或一大床房型，應於報名時提前告知，以利安排。</span></div>
+          <div class="n"><b>隨團配備</b><br><span class="small">行程含導覽耳機、行李束帶、歐規轉接插頭，以及每人一張 20G 流量網卡。</span></div>
+          <div class="n"><b>天候備案</b><br><span class="small">國王湖遊船受天候影響大，若無法乘船，現場退費每人 15 歐元；鹽礦若遇維修，將改往哈萊茵鹽礦。</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>發布到 iPhone 主畫面</h2>
+        <div class="publish">
+          <div class="step">1. 將這個 HTML 上傳到 GitHub Pages 或其他靜態空間。</div>
+          <div class="step">2. 用 iPhone 的 Safari 開啟網址，點分享按鈕，選「加入主畫面」。</div>
+          <div class="step">3. 名稱會使用「奧捷12天」，圖示則是 apple-touch-icon.png。</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      建議檔名：<code>trip-ios-webapp.html</code>。你只要在同一個資料夾放一張 <code>apple-touch-icon.png</code>，GitHub Pages 佈署後，用 Safari 加到主畫面就會看到自訂圖示與名稱。[web:17][web:21][web:24]
+    </div>
+  </div>
+
+  <script>
+    const prepItems = [
+      { id:'passport', title:'確認護照與基本文件', desc:'出發前再次確認護照、保險、行程表與緊急聯絡方式。' },
+      { id:'meal', title:'特殊餐食／房型需求', desc:'如不吃牛、雞、羊、海鮮、蛋奶素、嚴格素，或需一大床，應提前告知。' },
+      { id:'carry', title:'機上過夜用品', desc:'口罩、眼罩、空水瓶、保暖外套、頸枕與保濕用品。' },
+      { id:'clothes', title:'舒適衣物與好走鞋', desc:'長途飛行與步行較多，建議穿著寬鬆服裝。' },
+      { id:'adapter', title:'歐規用電確認', desc:'團體已附歐規轉接插頭，但仍可確認自己的充電器與線材。' },
+      { id:'phone', title:'手機通訊準備', desc:'團體含 20G 網卡，可先確認手機是否支援與常用地圖是否離線。' }
+    ];
+
+    const days = [
+      {
+        day:'Day 1', city:'桃園 → 布拉格', title:'啟程前往捷克',
+        route:'桃園國際機場／布拉格',
+        meals:['早餐：敬請自理','午餐：敬請自理','晚餐：機上簡餐'],
+        hotel:'機上',
+        highlights:['搭乘中華航空雙點進出，不走回頭路。','夜宿機上，翌日抵達布拉格。'],
+        notes:['飛行參考時間約 14 小時 05 分。']
+      },
+      {
+        day:'Day 2', city:'布拉格', title:'布拉格古堡區',
+        route:'布拉格古堡區、聖維特大教堂、黃金小巷、查理士橋',
+        meals:['早餐：機上簡餐','午餐：米其林推薦餐','晚餐：飯店主廚料理'],
+        hotel:'Prague Marriott Hotel（5★）或同級',
+        highlights:['門票景點：聖維特大教堂、黃金小巷。','下車參觀：布拉格城堡區、查理士橋。'],
+        notes:['布拉格城堡是城市最具代表性的歷史核心區。']
+      },
+      {
+        day:'Day 3', city:'布拉格', title:'老城區巡禮',
+        route:'老城廣場、聖尼古拉斯教堂、猶太墓區、火藥塔、泰恩教堂',
+        meals:['早餐：飯店早餐','午餐：古城肋排風味餐','晚餐：敬請自理（布拉格自由活動）'],
+        hotel:'Prague Marriott Hotel（5★）或同級',
+        highlights:['下車參觀布拉格老城核心景點。','晚上有自由活動時間。'],
+        notes:['適合安排自選晚餐、老城散步與採買。']
+      },
+      {
+        day:'Day 4', city:'布拉格 → 庫倫洛夫 → 林茨', title:'白色城堡與童話小鎮',
+        route:'布拉格 → 琥珀卡城堡 → 庫倫洛夫（舊城區、彩繪塔）→ 林茨',
+        meals:['早餐：飯店早餐','午餐：南波希米亞料理','晚餐：飯店主廚料理'],
+        hotel:'Courtyard by Marriott Linz 或同級',
+        highlights:['門票景點：琥珀卡城堡。','下車參觀：舊城區、彩繪塔。'],
+        notes:['行車距離參考：布拉格→147kms→琥珀卡城堡→43kms→庫倫洛夫→73kms→林茨。']
+      },
+      {
+        day:'Day 5', city:'林茨 → 薩爾茲堡 → 湖區', title:'音樂之都薩爾茲堡',
+        route:'林茨 → 薩爾茲堡（米拉貝爾花園、蓋特萊德巷、莫札特故居、主教廣場、大教堂、主教宮殿、莫札特廣場）→ 薩爾斯干馬格特湖區',
+        meals:['早餐：飯店早餐','午餐：古城小酒館風味餐','晚餐：中式料理八菜一湯'],
+        hotel:'Scalaria Event Resort 或同級',
+        highlights:['下車參觀薩爾茲堡多個舊城景點。','晚上入住湖區。'],
+        notes:['行車距離參考：林茨→133kms→薩爾茲堡→49kms→湖區。']
+      },
+      {
+        day:'Day 6', city:'湖區 → 國王湖 → 鹽礦 → 湖區', title:'國王湖與鹽礦探秘',
+        route:'薩爾斯干馬格特湖區 → 國王湖遊船 → 貝希特斯登國家公園（鹽礦探秘之旅）→ 湖區',
+        meals:['早餐：飯店早餐','午餐：德式豬腳風味餐','晚餐：國王湖鱒魚風味料理'],
+        hotel:'Scalaria Event Resort 或同級',
+        highlights:['特殊安排：國王湖遊湖。','門票景點：貝希特斯登鹽礦探秘之旅。'],
+        notes:['遊船若受天候影響取消，現場退費每人 15 歐元。','鹽礦如遇維修或關閉，改往哈萊茵鹽礦。']
+      },
+      {
+        day:'Day 7', city:'湖區 → 戈紹 → 哈爾施塔特 → 湖區', title:'戈紹與哈爾施塔特',
+        route:'薩爾斯干馬格特湖區 → 戈紹（戈紹湖、登山纜車）→ 哈爾施塔特 → 湖區',
+        meals:['早餐：飯店早餐','午餐：山頂景觀餐廳','晚餐：湖區風味料理'],
+        hotel:'Scalaria Event Resort 或同級',
+        highlights:['門票景點：登山纜車。','下車參觀：戈紹湖、哈爾施塔特。'],
+        notes:['行車距離參考：湖區→43kms→戈紹→15kms→哈爾施塔特→37kms→湖區。']
+      },
+      {
+        day:'Day 8', city:'湖區 → 梅爾克 → 維也納', title:'修道院與維也納老城',
+        route:'薩爾斯干馬格特湖區 → 梅爾克修道院 → 維也納（聖史提芬大教堂、維也納老城區）',
+        meals:['早餐：飯店早餐','午餐：梅爾克修道院餐廳','晚餐：中式料理八菜一湯'],
+        hotel:'InterContinental Vienna（5★）或同級',
+        highlights:['門票景點：梅爾克修道院。','下車參觀：聖史提芬大教堂、維也納老城區。'],
+        notes:['行車距離參考：湖區→202kms→梅爾克修道院→105kms→維也納。']
+      },
+      {
+        day:'Day 9', city:'維也納 → 布拉提斯拉瓦 → 維也納', title:'美泉宮與斯洛伐克首都',
+        route:'維也納（熊布朗宮）→ 布拉提斯拉瓦（舊城區、大廣場、布拉提斯拉瓦城堡）→ 維也納',
+        meals:['早餐：飯店早餐','午餐：斯洛伐克烤鵝風味餐','晚餐：紅頂商人特色餐＋酒水無限暢飲'],
+        hotel:'InterContinental Vienna（5★）或同級',
+        highlights:['門票景點：熊布朗宮。','下車參觀：舊城區、大廣場、布拉提斯拉瓦城堡。'],
+        notes:['行車距離參考：維也納→80kms→布拉提斯拉瓦→60kms→紅頂商人餐廳→23kms→維也納。']
+      },
+      {
+        day:'Day 10', city:'維也納', title:'上美景宮與帽子博物館',
+        route:'維也納（上美景宮入內＋專業導遊講解、帽子博物館）',
+        meals:['早餐：飯店早餐','午餐：敬請自理（維也納自由活動）','晚餐：帽子餐廳特色餐'],
+        hotel:'InterContinental Vienna（5★）或同級',
+        highlights:['特殊安排：帽子博物館＋試戴帽子。','門票景點：上美景宮。'],
+        notes:['這天含自由活動時段，方便自行購物或散步。']
+      },
+      {
+        day:'Day 11', city:'維也納 → 桃園', title:'返程',
+        route:'維也納／桃園國際機場',
+        meals:['早餐：飯店早餐','午餐：機上簡餐','晚餐：機上簡餐'],
+        hotel:'機上',
+        highlights:['結束行程，搭機返台。'],
+        notes:['飛行參考時間約 12 小時 05 分。']
+      },
+      {
+        day:'Day 12', city:'桃園', title:'抵達台灣',
+        route:'桃園國際機場 → 溫暖的家',
+        meals:['早餐：敬請自理','午餐：敬請自理','晚餐：敬請自理'],
+        hotel:'溫暖的家',
+        highlights:['平安抵達桃園，結束旅程。'],
+        notes:['建議返家後整理票據、照片與退稅資料。']
+      }
+    ];
+
+    const checklistEl = document.getElementById('checklist');
+    const doneCount = document.getElementById('doneCount');
+    const todoCount = document.getElementById('todoCount');
+    const storageKey = 'tripPrepChecklist_v2';
+    const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+
+    function renderChecklist(){
+      checklistEl.innerHTML = '';
+      let done = 0;
+      prepItems.forEach(item => {
+        const checked = !!saved[item.id];
+        if (checked) done++;
+        const div = document.createElement('label');
+        div.className = 'item' + (checked ? ' done' : '');
+        div.innerHTML = `
+          <input type="checkbox" ${checked ? 'checked' : ''} data-id="${item.id}">
+          <div>
+            <div class="t">${item.title}</div>
+            <div class="d">${item.desc}</div>
+          </div>
+        `;
+        checklistEl.appendChild(div);
+      });
+      doneCount.textContent = done;
+      todoCount.textContent = prepItems.length - done;
+
+      checklistEl.querySelectorAll('input').forEach(cb => {
+        cb.addEventListener('change', e => {
+          saved[e.target.dataset.id] = e.target.checked;
+          localStorage.setItem(storageKey, JSON.stringify(saved));
+          renderChecklist();
+        });
+      });
+    }
+
+    const cityFilter = document.getElementById('cityFilter');
+    const searchInput = document.getElementById('searchInput');
+    const daysContainer = document.getElementById('daysContainer');
+
+    const cities = [...new Set(days.map(d => d.city.split(' → ')[0]))];
+    cities.forEach(c => {
+      const op = document.createElement('option');
+      op.value = c;
+      op.textContent = c;
+      cityFilter.appendChild(op);
+    });
+
+    function dayMarkup(d){
+      return `
+        <details class="day">
+          <summary>
+            <div class="left">
+              <h3>${d.day}｜${d.title}</h3>
+              <p>${d.route}</p>
+            </div>
+            <div class="tag">${d.city}</div>
+          </summary>
+          <div class="body">
+            <div class="kv">
+              <div class="box">
+                <div class="k">餐食</div>
+                <div class="v">${d.meals.join('<br>')}</div>
+              </div>
+              <div class="box">
+                <div class="k">住宿</div>
+                <div class="v">${d.hotel}</div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="k">亮點</div>
+              <ul>${d.highlights.map(x => `<li>${x}</li>`).join('')}</ul>
+            </div>
+            <div class="box" style="margin-top:10px">
+              <div class="k">提醒</div>
+              <ul>${d.notes.map(x => `<li>${x}</li>`).join('')}</ul>
+            </div>
+          </div>
+        </details>
+      `;
+    }
+
+    function renderDays(){
+      const q = searchInput.value.trim().toLowerCase();
+      const city = cityFilter.value;
+      const filtered = days.filter(d => {
+        const text = JSON.stringify(d).toLowerCase();
+        const okQ = !q || text.includes(q);
+        const okCity = !city || d.city.startsWith(city);
+        return okQ && okCity;
+      });
+
+      daysContainer.innerHTML = filtered.map(dayMarkup).join('');
+      if (!filtered.length) {
+        daysContainer.innerHTML = '<div class="box"><div class="v">找不到符合的行程，請換個關鍵字試試。</div></div>';
+      }
+    }
+
+    searchInput.addEventListener('input', renderDays);
+    cityFilter.addEventListener('change', renderDays);
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      searchInput.value = '';
+      cityFilter.value = '';
+      renderDays();
+    });
+
+    renderChecklist();
+    renderDays();
+  </script>
+</body>
+</html>
