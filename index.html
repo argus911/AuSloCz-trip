@@ -2,8 +2,32 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>奧斯捷饗宴 12天｜旅程手冊</title>
+
+<!-- ── PWA: Web App Manifest ── -->
+<link rel="manifest" href="manifest.json">
+
+<!-- ── PWA: iOS Safari 主畫面圖示與設定 ── -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="奧斯捷12天">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<!-- ── PWA: 一般瀏覽器圖示 ── -->
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+
+<!-- ── PWA: 主題色 & 描述 ── -->
+<meta name="theme-color" content="#C9A84C">
+<meta name="description" content="奧地利・捷克・斯洛伐克 12天旅程手冊 | 2026.07.14–07.25">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- ── iOS 啟動畫面顏色 ── -->
+<meta name="msapplication-TileColor" content="#1A1208">
+<meta name="msapplication-TileImage" content="icon-512.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+TC:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -1522,6 +1546,54 @@ async function fetchFlights() {
     }
   }
 }
+</script>
+
+<!-- ── PWA: Service Worker 註冊 ── -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js', { scope: './' })
+      .then(reg => console.log('[PWA] Service Worker 已註冊:', reg.scope))
+      .catch(err => console.warn('[PWA] Service Worker 註冊失敗:', err));
+  });
+}
+
+// iOS 安裝提示（首次造訪時顯示）
+window.addEventListener('load', () => {
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isStandalone = window.navigator.standalone === true;
+  const shown = sessionStorage.getItem('iosPromptShown');
+  if (isIOS && !isStandalone && !shown) {
+    sessionStorage.setItem('iosPromptShown', '1');
+    const banner = document.createElement('div');
+    banner.id = 'ios-install-banner';
+    banner.style.cssText = `
+      position:fixed; bottom:0; left:0; right:0; z-index:9999;
+      background:linear-gradient(135deg,#1A1208,#2D2112);
+      border-top:1px solid #C9A84C;
+      padding:14px 20px 28px; display:flex; gap:14px;
+      align-items:center; box-shadow:0 -4px 24px rgba(0,0,0,0.35);
+      animation: slideUp 0.4s ease;
+    `;
+    banner.innerHTML = `
+      <style>@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}</style>
+      <div style="font-size:2.4rem;flex-shrink:0">🧳</div>
+      <div style="flex:1">
+        <div style="color:#E8C97A;font-size:0.88rem;font-weight:600;margin-bottom:4px">加入 iPhone 主畫面</div>
+        <div style="color:#7A6240;font-size:0.75rem;line-height:1.6">
+          點選下方 <strong style="color:#C9A84C">分享</strong> 按鈕
+          （<span style="font-size:1rem">⬆</span>），<br>
+          再選「<strong style="color:#C9A84C">加入主畫面</strong>」即可離線使用
+        </div>
+      </div>
+      <button onclick="document.getElementById('ios-install-banner').remove()"
+        style="background:none;border:1px solid #7A6240;color:#7A6240;border-radius:50%;
+               width:28px;height:28px;font-size:1rem;cursor:pointer;flex-shrink:0;
+               display:flex;align-items:center;justify-content:center">✕</button>
+    `;
+    document.body.appendChild(banner);
+  }
+});
 </script>
 </body>
 </html>
