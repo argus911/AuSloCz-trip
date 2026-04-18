@@ -76,11 +76,12 @@
     opacity: 0.7; font-family: 'Cinzel', serif;
   }
   .hero-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', 'Noto Serif TC', serif;
     font-size: clamp(2.2rem, 6vw, 3.6rem);
     color: var(--gold-light);
     text-align: center;
     letter-spacing: 0.05em;
+    padding-right: 0.05em;
     text-shadow: 0 2px 24px rgba(201,168,76,0.3);
     position: relative; z-index: 1;
   }
@@ -590,9 +591,9 @@
   <h1 class="hero-title">奧斯捷饗宴 12天</h1>
   <div class="hero-sub">AUSTRIA · CZECH · SLOVAKIA</div>
   <div class="hero-dates">
-    <span>✈ 出發 2026.07.14</span>
+    <span>✈️ 出發 2026.07.14</span>
     <span>｜</span>
-    <span>✈ 返台 2026.07.25</span>
+    <span>✈️ 返台 2026.07.25</span>
   </div>
   <div class="hero-line"></div>
 </div>
@@ -653,7 +654,7 @@
     <!-- 去程 CI67 -->
     <div class="flight-card">
       <div class="flight-card-header">
-        <div class="flight-icon">✈</div>
+        <div class="flight-icon">✈️</div>
         <div>
           <div class="flight-airline">CHINA AIRLINES · CI 67</div>
           <div style="color:var(--cream2);font-size:0.72rem;">去程｜桃園 → 布拉格</div>
@@ -670,7 +671,7 @@
           </div>
         </div>
         <div class="flight-mid">
-          <div class="flight-plane-icon">✈</div>
+          <div class="flight-plane-icon">✈️</div>
           <div class="flight-arrow-line"></div>
           <div style="color:var(--muted);font-size:0.62rem;white-space:nowrap;">14h 05m</div>
         </div>
@@ -689,7 +690,7 @@
     <!-- 回程 CI64 -->
     <div class="flight-card">
       <div class="flight-card-header">
-        <div class="flight-icon">✈</div>
+        <div class="flight-icon">✈️</div>
         <div>
           <div class="flight-airline">CHINA AIRLINES · CI 64</div>
           <div style="color:var(--cream2);font-size:0.72rem;">回程｜維也納 → 桃園</div>
@@ -706,7 +707,7 @@
           </div>
         </div>
         <div class="flight-mid">
-          <div class="flight-plane-icon">✈</div>
+          <div class="flight-plane-icon">✈️</div>
           <div class="flight-arrow-line"></div>
           <div style="color:var(--muted);font-size:0.62rem;white-space:nowrap;">12h 15m</div>
         </div>
@@ -976,7 +977,7 @@ const days = [
     n:1, date:'2026/07/14 (二)', title:'桃園 → 布拉格', country:'✈',
     breakfast:'敬請自理', lunch:'敬請自理', dinner:'機上簡餐', hotel:'機上',
     spots: [
-      { icon:'✈', name:'中華航空 CI67 出發', badge:'', desc:'晚間23:50自桃園國際機場出發，飛行約14小時05分，翌日清晨抵達捷克布拉格。' },
+      { icon:'✈️', name:'中華航空 CI67 出發', badge:'', desc:'晚間23:50自桃園國際機場出發，飛行約14小時05分，翌日清晨抵達捷克布拉格。' },
       { icon:'🎧', name:'隨行小禮贈送', badge:'special', desc:'出發時領取：導覽耳機×1、行李束帶×1、歐規轉接插頭×1、20G網卡×1。' }
     ]
   },
@@ -984,7 +985,7 @@ const days = [
     n:2, date:'2026/07/15 (三)', title:'布拉格城堡區・聖維特大教堂・黃金小巷・查理士橋', country:'🇨🇿 捷克',
     breakfast:'機上簡餐', lunch:'米其林推薦餐', dinner:'飯店主廚料理', hotel:'Prague Marriott Hotel（5★）',
     spots: [
-      { icon:'⛪', name:'聖維特大教堂', badge:'ticket', img: W+'4/4e/St._Vitus_Cathedral_from_south.jpg/480px-St._Vitus_Cathedral_from_south.jpg', desc:'布拉格城堡最重要地標，建築近700年，哥德式建築精華。王室加冕儀式與遺體安葬之地，保存王冠與加冕權杖。' },
+      { icon:'⛪️', name:'聖維特大教堂', badge:'ticket', img: W+'4/4e/St._Vitus_Cathedral_from_south.jpg/480px-St._Vitus_Cathedral_from_south.jpg', desc:'布拉格城堡最重要地標，建築近700年，哥德式建築精華。王室加冕儀式與遺體安葬之地，保存王冠與加冕權杖。' },
       { icon:'🏰', name:'布拉格古堡區', badge:'walkin', img: W+'7/72/Praha_-_Hradcany_%28js%29.jpg/480px-Praha_-_Hradcany_%28js%29.jpg', desc:'俯瞰整座布拉格老城，感受波希米亞王朝的歷史氛圍。' },
       { icon:'🏘', name:'黃金小巷', badge:'ticket', img: W+'6/6a/Zlata_ulicka_Prague.jpg/480px-Zlata_ulicka_Prague.jpg', desc:'16、17世紀煉金術士聚居之地，童話般色彩小屋。第22號公寓因卡夫卡而聞名。' },
       { icon:'🌉', name:'查理士橋', badge:'walkin', img: W+'e/ec/Charles_Bridge_2016.jpg/480px-Charles_Bridge_2016.jpg', desc:'建於1357年，14世紀最具藝術價值石橋，橫跨伏爾塔瓦河。橋上第8尊聖約翰雕像是守護者。' }
@@ -995,10 +996,10 @@ const days = [
     breakfast:'飯店早餐', lunch:'古城肋排風味餐', dinner:'敬請自理（布拉格自由活動）', hotel:'Prague Marriott Hotel（5★）',
     spots: [
       { icon:'🏛', name:'老城廣場（胡斯廣場）', badge:'walkin', img: W+'a/ad/Prazsky_orloj.jpg/480px-Prazsky_orloj.jpg', desc:'布拉格最富名氣的廣場，立有宗教改革先驅揚‧胡斯雕像，亦是台灣歌手蔡依林同名歌曲靈感地。' },
-      { icon:'⛪', name:'聖尼古拉斯教堂', badge:'walkin', img: W+'2/24/Mala_strana_Prague_St_Nicholas.jpg/480px-Mala_strana_Prague_St_Nicholas.jpg', desc:'巴洛克風格教堂，外觀精緻，為布拉格小城區重要地標。' },
-      { icon:'⚰', name:'猶太墓區', badge:'walkin', img: W+'4/4c/Prag_Alter_judischer_Friedhof.jpg/480px-Prag_Alter_judischer_Friedhof.jpg', desc:'保存完整的猶太歷史遺跡，訴說著布拉格多元文化歷史。' },
+      { icon:'⛪️', name:'聖尼古拉斯教堂', badge:'walkin', img: W+'2/24/Mala_strana_Prague_St_Nicholas.jpg/480px-Mala_strana_Prague_St_Nicholas.jpg', desc:'巴洛克風格教堂，外觀精緻，為布拉格小城區重要地標。' },
+      { icon:'⚰️', name:'猶太墓區', badge:'walkin', img: W+'4/4c/Prag_Alter_judischer_Friedhof.jpg/480px-Prag_Alter_judischer_Friedhof.jpg', desc:'保存完整的猶太歷史遺跡，訴說著布拉格多元文化歷史。' },
       { icon:'💣', name:'火藥塔', badge:'walkin', img: W+'d/d3/Praga_-_Polvora.jpg/480px-Praga_-_Polvora.jpg', desc:'布拉格老城標誌性城門，哥德式建築，連接老城與新城。' },
-      { icon:'⛪', name:'泰恩教堂', badge:'walkin', img: W+'c/cb/Prague_-_Old_Town_Square_Tyn_Church.jpg/480px-Prague_-_Old_Town_Square_Tyn_Church.jpg', desc:'老城廣場標誌性的雙塔哥德式教堂，塔尖高達80公尺，是布拉格天際線的重要元素。' }
+      { icon:'⛪️', name:'泰恩教堂', badge:'walkin', img: W+'c/cb/Prague_-_Old_Town_Square_Tyn_Church.jpg/480px-Prague_-_Old_Town_Square_Tyn_Church.jpg', desc:'老城廣場標誌性的雙塔哥德式教堂，塔尖高達80公尺，是布拉格天際線的重要元素。' }
     ]
   },
   {
@@ -1017,7 +1018,7 @@ const days = [
       { icon:'🌹', name:'米拉貝爾花園', badge:'walkin', img: W+'4/44/Mirabell_Palace_and_Garden.jpg/480px-Mirabell_Palace_and_Garden.jpg', desc:'薩爾茲堡必遊巴洛克式花園，電影《真善美》取景地。' },
       { icon:'🛍', name:'蓋特萊德巷', badge:'walkin', img: W+'0/0b/Getreidegasse_Salzburg.jpg/480px-Getreidegasse_Salzburg.jpg', desc:'薩爾茲堡最著名購物街，鍛鐵招牌林立，名品與特產齊聚。' },
       { icon:'🎹', name:'莫札特故居', badge:'walkin', img: W+'a/a8/Mozarts_Geburtshaus_Salzburg_2014.jpg/480px-Mozarts_Geburtshaus_Salzburg_2014.jpg', desc:'音樂神童莫札特出生地，可近距離感受天才音樂家的成長環境。' },
-      { icon:'⛪', name:'主教廣場・大教堂・主教宮殿', badge:'walkin', img: W+'f/f3/Festung_Hohensalzburg_vom_Kapuzinerberg.jpg/480px-Festung_Hohensalzburg_vom_Kapuzinerberg.jpg', desc:'薩爾茲堡宗教文化核心區域，巴洛克建築群與廣場相互輝映，「北方羅馬」之名由此而來。' },
+      { icon:'⛪️', name:'主教廣場・大教堂・主教宮殿', badge:'walkin', img: W+'f/f3/Festung_Hohensalzburg_vom_Kapuzinerberg.jpg/480px-Festung_Hohensalzburg_vom_Kapuzinerberg.jpg', desc:'薩爾茲堡宗教文化核心區域，巴洛克建築群與廣場相互輝映，「北方羅馬」之名由此而來。' },
       { icon:'🎵', name:'莫札特廣場', badge:'walkin', desc:'薩爾茲堡市中心廣場，豎立著莫札特紀念雕像，是感受薩爾茲堡音樂氛圍的最佳場所。' }
     ]
   },
@@ -1026,7 +1027,7 @@ const days = [
     breakfast:'飯店早餐', lunch:'德式豬腳風味餐', dinner:'國王湖鱒魚風味料理', hotel:'Strandhotel Margaretha',
     spots: [
       { icon:'🚢', name:'國王湖遊湖電動船', badge:'special', img: W+'5/56/Koenigssee_mit_Watzmann_-_Berchtesgadener_Land.jpg/480px-Koenigssee_mit_Watzmann_-_Berchtesgadener_Land.jpg', desc:'德國四大名湖之一，全德最美最乾淨湖泊。自1909年規定只能電力船，水質清澈如鏡。可近距離欣賞紅蔥頭聖巴多羅買教堂。（天候不佳退費€15/人）' },
-      { icon:'⛏', name:'貝希特斯登鹽礦探秘之旅', badge:'ticket', img: W+'9/90/Salzbergwerk_Berchtesgaden.jpg/480px-Salzbergwerk_Berchtesgaden.jpg', desc:'搭礦井列車深入大山，Kaiser Franz水槽、礦工滑梯、鏡湖等體驗，進入神秘鹽世界。（如關閉改前往哈萊茵鹽礦）' }
+      { icon:'⛏️', name:'貝希特斯登鹽礦探秘之旅', badge:'ticket', img: W+'9/90/Salzbergwerk_Berchtesgaden.jpg/480px-Salzbergwerk_Berchtesgaden.jpg', desc:'搭礦井列車深入大山，Kaiser Franz水槽、礦工滑梯、鏡湖等體驗，進入神秘鹽世界。（如關閉改前往哈萊茵鹽礦）' }
     ]
   },
   {
@@ -1041,7 +1042,7 @@ const days = [
     n:8, date:'2026/07/21 (二)', title:'梅爾克修道院 → 維也納', country:'🇦🇹 奧地利',
     breakfast:'飯店早餐', lunch:'梅爾克修道院餐廳', dinner:'中式料理八菜一湯', hotel:'InterContinental Vienna（5★）',
     spots: [
-      { icon:'⛪', name:'梅爾克修道院', badge:'ticket', img: W+'6/61/Stift_Melk_Panorama.jpg/480px-Stift_Melk_Panorama.jpg', desc:'成立於1089年，本篤會修道院坐落山岩上俯瞰多瑙河，1702-1736年巴洛克建築，精美壁畫與中世紀手稿圖書館，與瓦豪河谷並列世界文化遺產。' },
+      { icon:'⛪️', name:'梅爾克修道院', badge:'ticket', img: W+'6/61/Stift_Melk_Panorama.jpg/480px-Stift_Melk_Panorama.jpg', desc:'成立於1089年，本篤會修道院坐落山岩上俯瞰多瑙河，1702-1736年巴洛克建築，精美壁畫與中世紀手稿圖書館，與瓦豪河谷並列世界文化遺產。' },
       { icon:'🕍', name:'聖史提芬大教堂', badge:'walkin', img: W+'5/55/Wien-Stephansdom.jpg/480px-Wien-Stephansdom.jpg', desc:'世界第二高哥德式尖塔教堂，位於維也納心臟舊城區。13世紀羅馬式大門與雙塔，14、15世紀哥德式尖塔，琉璃瓦拼花屋頂拼成哈布斯堡徽章。' },
       { icon:'🏛', name:'維也納老城區', badge:'walkin', img: W+'0/0c/Wien_Innere_Stadt_%28aerial_view%29.jpg/480px-Wien_Innere_Stadt_%28aerial_view%29.jpg', desc:'散步感受歐洲帝都風情，精品購物、咖啡館文化盡在其中。' }
     ]
@@ -1067,7 +1068,7 @@ const days = [
     n:11, date:'2026/07/24 (五)', title:'維也納 → 返台', country:'✈',
     breakfast:'飯店早餐', lunch:'機上簡餐', dinner:'機上簡餐', hotel:'機上',
     spots: [
-      { icon:'✈', name:'中華航空 CI64 返程', badge:'', desc:'上午11:15自維也納國際機場 T1A 出發，飛行約12小時15分，翌日清晨05:30抵達桃園國際機場。帶走滿滿浪漫回憶！' }
+      { icon:'✈️', name:'中華航空 CI64 返程', badge:'', desc:'上午11:15自維也納國際機場 T1A 出發，飛行約12小時15分，翌日清晨05:30抵達桃園國際機場。帶走滿滿浪漫回憶！' }
     ]
   },
   {
@@ -1102,7 +1103,7 @@ days.forEach((d, idx) => {
   // Selector button
   const btn = document.createElement('button');
   btn.className = 'day-btn' + (idx === 0 ? ' active' : '');
-  btn.textContent = `Day ${d.n}`;
+  btn.textContent = `第${d.n}天`;
   btn.addEventListener('click', () => {
     document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
