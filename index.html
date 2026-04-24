@@ -2,1599 +2,1087 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>奧斯捷饗宴 12天｜旅程手冊</title>
-
-<!-- ── PWA: Web App Manifest ── -->
-<link rel="manifest" href="manifest.json">
-
-<!-- ── PWA: iOS Safari 主畫面圖示與設定 ── -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="奧斯捷12天">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-
-<!-- ── PWA: 一般瀏覽器圖示 ── -->
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-
-<!-- ── PWA: 主題色 & 描述 ── -->
-<meta name="theme-color" content="#C9A84C">
-<meta name="description" content="奧地利・捷克・斯洛伐克 12天旅程手冊 | 2026.07.14–07.25">
-<meta name="mobile-web-app-capable" content="yes">
-
-<!-- ── iOS 啟動畫面顏色 ── -->
-<meta name="msapplication-TileColor" content="#1A1208">
-<meta name="msapplication-TileImage" content="icon-512.png">
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+TC:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<meta name="apple-mobile-web-app-title" content="奧斯捷饗宴">
+<title>奧斯捷饗宴 12天｜旅程手冊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C97A;
-    --dark: #1A1208;
-    --dark2: #2D2112;
-    --cream: #F5EED8;
-    --cream2: #EDE3C4;
-    --text: #3D2B0E;
-    --muted: #7A6240;
-    --accent: #8B3A1A;
-    --green: #2D4A2A;
-    --shadow: rgba(26,18,8,0.18);
-  }
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --gold-pale: #F5E8C0;
+  --dark: #1A1208;
+  --brown: #3D2B0D;
+  --brown-mid: #5C3D11;
+  --cream: #FAF6EC;
+  --cream-dark: #F0E8D0;
+  --text: #2C1F0A;
+  --text-muted: #7A6040;
+  --white: #FFFFFF;
+  --tab-h: 62px;
+  --header-h: 0px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --radius: 16px;
+  --shadow: 0 4px 20px rgba(60,30,0,0.15);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { height: 100%; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Noto Sans TC', -apple-system, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  height: 100%;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-  * { margin:0; padding:0; box-sizing:border-box; }
+/* ── HERO HEADER ── */
+.hero {
+  background: linear-gradient(160deg, #2A1800 0%, #3D2200 40%, #5C3500 100%);
+  padding: calc(var(--safe-top) + 16px) 20px 20px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.06'%3E%3Cpath d='M30 0l2 8-6-4 6-4zM30 60l2-8-6 4 6 4zM0 30l8-2-4 6-4-6zM60 30l-8-2 4 6 4-6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(201,168,76,0.2); border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold-light); font-size: 11px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;
+  position: relative;
+}
+.hero-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 28px; font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 2px; line-height: 1.2;
+  position: relative;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.hero-title span { font-size: 22px; opacity: 0.9; }
+.hero-countries {
+  color: rgba(232,201,106,0.7); font-size: 11px;
+  letter-spacing: 3px; margin: 6px 0 14px;
+  font-weight: 400; position: relative;
+}
+.hero-dates {
+  display: flex; gap: 16px; position: relative;
+}
+.hero-date-item {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 10px; padding: 8px 14px;
+  flex: 1;
+}
+.hero-date-item .icon { font-size: 18px; }
+.hero-date-item .label { font-size: 10px; color: rgba(232,201,106,0.7); letter-spacing: 0.5px; }
+.hero-date-item .date { font-size: 13px; color: var(--gold-light); font-weight: 600; letter-spacing: 0.5px; }
+.hero-countdown {
+  margin-top: 12px; position: relative;
+  background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 10px; padding: 8px 14px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.hero-countdown .cd-label { font-size: 11px; color: rgba(232,201,106,0.7); }
+.hero-countdown .cd-num { font-size: 20px; font-weight: 700; color: var(--gold-light); }
+.hero-countdown .cd-unit { font-size: 11px; color: rgba(232,201,106,0.6); }
 
-  body {
-    background: var(--cream);
-    color: var(--text);
-    font-family: 'Noto Serif TC', serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+/* ── TABS ── */
+.tab-bar {
+  display: flex; background: var(--brown);
+  height: var(--tab-h); flex-shrink: 0;
+  border-bottom: 2px solid rgba(201,168,76,0.2);
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; scroll-snap-type: x mandatory;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex: none; min-width: 72px;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 3px;
+  color: rgba(232,201,106,0.5);
+  font-size: 9.5px; font-weight: 500;
+  padding: 0 10px; cursor: pointer;
+  border: none; background: none;
+  position: relative; transition: color 0.2s;
+  letter-spacing: 0.3px; scroll-snap-align: start;
+  -webkit-tap-highlight-color: transparent;
+}
+.tab-btn .tab-icon { font-size: 20px; line-height: 1; }
+.tab-btn.active { color: var(--gold-light); }
+.tab-btn.active::after {
+  content: ''; position: absolute; bottom: 0; left: 8px; right: 8px;
+  height: 2px; background: var(--gold-light); border-radius: 2px 2px 0 0;
+}
 
-  /* ── HERO ─────────────────────────────────────── */
-  .hero {
-    position: relative;
-    height: 340px;
-    background: linear-gradient(160deg, var(--dark2) 0%, #4A2F0A 50%, #6B4215 100%);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-  .hero-ornament {
-    position: absolute;
-    top: 20px; left: 50%; transform: translateX(-50%);
-    color: var(--gold); font-size: 0.85rem;
-    letter-spacing: 8px; text-transform: uppercase;
-    opacity: 0.7; font-family: 'Cinzel', serif;
-  }
-  .hero-title {
-    font-family: 'Playfair Display', 'Noto Serif TC', serif;
-    font-size: clamp(2.2rem, 6vw, 3.6rem);
-    color: var(--gold-light);
-    text-align: center;
-    letter-spacing: 0.05em;
-    padding-right: 0.05em;
-    text-shadow: 0 2px 24px rgba(201,168,76,0.3);
-    position: relative; z-index: 1;
-  }
-  .hero-sub {
-    font-family: 'Cinzel', serif;
-    color: var(--cream); opacity: 0.75;
-    font-size: 0.9rem; letter-spacing: 4px;
-    margin-top: 12px; position: relative; z-index: 1;
-  }
-  .hero-dates {
-    margin-top: 16px;
-    display: flex; gap: 28px;
-    font-size: 0.82rem; color: var(--gold-light);
-    opacity: 0.9; z-index: 1; position: relative;
-  }
-  .hero-dates span { display: flex; align-items: center; gap: 6px; }
-  .hero-line {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
+/* ── CONTENT AREA ── */
+.app-shell { display: flex; flex-direction: column; height: 100vh; height: 100dvh; }
+.content-area {
+  flex: 1; overflow-y: auto; overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: calc(20px + var(--safe-bottom));
+  background: var(--cream);
+}
+.tab-panel { display: none; padding: 0 0 20px; }
+.tab-panel.active { display: block; }
 
-  /* ── NAV TABS ─────────────────────────────────── */
-  .nav-tabs {
-    position: sticky; top: 0; z-index: 100;
-    background: var(--dark); display: flex;
-    overflow-x: auto; gap: 0;
-    box-shadow: 0 4px 20px var(--shadow);
-  }
-  .nav-tabs::-webkit-scrollbar { height: 3px; }
-  .nav-tabs::-webkit-scrollbar-thumb { background: var(--gold); }
+/* ── SECTION TITLE ── */
+.section-header {
+  padding: 20px 16px 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 18px; font-weight: 700; color: var(--brown);
+}
+.section-badge {
+  background: var(--gold); color: var(--dark);
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 12px; letter-spacing: 0.5px;
+}
 
-  .tab-btn {
-    flex-shrink: 0;
-    padding: 14px 22px;
-    border: none; background: transparent;
-    color: var(--muted); cursor: pointer;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 0.82rem; letter-spacing: 1px;
-    transition: all 0.3s;
-    border-bottom: 3px solid transparent;
-    white-space: nowrap;
-    display: flex; align-items: center; gap: 7px;
-  }
-  .tab-btn:hover { color: var(--gold-light); }
-  .tab-btn.active {
-    color: var(--gold);
-    border-bottom-color: var(--gold);
-    background: rgba(201,168,76,0.08);
-  }
-  .tab-btn .icon { font-size: 1rem; }
+/* ── OVERVIEW TABLE (CARD STYLE) ── */
+.overview-cards { padding: 0 12px; }
+.ov-card {
+  background: var(--white);
+  border-radius: var(--radius); margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(60,30,0,0.08);
+  overflow: hidden;
+  border-left: 3px solid var(--gold-pale);
+  transition: transform 0.15s;
+}
+.ov-card:active { transform: scale(0.99); }
+.ov-card.day-current { border-left-color: var(--gold); }
+.ov-card.day-past { opacity: 0.6; }
+.ov-card-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px 8px; 
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+}
+.ov-day-num {
+  background: var(--brown); color: var(--gold-light);
+  font-size: 11px; font-weight: 700; min-width: 38px;
+  padding: 4px 8px; border-radius: 8px; text-align: center;
+  letter-spacing: 0.5px;
+}
+.ov-card.day-current .ov-day-num { background: var(--gold); color: var(--dark); }
+.ov-date { font-size: 14px; font-weight: 600; color: var(--brown-mid); }
+.ov-location-text {
+  font-size: 13px; color: var(--text); line-height: 1.5;
+  padding: 8px 14px 4px;
+}
+.ov-footer {
+  display: flex; padding: 6px 14px 10px; gap: 6px; flex-wrap: wrap;
+}
+.ov-meal {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 11px; color: var(--text-muted);
+  background: var(--cream-dark); border-radius: 6px;
+  padding: 3px 8px;
+}
+.ov-meal .meal-icon { font-size: 12px; }
+.ov-hotel {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 11px; color: var(--brown-mid); font-weight: 500;
+  margin-left: auto;
+}
+.hotel-star { color: var(--gold); font-size: 10px; }
 
-  /* ── PANELS ───────────────────────────────────── */
-  .panel { display: none; padding: 32px 20px 60px; max-width: 860px; margin: 0 auto; animation: fadeUp 0.4s ease; }
-  .panel.active { display: block; }
+/* ── FLIGHT CARDS ── */
+.flight-section { padding: 0 12px; }
+.flight-card {
+  background: linear-gradient(135deg, #2A1800 0%, #3D2600 100%);
+  border-radius: var(--radius); margin-bottom: 12px;
+  padding: 20px; overflow: hidden; position: relative;
+  box-shadow: var(--shadow);
+}
+.flight-card::before {
+  content: '✈';
+  position: absolute; right: -10px; top: 50%;
+  transform: translateY(-50%) rotate(15deg);
+  font-size: 80px; opacity: 0.05; pointer-events: none;
+}
+.flight-dir {
+  font-size: 11px; letter-spacing: 1.5px; color: rgba(232,201,106,0.6);
+  text-transform: uppercase; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.flight-dir::before, .flight-dir::after {
+  content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.2);
+}
+.flight-airline {
+  font-size: 13px; font-weight: 600; color: var(--gold-light);
+  text-align: center; margin-bottom: 16px; letter-spacing: 1px;
+}
+.flight-route {
+  display: flex; align-items: center; gap: 8px;
+}
+.flight-endpoint { flex: 1; text-align: center; }
+.flight-iata { font-size: 28px; font-weight: 700; color: var(--white); letter-spacing: 2px; }
+.flight-airport { font-size: 10px; color: rgba(255,255,255,0.5); margin: 3px 0; line-height: 1.3; }
+.flight-datetime { font-size: 12px; color: rgba(232,201,106,0.8); }
+.flight-time { font-size: 20px; font-weight: 700; color: var(--gold-light); }
+.flight-middle { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 0 0 60px; }
+.flight-duration { font-size: 10px; color: rgba(255,255,255,0.5); }
+.flight-line {
+  display: flex; align-items: center; gap: 0; width: 100%;
+  position: relative;
+}
+.flight-line::before {
+  content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.3);
+}
+.flight-plane { font-size: 16px; color: var(--gold-light); margin: 0 4px; }
+.flight-line::after {
+  content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.3);
+}
+.flight-note {
+  margin-top: 14px; padding-top: 12px;
+  border-top: 1px solid rgba(201,168,76,0.15);
+  font-size: 10px; color: rgba(255,255,255,0.4); text-align: center;
+  letter-spacing: 0.5px;
+}
+.flight-disclaimer {
+  background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 10px; padding: 10px 14px; margin-top: 12px;
+  font-size: 11px; color: rgba(232,201,106,0.8); text-align: center;
+}
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+/* ── CHECK LIST ── */
+.checklist-wrap { padding: 0 12px; }
+.progress-bar-wrap {
+  background: var(--white); border-radius: var(--radius);
+  padding: 16px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(60,30,0,0.08);
+}
+.progress-label { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; display: flex; justify-content: space-between; }
+.progress-track {
+  height: 8px; background: var(--cream-dark); border-radius: 4px; overflow: hidden;
+}
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 4px; transition: width 0.4s ease; }
+.progress-count { font-size: 20px; font-weight: 700; color: var(--brown); }
+.cl-category { margin-bottom: 14px; }
+.cl-cat-title {
+  background: var(--brown); color: var(--gold-light);
+  font-size: 13px; font-weight: 600; padding: 10px 16px;
+  border-radius: 12px 12px 0 0; letter-spacing: 0.5px;
+}
+.cl-items { background: var(--white); border-radius: 0 0 12px 12px; overflow: hidden; }
+.cl-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+.cl-item:last-child { border-bottom: none; }
+.cl-item:active { background: var(--cream); }
+.cl-checkbox {
+  width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0;
+  border: 2px solid rgba(201,168,76,0.4); display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; background: transparent;
+}
+.cl-item.checked .cl-checkbox {
+  background: var(--gold); border-color: var(--gold);
+}
+.cl-item.checked .cl-checkbox::after { content: '✓'; font-size: 13px; color: var(--dark); font-weight: 700; }
+.cl-label { font-size: 14px; color: var(--text); transition: color 0.2s; }
+.cl-item.checked .cl-label { color: var(--text-muted); text-decoration: line-through; }
+.cl-reset-btn {
+  display: block; width: calc(100% - 24px); margin: 12px 12px 4px;
+  background: none; border: 1px solid rgba(201,168,76,0.3);
+  color: var(--text-muted); font-size: 13px; padding: 11px;
+  border-radius: 10px; cursor: pointer;
+  font-family: inherit; -webkit-tap-highlight-color: transparent;
+}
 
-  /* ── SECTION TITLES ───────────────────────────── */
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem; color: var(--accent);
-    margin-bottom: 24px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--gold-light);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .section-title .badge {
-    background: var(--gold); color: var(--dark);
-    font-family: 'Noto Serif TC', serif;
-    font-size: 0.7rem; padding: 3px 10px;
-    border-radius: 20px; font-weight: 600;
-    letter-spacing: 1px;
-  }
+/* ── DAILY ITINERARY ── */
+.daily-wrap { padding: 0 12px; }
+.day-card {
+  background: var(--white); border-radius: var(--radius);
+  margin-bottom: 12px; overflow: hidden;
+  box-shadow: 0 2px 10px rgba(60,30,0,0.08);
+}
+.day-card-header {
+  background: linear-gradient(135deg, var(--brown) 0%, var(--brown-mid) 100%);
+  padding: 14px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.day-card-num { font-size: 12px; color: rgba(232,201,106,0.7); letter-spacing: 1px; }
+.day-card-date { font-size: 16px; font-weight: 700; color: var(--gold-light); }
+.day-card-title {
+  font-size: 13px; color: rgba(232,201,106,0.8);
+  line-height: 1.4; padding: 10px 16px 0;
+}
+.day-flag { font-size: 18px; }
+.spot-list { padding: 10px 16px 4px; }
+.spot-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 9px 0; border-bottom: 1px solid var(--cream-dark);
+}
+.spot-item:last-child { border-bottom: none; }
+.spot-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.spot-name { font-size: 13px; font-weight: 500; color: var(--text); }
+.spot-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+.spot-badge {
+  display: inline-block; font-size: 9px; font-weight: 600;
+  padding: 2px 6px; border-radius: 4px; margin-left: 6px; vertical-align: middle;
+  letter-spacing: 0.3px;
+}
+.badge-ticket { background: #FFF3CD; color: #856404; }
+.badge-walkin { background: #D1ECF1; color: #0C5460; }
+.badge-special { background: #F8D7DA; color: #721C24; }
+.day-meals-hotel {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+  padding: 10px 16px 14px; border-top: 1px solid var(--cream-dark);
+  margin-top: 4px;
+}
+.meal-chip {
+  font-size: 11px; background: var(--cream); border: 1px solid rgba(201,168,76,0.2);
+  color: var(--text-muted); padding: 4px 10px; border-radius: 8px;
+}
+.hotel-chip {
+  font-size: 11px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
+  color: var(--brown-mid); padding: 4px 10px; border-radius: 8px;
+  margin-left: auto; font-weight: 500;
+}
 
-  /* ── FLIGHT CARDS ─────────────────────────────── */
-  .flight-grid { display: grid; gap: 24px; }
-  .flight-card {
-    background: var(--dark);
-    border-radius: 18px;
-    padding: 0;
-    box-shadow: 0 8px 32px var(--shadow);
-    overflow: hidden;
-  }
-  .flight-card-header {
-    display: flex; align-items: center; gap: 14px;
-    padding: 18px 22px 14px;
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-  }
-  .flight-icon {
-    width: 42px; height: 42px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold), var(--accent));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem; flex-shrink: 0;
-  }
-  .flight-airline { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; font-family: 'Cinzel', serif; line-height: 1.5; }
-  .flight-day {
-    margin-left: auto;
-    color: var(--gold-light); font-size: 0.72rem;
-    background: rgba(201,168,76,0.12);
-    padding: 4px 12px; border-radius: 20px;
-    white-space: nowrap; flex-shrink: 0;
-  }
-  .flight-route {
-    display: grid;
-    grid-template-columns: 1fr 64px 1fr;
-    align-items: center;
-    gap: 8px;
-    padding: 20px 22px;
-  }
-  .flight-endpoint { }
-  .flight-endpoint.right { text-align: right; }
-  .flight-iata {
-    color: var(--gold-light); font-size: 1.8rem; font-weight: 700;
-    font-family: 'Cinzel', serif; line-height: 1; letter-spacing: 2px;
-  }
-  .flight-city { color: var(--cream); font-size: 0.78rem; margin: 4px 0 6px; }
-  .flight-datetime {
-    color: var(--cream2); font-size: 0.72rem; opacity: 0.8; line-height: 1.7;
-  }
-  .flight-datetime strong { color: #F5C842; font-size: 1.05rem; font-weight: 700; display: block; }
-  .flight-mid {
-    display: flex; flex-direction: column; align-items: center; gap: 4px;
-  }
-  .flight-plane-icon { color: var(--gold); font-size: 1.2rem; }
-  .flight-arrow-line {
-    width: 100%; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 2px 0;
-  }
-  .flight-footer {
-    padding: 10px 22px 16px;
-    text-align: center;
-    color: var(--muted); font-size: 0.72rem;
-    border-top: 1px solid rgba(201,168,76,0.08);
-  }
+/* ── NOTICE CARDS ── */
+.notice-wrap { padding: 0 12px; }
+.notice-card {
+  background: var(--white); border-radius: var(--radius);
+  margin-bottom: 10px; overflow: hidden;
+  box-shadow: 0 2px 8px rgba(60,30,0,0.07);
+  border-left: 3px solid var(--gold-pale);
+}
+.notice-card.red { border-left-color: #DC3545; }
+.notice-card.green { border-left-color: #28A745; }
+.notice-header {
+  padding: 14px 16px 10px;
+  font-size: 14px; font-weight: 600; color: var(--brown);
+  display: flex; align-items: center; gap: 8px;
+}
+.notice-body { padding: 0 16px 14px; font-size: 13px; color: var(--text); line-height: 1.7; }
+.notice-body strong { color: var(--brown-mid); }
 
-  /* ── NOTICE CARDS ─────────────────────────────── */
-  .notice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 28px; }
-  .notice-card {
-    background: white;
-    border-left: 4px solid var(--gold);
-    border-radius: 0 12px 12px 0;
-    padding: 18px 20px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
-  }
-  .notice-card.red { border-left-color: var(--accent); }
-  .notice-card.green { border-left-color: var(--green); }
-  .notice-card h4 {
-    font-size: 0.85rem; font-weight: 600;
-    color: var(--accent); margin-bottom: 10px;
-    text-transform: uppercase; letter-spacing: 1px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .notice-card p, .notice-card li {
-    font-size: 0.86rem; color: var(--muted); line-height: 1.8;
-  }
-  .notice-card ul { list-style: none; }
-  .notice-card ul li::before { content: '→ '; color: var(--gold); }
-
-  /* ── CHECKLIST ─────────────────────────────────── */
-  .checklist-groups { display: grid; gap: 24px; }
-  .check-group {
-    background: white; border-radius: 14px;
-    padding: 20px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-  }
-  .check-group-title {
-    font-family: 'Playfair Display', serif;
-    color: var(--dark2); font-size: 1.05rem;
-    margin-bottom: 14px;
-    padding-bottom: 8px; border-bottom: 1px dashed var(--cream2);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .check-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
-  .check-item {
-    display: flex; align-items: center; gap: 10px;
-    padding: 8px 12px; border-radius: 8px;
-    cursor: pointer; transition: background 0.2s;
-    font-size: 0.86rem; color: var(--text);
-    user-select: none;
-  }
-  .check-item:hover { background: var(--cream); }
-  .check-item input[type=checkbox] { display: none; }
-  .check-box {
-    width: 20px; height: 20px; flex-shrink: 0;
-    border: 2px solid var(--gold); border-radius: 5px;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s; font-size: 0.8rem;
-    color: white; background: white;
-  }
-  .check-item.checked .check-box {
-    background: var(--gold); border-color: var(--gold);
-  }
-  .check-item.checked .check-text { text-decoration: line-through; color: var(--muted); }
-
-  .progress-bar-wrap { margin-bottom: 20px; }
-  .progress-label { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--muted); margin-bottom: 6px; }
-  .progress-bar-bg { background: var(--cream2); border-radius: 20px; height: 10px; overflow: hidden; }
-  .progress-bar-fill {
-    height: 100%; border-radius: 20px;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    transition: width 0.4s ease;
-  }
-
-  /* ── DAILY ITINERARY ──────────────────────────── */
-  .day-selector {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
-  }
-  .day-btn {
-    padding: 7px 14px; border: 2px solid var(--cream2);
-    background: white; border-radius: 30px;
-    font-size: 0.8rem; cursor: pointer;
-    transition: all 0.25s; font-family: 'Noto Serif TC', serif;
-    color: var(--muted);
-  }
-  .day-btn:hover { border-color: var(--gold); color: var(--gold); }
-  .day-btn.active {
-    background: var(--gold); border-color: var(--gold);
-    color: var(--dark); font-weight: 600;
-  }
-
-  .day-card {
-    display: none;
-    background: white; border-radius: 18px;
-    padding: 28px 30px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.1);
-    animation: fadeUp 0.3s ease;
-  }
-  .day-card.active { display: block; }
-
-  .day-header {
-    display: flex; align-items: flex-start;
-    justify-content: space-between; flex-wrap: wrap; gap: 12px;
-    margin-bottom: 22px;
-    padding-bottom: 18px; border-bottom: 1px solid var(--cream2);
-  }
-  .day-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem; line-height: 1;
-    color: var(--gold-light); opacity: 0.5;
-    font-weight: 700;
-  }
-  .day-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; color: var(--dark2);
-    margin-bottom: 4px;
-  }
-  .day-date { font-size: 0.8rem; color: var(--muted); letter-spacing: 1px; }
-
-  .meals {
-    display: flex; gap: 12px; flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-  .meal-tag {
-    display: flex; align-items: center; gap: 6px;
-    padding: 5px 14px; border-radius: 20px;
-    font-size: 0.78rem; font-weight: 600;
-  }
-  .meal-tag.breakfast { background: #FFF3E0; color: #E65100; }
-  .meal-tag.lunch     { background: #E8F5E9; color: #2E7D32; }
-  .meal-tag.dinner    { background: #EDE7F6; color: #4527A0; }
-
-  .hotel-tag {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--cream); color: var(--accent);
-    padding: 5px 14px; border-radius: 20px; font-size: 0.78rem;
-    margin-bottom: 20px; border: 1px solid var(--cream2);
-  }
-
-  .spots { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
-  .spot {
-    display: flex; flex-direction: column;
-    border-radius: 12px; background: var(--cream);
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .spot:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
-  .spot-img-wrap {
-    width: 100%; height: 148px; overflow: hidden;
-    background: var(--cream2); position: relative; flex-shrink: 0;
-  }
-  .spot-img-wrap img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-    transition: opacity 0.5s ease, transform 0.4s ease;
-  }
-  .spot:hover .spot-img-wrap img { transform: scale(1.04); }
-  .spot-img-credit {
-    position: absolute; bottom: 0; right: 0;
-    background: rgba(0,0,0,0.45); color: rgba(255,255,255,0.75);
-    font-size: 0.6rem; padding: 2px 6px;
-  }
-  .spot-body { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; }
-  .spot-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
-  .spot-name { font-weight: 600; font-size: 0.88rem; color: var(--dark2); margin-bottom: 4px; }
-  .spot-desc { font-size: 0.79rem; color: var(--muted); line-height: 1.7; }
-  .spot-badge {
-    display: inline-block;
-    font-size: 0.66rem; padding: 2px 8px; border-radius: 10px;
-    margin-left: 6px; font-weight: 600;
-  }
-  .spot-badge.ticket  { background: #FFF3CD; color: #856404; }
-  .spot-badge.walkin  { background: #D1ECF1; color: #0C5460; }
-  .spot-badge.special { background: #F8D7DA; color: #721C24; }
-
-  /* ── DAY HERO IMAGE ───────────────────────────── */
-  .day-hero {
-    width: 100%; height: 200px; border-radius: 12px;
-    overflow: hidden; margin-bottom: 20px;
-    background: var(--cream2);
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-  }
-  .day-hero img {
-    width: 100%; height: 100%; object-fit: cover;
-    display: block;
-    transition: opacity 0.5s ease;
-  }
-  .day-hero-caption {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 6px 12px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.55));
-    color: rgba(255,255,255,0.8); font-size: 0.65rem;
-    text-align: right;
-  }
-
-  .tip-grid { display: grid; gap: 16px; }
-  .tip-card {
-    background: white; border-radius: 14px; padding: 20px 22px;
-    display: flex; gap: 16px; align-items: flex-start;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
-  }
-  .tip-icon { font-size: 1.8rem; flex-shrink: 0; }
-  .tip-title { font-weight: 600; color: var(--dark2); font-size: 0.92rem; margin-bottom: 6px; }
-  .tip-text { font-size: 0.84rem; color: var(--muted); line-height: 1.8; }
-
-  /* ── OVERVIEW TABLE ───────────────────────────── */
-  .overview-table {
-    width: 100%; border-collapse: collapse;
-    background: white; border-radius: 14px; overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-  }
-  .overview-table th {
-    background: var(--dark2); color: var(--gold);
-    padding: 12px 16px; font-size: 0.78rem;
-    letter-spacing: 1px; text-align: left;
-    font-family: 'Cinzel', serif;
-  }
-  .overview-table td {
-    padding: 11px 16px; font-size: 0.83rem;
-    border-bottom: 1px solid var(--cream2);
-    vertical-align: middle; color: var(--text);
-  }
-  .overview-table tr:last-child td { border-bottom: none; }
-  .overview-table tr:nth-child(even) td { background: var(--cream); }
-  .overview-table .day-num { color: var(--gold); font-weight: 600; font-family: 'Cinzel', serif; }
-  .loc-tag { background: var(--cream2); padding: 3px 8px; border-radius: 10px; font-size: 0.75rem; }
-
-  /* ── LIVE INFO PANEL ─────────────────────────── */
-  .live-grid { display: grid; gap: 28px; }
-
-  /* API Key Setup Banner */
-  .api-setup-banner {
-    background: linear-gradient(135deg, #1a1208 0%, #2d2112 100%);
-    border: 1px solid var(--gold);
-    border-radius: 16px;
-    padding: 22px 26px;
-    display: flex; flex-wrap: wrap; gap: 16px;
-    align-items: flex-start;
-  }
-  .api-setup-banner .setup-icon { font-size: 2rem; flex-shrink: 0; }
-  .api-setup-banner h3 { color: var(--gold-light); font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 8px; }
-  .api-setup-banner p { color: var(--muted); font-size: 0.8rem; line-height: 1.7; }
-  .api-key-input-row { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
-  .api-key-input {
-    flex: 1; min-width: 200px;
-    background: rgba(255,255,255,0.07); border: 1px solid rgba(201,168,76,0.3);
-    color: var(--cream); border-radius: 8px; padding: 8px 14px;
-    font-size: 0.82rem; font-family: 'Noto Serif TC', serif;
-    outline: none;
-  }
-  .api-key-input:focus { border-color: var(--gold); }
-  .api-key-input::placeholder { color: var(--muted); }
-  .btn-save-key {
-    background: var(--gold); color: var(--dark);
-    border: none; border-radius: 8px; padding: 8px 18px;
-    font-size: 0.82rem; cursor: pointer; font-family: 'Noto Serif TC', serif;
-    font-weight: 600; transition: opacity 0.2s; white-space: nowrap;
-  }
-  .btn-save-key:hover { opacity: 0.85; }
-  .key-status { font-size: 0.75rem; margin-top: 6px; }
-  .key-status.ok   { color: #6fcf97; }
-  .key-status.none { color: var(--muted); }
-
-  /* Refresh Bar */
-  .refresh-bar {
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 12px;
-    background: white; border-radius: 12px; padding: 14px 20px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-  .refresh-bar .last-update { font-size: 0.78rem; color: var(--muted); }
-  .refresh-bar .last-update strong { color: var(--text); }
-  .btn-refresh {
-    display: flex; align-items: center; gap: 8px;
-    background: var(--gold); color: var(--dark); border: none;
-    border-radius: 10px; padding: 8px 18px; cursor: pointer;
-    font-size: 0.82rem; font-family: 'Noto Serif TC', serif;
-    font-weight: 600; transition: opacity 0.2s;
-  }
-  .btn-refresh:hover { opacity: 0.85; }
-  .btn-refresh.loading .refresh-icon { animation: spin 0.8s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .auto-refresh-toggle { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--muted); cursor: pointer; }
-  .toggle-switch { width: 36px; height: 20px; background: var(--cream2); border-radius: 10px; position: relative; transition: background 0.3s; flex-shrink: 0; }
-  .toggle-switch.on { background: var(--gold); }
-  .toggle-switch::after { content: ''; position: absolute; width: 14px; height: 14px; background: white; border-radius: 50%; top: 3px; left: 3px; transition: left 0.3s; }
-  .toggle-switch.on::after { left: 19px; }
-
-  /* Section Headers */
-  .live-section-title {
-    font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--accent);
-    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
-    padding-bottom: 8px; border-bottom: 1px solid var(--cream2);
-  }
-
-  /* Flight Status */
-  .flight-status-grid { display: grid; gap: 14px; }
-  .flight-status-card {
-    background: white; border-radius: 14px; padding: 18px 20px;
-    box-shadow: 0 3px 16px rgba(0,0,0,0.07);
-    display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center;
-  }
-  .flt-direction { font-size: 1.4rem; }
-  .flt-info { }
-  .flt-number { font-family: 'Cinzel', serif; font-size: 0.9rem; font-weight: 600; color: var(--dark2); }
-  .flt-route  { font-size: 0.78rem; color: var(--muted); margin: 3px 0; }
-  .flt-date   { font-size: 0.75rem; color: var(--muted); }
-  .flt-status-badge {
-    padding: 5px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
-    white-space: nowrap; text-align: center;
-  }
-  .flt-status-badge.scheduled  { background: #E8F5E9; color: #2E7D32; }
-  .flt-status-badge.active     { background: #E3F2FD; color: #1565C0; }
-  .flt-status-badge.landed     { background: #EDE7F6; color: #4527A0; }
-  .flt-status-badge.cancelled  { background: #FFEBEE; color: #B71C1C; }
-  .flt-status-badge.delayed    { background: #FFF3E0; color: #E65100; }
-  .flt-status-badge.pending    { background: var(--cream2); color: var(--muted); }
-  .flt-status-badge.nokey      { background: var(--cream2); color: var(--muted); }
-  .flt-detail { font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
-
-  /* Exchange Rate */
-  .rate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
-  .rate-card {
-    background: white; border-radius: 14px; padding: 18px 20px;
-    box-shadow: 0 3px 16px rgba(0,0,0,0.07); text-align: center;
-  }
-  .rate-pair { font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--muted); letter-spacing: 2px; margin-bottom: 8px; }
-  .rate-value { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--dark2); line-height: 1; }
-  .rate-unit  { font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
-  .rate-change { font-size: 0.75rem; margin-top: 6px; font-weight: 600; }
-  .rate-change.up   { color: #E65100; }
-  .rate-change.down { color: #2E7D32; }
-  .rate-change.flat { color: var(--muted); }
-  .rate-hint { font-size: 0.72rem; color: var(--muted); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--cream2); }
-
-  /* Weather */
-  .weather-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
-  .weather-card {
-    background: white; border-radius: 14px; padding: 18px 20px;
-    box-shadow: 0 3px 16px rgba(0,0,0,0.07);
-  }
-  .weather-city { font-size: 0.8rem; font-weight: 600; color: var(--dark2); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
-  .weather-city .city-flag { font-size: 1rem; }
-  .weather-main { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .weather-icon { font-size: 2rem; }
-  .weather-temp { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--dark2); line-height: 1; }
-  .weather-desc { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
-  .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 0.72rem; color: var(--muted); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--cream2); }
-  .weather-detail { display: flex; align-items: center; gap: 4px; }
-  .weather-forecast { display: flex; gap: 6px; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--cream2); }
-  .forecast-day { flex: 1; text-align: center; }
-  .forecast-day .f-label { font-size: 0.62rem; color: var(--muted); }
-  .forecast-day .f-icon  { font-size: 0.9rem; }
-  .forecast-day .f-hi    { font-size: 0.72rem; font-weight: 600; color: var(--dark2); }
-  .forecast-day .f-lo    { font-size: 0.68rem; color: var(--muted); }
-
-  /* Skeleton / Loading */
-  .skeleton { background: linear-gradient(90deg, var(--cream2) 25%, var(--cream) 50%, var(--cream2) 75%); background-size: 200%; animation: shimmer 1.4s infinite; border-radius: 6px; }
-  @keyframes shimmer { from { background-position: 200% center; } to { background-position: -200% center; } }
-  .sk-line { height: 14px; margin: 6px 0; }
-  .sk-big  { height: 36px; margin: 8px 0; }
-
-  /* Error state */
-  .fetch-error { text-align: center; padding: 24px; color: var(--muted); font-size: 0.82rem; }
-  .fetch-error .err-icon { font-size: 1.8rem; margin-bottom: 8px; }
+/* ── LIVE INFO ── */
+.live-wrap { padding: 0 12px; }
+.api-key-card {
+  background: var(--white); border-radius: var(--radius);
+  padding: 16px; margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(60,30,0,0.08);
+}
+.api-key-title { font-size: 13px; font-weight: 600; color: var(--brown); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.api-key-row { display: flex; gap: 8px; }
+.api-key-input {
+  flex: 1; border: 1px solid rgba(201,168,76,0.3); border-radius: 10px;
+  padding: 10px 14px; font-size: 13px; background: var(--cream);
+  color: var(--text); font-family: monospace;
+  outline: none;
+}
+.api-key-input:focus { border-color: var(--gold); }
+.btn-gold {
+  background: var(--gold); color: var(--dark); border: none;
+  border-radius: 10px; padding: 10px 16px; font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: inherit; -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.2s;
+}
+.btn-gold:active { opacity: 0.8; }
+.btn-outline {
+  background: none; color: var(--text-muted); border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 10px; padding: 10px 14px; font-size: 13px;
+  cursor: pointer; font-family: inherit; -webkit-tap-highlight-color: transparent;
+}
+.live-status {
+  background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 10px; padding: 10px 14px; margin-bottom: 14px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px;
+}
+.live-status-text { font-size: 12px; color: var(--text-muted); }
+.live-refresh-row { display: flex; align-items: center; gap: 8px; }
+.auto-toggle {
+  width: 44px; height: 24px; border-radius: 12px; border: none;
+  background: var(--cream-dark); cursor: pointer; position: relative;
+  transition: background 0.2s; padding: 0; -webkit-tap-highlight-color: transparent;
+}
+.auto-toggle.on { background: var(--gold); }
+.auto-toggle::after {
+  content: ''; position: absolute; width: 18px; height: 18px;
+  background: white; border-radius: 50%; top: 3px; left: 3px;
+  transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.auto-toggle.on::after { transform: translateX(20px); }
+.refresh-btn {
+  background: none; border: 1px solid rgba(201,168,76,0.3); color: var(--text-muted);
+  border-radius: 8px; padding: 6px 12px; font-size: 12px; cursor: pointer;
+  font-family: inherit; -webkit-tap-highlight-color: transparent;
+}
+.live-section-title {
+  font-size: 13px; font-weight: 600; color: var(--brown);
+  padding: 6px 0 10px; display: flex; align-items: center; gap: 6px;
+}
+.flight-status-card {
+  background: var(--white); border-radius: var(--radius);
+  padding: 14px; margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(60,30,0,0.07);
+  display: flex; gap: 12px; align-items: center;
+}
+.fsc-icon { font-size: 28px; }
+.fsc-info { flex: 1; }
+.fsc-no { font-size: 15px; font-weight: 700; color: var(--brown); }
+.fsc-route { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.fsc-status { font-size: 12px; font-weight: 600; color: var(--gold); margin-top: 4px; }
+.rate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.rate-card {
+  background: var(--white); border-radius: var(--radius); padding: 14px;
+  box-shadow: 0 2px 8px rgba(60,30,0,0.07); text-align: center;
+}
+.rate-flag { font-size: 28px; margin-bottom: 6px; }
+.rate-label { font-size: 11px; color: var(--text-muted); }
+.rate-value { font-size: 20px; font-weight: 700; color: var(--brown); }
+.rate-hint { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+.weather-scroll {
+  display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  margin-bottom: 10px;
+}
+.weather-scroll::-webkit-scrollbar { display: none; }
+.weather-card {
+  flex: none; background: var(--white); border-radius: var(--radius);
+  padding: 14px; min-width: 110px; text-align: center;
+  box-shadow: 0 2px 8px rgba(60,30,0,0.07);
+}
+.wc-city { font-size: 12px; font-weight: 600; color: var(--brown); }
+.wc-days { font-size: 10px; color: var(--text-muted); margin-bottom: 8px; }
+.wc-icon { font-size: 28px; margin: 4px 0; }
+.wc-temp { font-size: 18px; font-weight: 700; color: var(--brown); }
+.wc-desc { font-size: 10px; color: var(--text-muted); margin-top: 4px; }
+.loading-spinner { text-align: center; padding: 20px; color: var(--text-muted); font-size: 13px; }
+.live-footer {
+  margin-top: 16px; font-size: 11px; color: var(--text-muted);
+  text-align: center; padding: 14px;
+  border-top: 1px solid var(--cream-dark); line-height: 1.6;
+}
 </style>
 </head>
 <body>
+<div class="app-shell">
 
-<!-- HERO -->
+<!-- ── HERO ── -->
 <div class="hero">
-  <div class="hero-ornament">✦ 歐洲深度遊 ✦</div>
-  <h1 class="hero-title">奧斯捷饗宴 12天</h1>
-  <div class="hero-sub">AUSTRIA · CZECH · SLOVAKIA</div>
+  <div class="hero-badge">✦ 歐洲深度遊 ✦</div>
+  <div class="hero-title">奧斯捷饗宴 <span>12天</span></div>
+  <div class="hero-countries">AUSTRIA · CZECH · SLOVAKIA</div>
   <div class="hero-dates">
-    <span>✈️ 出發 2026.07.14</span>
-    <span>｜</span>
-    <span>✈️ 返台 2026.07.25</span>
+    <div class="hero-date-item">
+      <span class="icon">✈️</span>
+      <div>
+        <div class="label">出發</div>
+        <div class="date">2026.07.14</div>
+      </div>
+    </div>
+    <div class="hero-date-item">
+      <span class="icon">🏠</span>
+      <div>
+        <div class="label">返台</div>
+        <div class="date">2026.07.25</div>
+      </div>
+    </div>
   </div>
-  <div class="hero-line"></div>
+  <div class="hero-countdown">
+    <div>
+      <div class="cd-label">距離出發</div>
+      <div><span class="cd-num" id="cdDays">－</span> <span class="cd-unit">天</span></div>
+    </div>
+    <div style="text-align:right">
+      <div class="cd-label">行程天數</div>
+      <div><span class="cd-num">12</span> <span class="cd-unit">天</span></div>
+    </div>
+  </div>
 </div>
 
-<!-- NAV TABS -->
-<nav class="nav-tabs">
-  <button class="tab-btn active" onclick="showPanel('overview')" id="tab-overview">
-    <span class="icon">📋</span> 行程總覽
+<!-- ── TAB BAR ── -->
+<nav class="tab-bar" id="tabBar">
+  <button class="tab-btn active" onclick="switchTab(0)" data-idx="0">
+    <span class="tab-icon">📋</span>行程總覽
   </button>
-  <button class="tab-btn" onclick="showPanel('flights')" id="tab-flights">
-    <span class="icon">✈️</span> 航班資訊
+  <button class="tab-btn" onclick="switchTab(1)" data-idx="1">
+    <span class="tab-icon">✈️</span>航班資訊
   </button>
-  <button class="tab-btn" onclick="showPanel('checklist')" id="tab-checklist">
-    <span class="icon">✅</span> 行前Check List
+  <button class="tab-btn" onclick="switchTab(2)" data-idx="2">
+    <span class="tab-icon">✅</span>Check List
   </button>
-  <button class="tab-btn" onclick="showPanel('daily')" id="tab-daily">
-    <span class="icon">🗓</span> 每日行程
+  <button class="tab-btn" onclick="switchTab(3)" data-idx="3">
+    <span class="tab-icon">🗓</span>每日行程
   </button>
-  <button class="tab-btn" onclick="showPanel('tips')" id="tab-tips">
-    <span class="icon">💡</span> 行前注意事項
+  <button class="tab-btn" onclick="switchTab(4)" data-idx="4">
+    <span class="tab-icon">💡</span>注意事項
   </button>
-  <button class="tab-btn" onclick="showPanel('live'); initLivePanel();" id="tab-live">
-    <span class="icon">📡</span> 即時資訊
+  <button class="tab-btn" onclick="switchTab(5)" data-idx="5">
+    <span class="tab-icon">📡</span>即時資訊
   </button>
 </nav>
 
-<!-- ═══ PANEL: OVERVIEW ═══ -->
-<div class="panel active" id="panel-overview">
-  <h2 class="section-title">行程總覽 <span class="badge">12 DAYS</span></h2>
-  <table class="overview-table">
-    <thead>
-      <tr>
-        <th>天次</th><th>日期</th><th>行程地點</th><th>早</th><th>午</th><th>晚</th><th>住宿</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td class="day-num">Day 1</td><td>07/14(二)</td><td>桃園→布拉格</td><td>自理</td><td>自理</td><td>機上</td><td>機上</td></tr>
-      <tr><td class="day-num">Day 2</td><td>07/15(三)</td><td><span class="loc-tag">捷克</span> 布拉格城堡區・聖維特大教堂・黃金小巷・查理士橋</td><td>機上</td><td>米其林</td><td>飯店</td><td>Prague Marriott Hotel (5★)</td></tr>
-      <tr><td class="day-num">Day 3</td><td>07/16(四)</td><td>老城廣場・聖尼古拉斯教堂・猶太墓區・火藥塔・泰恩教堂</td><td>飯店</td><td>肋排</td><td>自理</td><td>Prague Marriott Hotel (5★)</td></tr>
-      <tr><td class="day-num">Day 4</td><td>07/17(五)</td><td>琥珀卡城堡（含小火車）→ 克倫洛夫 → 林茨</td><td>飯店</td><td>波希米亞</td><td>飯店</td><td>Courtyard Marriott Linz</td></tr>
-      <tr><td class="day-num">Day 5</td><td>07/18(六)</td><td><span class="loc-tag">奧地利</span> 薩爾茲堡 → 薩爾斯干馬格特湖區</td><td>飯店</td><td>小酒館</td><td>中式</td><td>Strandhotel Margaretha</td></tr>
-      <tr><td class="day-num">Day 6</td><td>07/19(日)</td><td>國王湖遊船 → 貝希特斯登鹽礦</td><td>飯店</td><td>豬腳</td><td>鱒魚</td><td>Strandhotel Margaretha</td></tr>
-      <tr><td class="day-num">Day 7</td><td>07/20(一)</td><td>戈紹・戈紹湖・登山纜車 → 哈爾施塔特</td><td>飯店</td><td>山頂餐廳</td><td>湖區</td><td>Strandhotel Margaretha</td></tr>
-      <tr><td class="day-num">Day 8</td><td>07/21(二)</td><td>梅爾克修道院 → 維也納・聖史提芬大教堂</td><td>飯店</td><td>修道院</td><td>中式</td><td>InterContinental Vienna (5★)</td></tr>
-      <tr><td class="day-num">Day 9</td><td>07/22(三)</td><td>熊布朗宮 → <span class="loc-tag">斯洛伐克</span> 布拉提斯拉瓦 → 維也納</td><td>飯店</td><td>烤鵝</td><td>紅頂商人</td><td>InterContinental Vienna (5★)</td></tr>
-      <tr><td class="day-num">Day 10</td><td>07/23(四)</td><td>上美景宮 + 帽子博物館</td><td>飯店</td><td>自理</td><td>帽子餐廳</td><td>InterContinental Vienna (5★)</td></tr>
-      <tr><td class="day-num">Day 11</td><td>07/24(五)</td><td>維也納 → 桃園（搭機返台）</td><td>飯店</td><td>機上</td><td>機上</td><td>機上</td></tr>
-      <tr><td class="day-num">Day 12</td><td>07/25(六)</td><td>桃園國際機場抵達</td><td>自理</td><td>自理</td><td>自理</td><td>溫暖的家 🏠</td></tr>
-    </tbody>
-  </table>
+<!-- ── CONTENT ── -->
+<div class="content-area" id="contentArea">
+
+<!-- TAB 0: 行程總覽 -->
+<div class="tab-panel active" id="panel0">
+  <div class="section-header">
+    <span class="section-title">行程總覽</span>
+    <span class="section-badge">12 DAYS</span>
+  </div>
+  <div class="overview-cards" id="overviewCards"></div>
 </div>
 
-<!-- ═══ PANEL: FLIGHTS ═══ -->
-<div class="panel" id="panel-flights">
-  <h2 class="section-title">航班資訊</h2>
-  <div class="flight-grid">
-
-    <!-- 去程 CI67 -->
+<!-- TAB 1: 航班資訊 -->
+<div class="tab-panel" id="panel1">
+  <div class="section-header">
+    <span class="section-title">航班資訊</span>
+  </div>
+  <div class="flight-section">
     <div class="flight-card">
-      <div class="flight-card-header">
-        <div class="flight-icon">✈️</div>
-        <div>
-          <div class="flight-airline">CHINA AIRLINES · CI 67</div>
-          <div style="color:var(--cream2);font-size:0.72rem;">去程｜桃園 → 布拉格</div>
-        </div>
-        <div class="flight-day">第 1 天</div>
-      </div>
+      <div class="flight-dir">去程</div>
+      <div class="flight-airline">🇹🇼 CHINA AIRLINES · CI 67</div>
       <div class="flight-route">
         <div class="flight-endpoint">
           <div class="flight-iata">TPE</div>
-          <div class="flight-city">桃園國際機場 T1</div>
-          <div class="flight-datetime">
-            2026 / 07 / 14（二）
-            <strong>23:50</strong>
-          </div>
+          <div class="flight-airport">桃園國際機場 T1</div>
+          <div class="flight-datetime">07/14（二）</div>
+          <div class="flight-time">23:50</div>
         </div>
-        <div class="flight-mid">
-          <div class="flight-plane-icon">✈️</div>
-          <div class="flight-arrow-line"></div>
-          <div style="color:var(--muted);font-size:0.62rem;white-space:nowrap;">14h 05m</div>
+        <div class="flight-middle">
+          <div class="flight-duration">14h 05m</div>
+          <div class="flight-line"><div class="flight-plane">✈</div></div>
+          <div class="flight-duration">直飛</div>
         </div>
-        <div class="flight-endpoint right">
+        <div class="flight-endpoint">
           <div class="flight-iata">PRG</div>
-          <div class="flight-city">布拉格機場 T1</div>
-          <div class="flight-datetime">
-            2026 / 07 / 15（三）
-            <strong>06:45</strong>
-          </div>
+          <div class="flight-airport">布拉格機場 T1</div>
+          <div class="flight-datetime">07/15（三）</div>
+          <div class="flight-time">06:45</div>
         </div>
       </div>
-      <div class="flight-footer">✦ Airbus A350-900 · 直飛不停靠 · 抵達次日</div>
+      <div class="flight-note">✦ Airbus A350-900 · 直飛不停靠 · 抵達次日</div>
     </div>
-
-    <!-- 回程 CI64 -->
     <div class="flight-card">
-      <div class="flight-card-header">
-        <div class="flight-icon">✈️</div>
-        <div>
-          <div class="flight-airline">CHINA AIRLINES · CI 64</div>
-          <div style="color:var(--cream2);font-size:0.72rem;">回程｜維也納 → 桃園</div>
-        </div>
-        <div class="flight-day">第 11 天</div>
-      </div>
+      <div class="flight-dir">回程</div>
+      <div class="flight-airline">🇹🇼 CHINA AIRLINES · CI 64</div>
       <div class="flight-route">
         <div class="flight-endpoint">
           <div class="flight-iata">VIE</div>
-          <div class="flight-city">維也納機場 T1A</div>
-          <div class="flight-datetime">
-            2026 / 07 / 24（五）
-            <strong>11:15</strong>
-          </div>
+          <div class="flight-airport">維也納機場 T1A</div>
+          <div class="flight-datetime">07/24（五）</div>
+          <div class="flight-time">11:15</div>
         </div>
-        <div class="flight-mid">
-          <div class="flight-plane-icon">✈️</div>
-          <div class="flight-arrow-line"></div>
-          <div style="color:var(--muted);font-size:0.62rem;white-space:nowrap;">12h 15m</div>
+        <div class="flight-middle">
+          <div class="flight-duration">12h 15m</div>
+          <div class="flight-line"><div class="flight-plane">✈</div></div>
+          <div class="flight-duration">直飛</div>
         </div>
-        <div class="flight-endpoint right">
+        <div class="flight-endpoint">
           <div class="flight-iata">TPE</div>
-          <div class="flight-city">桃園國際機場 T1</div>
-          <div class="flight-datetime">
-            2026 / 07 / 25（六）
-            <strong>05:30</strong>
-          </div>
+          <div class="flight-airport">桃園國際機場 T1</div>
+          <div class="flight-datetime">07/25（六）</div>
+          <div class="flight-time">05:30</div>
         </div>
       </div>
-      <div class="flight-footer">✦ Airbus A350-900 · 直飛不停靠 · 抵達次日</div>
+      <div class="flight-note">✦ Airbus A350-900 · 直飛不停靠 · 抵達次日</div>
     </div>
-
-  </div>
-  <p style="margin-top:16px; font-size:0.78rem; color:var(--muted); text-align:center;">
-    ⚠ 以上為參考航班，實際航班時間及轉機點以說明會資料為準
-  </p>
-</div>
-
-<!-- ═══ PANEL: CHECKLIST ═══ -->
-<div class="panel" id="panel-checklist">
-  <h2 class="section-title">行前 Check List</h2>
-
-  <div class="progress-bar-wrap">
-    <div class="progress-label">
-      <span>準備進度</span>
-      <span id="progress-text">0 / 0 項完成</span>
-    </div>
-    <div class="progress-bar-bg">
-      <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
-    </div>
-  </div>
-
-  <div class="checklist-groups" id="checklist-groups">
-    <!-- JS generated -->
-  </div>
-</div>
-
-<!-- ═══ PANEL: DAILY ═══ -->
-<div class="panel" id="panel-daily">
-  <h2 class="section-title">每日行程</h2>
-  <div class="day-selector" id="day-selector"></div>
-  <div id="day-cards"></div>
-</div>
-
-<!-- ═══ PANEL: TIPS ═══ -->
-<div class="panel" id="panel-tips">
-  <h2 class="section-title">行前注意事項</h2>
-
-  <div class="notice-grid">
-    <div class="notice-card">
-      <h4>⚠ 特殊餐食申請</h4>
-      <p>如有不吃牛、雞、羊、海鮮、蛋奶素或嚴格素等需求，請務必<strong>於報名時</strong>告知業務，避免出發當天作業來不及。</p>
-    </div>
-    <div class="notice-card red">
-      <h4>🛏 大床需求</h4>
-      <p>需求一大床（King Size）者，請於<strong>報名時</strong>提前告知業務，以利提早安排，無法保證但盡力配合。</p>
-    </div>
-    <div class="notice-card green">
-      <h4>🌤 國王湖遊船</h4>
-      <p>遊湖電動船天候影響大，如因大霧或天候不佳無法乘船，<strong>領隊現場退費每人 15 歐</strong>，請諒解。</p>
-    </div>
-    <div class="notice-card">
-      <h4>⛏ 鹽礦備案</h4>
-      <p>如遇貝希特斯加登鹽礦維修或關閉，將改前往<strong>奧德邊境哈萊茵鹽礦</strong>，造成不便敬請見諒。</p>
-    </div>
-    <div class="notice-card">
-      <h4>🧳 託運行李限制</h4>
-      <p>中華航空飛往歐洲航班可攜帶<strong>每位 2 件託運行李</strong>，每件限重 <strong>23 公斤</strong>；手提行李 1 件，限重 <strong>7 公斤</strong>。</p>
-    </div>
-    <div class="notice-card green">
-      <h4>🛡 旅行業責任保險</h4>
-      <p>本行程已投保旅行業責任保險：<strong>意外死殘保額 NT$500萬</strong>、<strong>意外醫療保額 NT$20萬</strong>（實支實付）。</p>
-    </div>
-    <div class="notice-card red">
-      <h4>💶 服務小費（自付）</h4>
-      <p>司機、領隊、導遊服務小費<strong>不含</strong>於團費內。每天 <strong>€12/人</strong>，12天合計 <strong>€144/人</strong>，請自行備妥。</p>
-    </div>
-  </div>
-
-  <div class="tip-grid">
-    <div class="tip-card">
-      <div class="tip-icon">👕</div>
-      <div>
-        <div class="tip-title">飛機上穿著建議</div>
-        <div class="tip-text">長途飛行建議穿著舒適寬鬆衣物及舒適鞋子。航程中須在飛機上過夜，建議攜帶<strong>口罩、眼罩、空水瓶、保暖外套</strong>，確保睡眠品質。</div>
-      </div>
-    </div>
-    <div class="tip-card">
-      <div class="tip-icon">🔌</div>
-      <div>
-        <div class="tip-title">行程附贈物品</div>
-        <div class="tip-text">行程已包含：<strong>全程導覽耳機</strong>每人一副、<strong>行李束帶</strong>每人一條、<strong>歐規轉接插頭</strong>每人一個、<strong>20G流量網卡</strong>每人一張。</div>
-      </div>
-    </div>
-    <div class="tip-card">
-      <div class="tip-icon">👟</div>
-      <div>
-        <div class="tip-title">舒適步行鞋</div>
-        <div class="tip-text">奧捷城市多為石板路及坡道，建議攜帶<strong>防滑、已穿走合腳</strong>的步行鞋或運動鞋，避免新鞋磨腳。</div>
-      </div>
-    </div>
-    <div class="tip-card">
-      <div class="tip-icon">💶</div>
-      <div>
-        <div class="tip-title">貨幣準備</div>
-        <div class="tip-text">奧地利、斯洛伐克使用<strong>歐元 (EUR)</strong>；捷克使用<strong>捷克克朗 (CZK)</strong>。建議兌換適量現金，或以信用卡為主。</div>
-      </div>
-    </div>
-    <div class="tip-card">
-      <div class="tip-icon">☀️</div>
-      <div>
-        <div class="tip-title">七月天氣</div>
-        <div class="tip-text">奧捷七月為夏季高峰，白天氣溫約<strong>25～35°C</strong>，日照時間長（日落約晚上9點）。建議穿著<strong>輕薄透氣排汗衣物</strong>、備防曬乳（SPF50+）、太陽眼鏡與帽子。高山地區（戈紹、國王湖）氣溫較平地低約5～8°C，仍需備薄外套。午後偶有雷陣雨，建議攜帶輕便折疊傘。</div>
-      </div>
-    </div>
-    <div class="tip-card">
-      <div class="tip-icon">📸</div>
-      <div>
-        <div class="tip-title">攝影準備</div>
-        <div class="tip-text">哈爾施塔特、庫倫洛夫、國王湖等均為絕美拍攝地點，建議備妥<strong>充足電量、記憶卡</strong>，及攜帶輕便三腳架以拍攝夜景或湖景倒影。</div>
-      </div>
+    <div class="flight-disclaimer" style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:12px 16px;font-size:11px;color:rgba(201,168,76,0.8);text-align:center;">
+      ⚠ 以上為參考航班，實際航班時間及轉機點以說明會資料為準
     </div>
   </div>
 </div>
 
-<!-- ═══ PANEL: LIVE INFO ═══ -->
-<div class="panel" id="panel-live">
-  <h2 class="section-title">即時旅遊資訊 <span class="badge">LIVE</span></h2>
-
-  <!-- API 說明 -->
-  <div class="api-setup-banner" id="api-setup-banner">
-    <div class="setup-icon">🔑</div>
-    <div style="flex:1;">
-      <h3>免費 API 即時資訊</h3>
-      <p>
-        🌤 <strong style="color:var(--gold)">天氣</strong>：Open-Meteo（完全免費，無需 Key）<br>
-        💱 <strong style="color:var(--gold)">匯率</strong>：Frankfurter.app（完全免費，無需 Key）<br>
-        ✈ <strong style="color:var(--gold)">航班狀態</strong>：AviationStack（免費方案 100次/月）<br>
-        <span style="color:var(--gold-light);font-size:0.75rem;">
-          請至 <a href="https://aviationstack.com" target="_blank" style="color:var(--gold)">aviationstack.com</a> 免費註冊取得 API Key，貼入下方即可啟用航班查詢。
-        </span>
-      </p>
-      <div class="api-key-input-row">
-        <input class="api-key-input" id="avi-key-input" type="password" placeholder="AviationStack API Key（選填，啟用航班狀態查詢）">
-        <button class="btn-save-key" onclick="saveAviKey()">儲存</button>
-        <button class="btn-save-key" style="background:var(--muted)" onclick="clearAviKey()">清除</button>
-      </div>
-      <div class="key-status none" id="key-status-msg">尚未設定 — 天氣與匯率仍可正常查詢</div>
-    </div>
+<!-- TAB 2: Check List -->
+<div class="tab-panel" id="panel2">
+  <div class="section-header">
+    <span class="section-title">行前 Check List</span>
   </div>
-
-  <!-- Refresh Controls -->
-  <div class="refresh-bar">
-    <div class="last-update">最後更新：<strong id="last-update-time">－</strong></div>
-    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-      <label class="auto-refresh-toggle" onclick="toggleAutoRefresh()">
-        <div class="toggle-switch" id="auto-toggle"></div>
-        <span id="auto-label">自動更新（關）</span>
-      </label>
-      <button class="btn-refresh" id="refresh-btn" onclick="refreshAll()">
-        <span class="refresh-icon">🔄</span> 立即更新
-      </button>
-    </div>
-  </div>
-
-  <div class="live-grid">
-    <!-- Flight Status -->
-    <div>
-      <div class="live-section-title">✈ 航班狀態</div>
-      <div class="flight-status-grid" id="flight-status-grid">
-        <!-- JS generated -->
+  <div class="checklist-wrap">
+    <div class="progress-bar-wrap">
+      <div class="progress-label">
+        <span>準備進度</span>
+        <span id="progressText">0 / 0 項完成</span>
       </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
     </div>
-
-    <!-- Exchange Rates -->
-    <div>
-      <div class="live-section-title">💱 即時匯率（新台幣 TWD）</div>
-      <div class="rate-grid" id="rate-grid">
-        <!-- JS generated -->
-      </div>
-    </div>
-
-    <!-- Weather -->
-    <div>
-      <div class="live-section-title">🌤 目的地天氣預報</div>
-      <div class="weather-grid" id="weather-grid">
-        <!-- JS generated -->
-      </div>
-    </div>
+    <div id="checklistItems"></div>
+    <button class="cl-reset-btn" onclick="resetChecklist()">🔄 重置所有勾選</button>
   </div>
 </div>
 
-<div class="footer">
-  ✦ <span>奧斯捷饗宴 12天</span>｜2026.07.14 ~ 2026.07.25 ✦<br>
-  <span style="opacity:0.5; font-size:0.7rem; margin-top:6px; display:block;">中華航空 CI67 / CI64 · 實際行程以說明會資料為準</span>
+<!-- TAB 3: 每日行程 -->
+<div class="tab-panel" id="panel3">
+  <div class="section-header">
+    <span class="section-title">每日行程</span>
+  </div>
+  <div class="daily-wrap" id="dailyCards"></div>
 </div>
+
+<!-- TAB 4: 注意事項 -->
+<div class="tab-panel" id="panel4">
+  <div class="section-header">
+    <span class="section-title">行前注意事項</span>
+  </div>
+  <div class="notice-wrap" id="noticeCards"></div>
+</div>
+
+<!-- TAB 5: 即時資訊 -->
+<div class="tab-panel" id="panel5">
+  <div class="section-header">
+    <span class="section-title">即時旅遊資訊</span>
+    <span class="section-badge">LIVE</span>
+  </div>
+  <div class="live-wrap">
+    <div class="api-key-card">
+      <div class="api-key-title">🔑 AviationStack API Key（航班狀態用）</div>
+      <div class="api-key-row">
+        <input class="api-key-input" id="apiKeyInput" type="text" placeholder="輸入免費 API Key…">
+        <button class="btn-gold" onclick="saveApiKey()">儲存</button>
+        <button class="btn-outline" onclick="clearApiKey()">清除</button>
+      </div>
+      <div id="apiKeyStatus" style="font-size:11px;color:var(--text-muted);margin-top:8px;">
+        尚未設定 — 天氣與匯率仍可正常查詢
+      </div>
+    </div>
+    <div class="live-status">
+      <div class="live-status-text">最後更新：<strong id="lastUpdate">－</strong></div>
+      <div class="live-refresh-row">
+        <span style="font-size:11px;color:var(--text-muted);">自動</span>
+        <button class="auto-toggle" id="autoToggle" onclick="toggleAuto()"></button>
+        <button class="refresh-btn" onclick="refreshAll()">🔄 更新</button>
+      </div>
+    </div>
+    <div class="live-section-title">✈ 航班狀態</div>
+    <div id="flightStatusCards"><div class="loading-spinner">載入中…</div></div>
+    <div class="live-section-title">💱 即時匯率（1 TWD 兌換）</div>
+    <div class="rate-grid" id="rateCards"><div class="loading-spinner" style="grid-column:span 2">載入中…</div></div>
+    <div class="live-section-title">🌤 目的地天氣預報</div>
+    <div class="weather-scroll" id="weatherCards"><div class="loading-spinner">載入中…</div></div>
+    <div class="live-footer">✦ 奧斯捷饗宴 12天 ｜ 2026.07.14 ~ 2026.07.25 ✦<br>中華航空 CI67 / CI64 · 實際行程以說明會資料為準</div>
+  </div>
+</div>
+
+</div><!-- /content-area -->
+</div><!-- /app-shell -->
 
 <script>
-// ── TAB SWITCHING ─────────────────────────────
-function showPanel(id) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('panel-' + id).classList.add('active');
-  document.getElementById('tab-' + id).classList.add('active');
-}
-
-// ── CHECKLIST DATA ─────────────────────────────
-const checkItems = [
-  { cat: '📄 證件 & 財務', items: ['護照（有效期6個月以上）','護照彩色影本（備份）','申根簽證確認','信用卡（Visa/Master）','歐元現金','捷克克朗現金','海外旅遊保險','身分證（備份）'] },
-  { cat: '💊 健康 & 醫藥', items: ['個人藥品（慢性病）','腸胃藥/止瀉藥','感冒藥/退燒藥','止痛藥','暈車藥','消毒棉片','OK繃','喉糖/潤喉藥'] },
-  { cat: '👗 服裝 & 鞋類', items: ['輕薄防風外套','洋蔥式內層衣物','防水步行鞋','拖鞋','紳士/淑女正式服裝（晚宴）','太陽眼鏡','帽子（遮陽/保暖）','雨傘或輕便雨衣'] },
-  { cat: '🔌 3C & 旅行工具', items: ['手機充電器','行動電源','歐規轉接插頭（已含）','相機/充電器','記憶卡（備份）','耳機','頸枕（飛機用）','眼罩/耳塞'] },
-  { cat: '🧴 盥洗 & 個人用品', items: ['牙刷/牙膏','護膚乳液（防乾燥）','防曬乳','洗髮精/沐浴乳（小容量）','化妝棉/卸妝液','衛生用品','摺疊傘','小包衛生紙'] },
-  { cat: '📦 行李 & 其他', items: ['行李束帶（已含）','行李鎖','輕便購物袋','零食/泡麵（應急）','導覽耳機（已含）','流量網卡（已含）','旅遊手冊/行程表','緊急聯絡人清單'] }
+// ── DATA ──
+const OVERVIEW = [
+  {day:1,date:'07/14(二)',loc:'桃園→布拉格',meals:['自理','自理','機上'],hotel:'機上',flag:'🇹🇼'},
+  {day:2,date:'07/15(三)',loc:'捷克 布拉格城堡區・聖維特大教堂・黃金小巷・查理士橋',meals:['機上','米其林','飯店'],hotel:'Prague Marriott Hotel (5★)',flag:'🇨🇿'},
+  {day:3,date:'07/16(四)',loc:'老城廣場・聖尼古拉斯教堂・猶太墓區・火藥塔・泰恩教堂',meals:['飯店','肋排','自理'],hotel:'Prague Marriott Hotel (5★)',flag:'🇨🇿'},
+  {day:4,date:'07/17(五)',loc:'琥珀卡城堡（含小火車）→ 克倫洛夫 → 林茨',meals:['飯店','波希米亞','飯店'],hotel:'Courtyard Marriott Linz',flag:'🇨🇿'},
+  {day:5,date:'07/18(六)',loc:'奧地利 薩爾茲堡 → 薩爾斯干馬格特湖區',meals:['飯店','小酒館','中式'],hotel:'Strandhotel Margaretha',flag:'🇦🇹'},
+  {day:6,date:'07/19(日)',loc:'國王湖遊船 → 貝希特斯登鹽礦',meals:['飯店','豬腳','鱒魚'],hotel:'Strandhotel Margaretha',flag:'🇩🇪'},
+  {day:7,date:'07/20(一)',loc:'戈紹・戈紹湖・登山纜車 → 哈爾施塔特',meals:['飯店','山頂餐廳','湖區'],hotel:'Strandhotel Margaretha',flag:'🇦🇹'},
+  {day:8,date:'07/21(二)',loc:'梅爾克修道院 → 維也納・聖史提芬大教堂',meals:['飯店','修道院','中式'],hotel:'InterContinental Vienna (5★)',flag:'🇦🇹'},
+  {day:9,date:'07/22(三)',loc:'熊布朗宮 → 斯洛伐克 布拉提斯拉瓦 → 維也納',meals:['飯店','烤鵝','紅頂商人'],hotel:'InterContinental Vienna (5★)',flag:'🇦🇹'},
+  {day:10,date:'07/23(四)',loc:'上美景宮 + 帽子博物館',meals:['飯店','自理','帽子餐廳'],hotel:'InterContinental Vienna (5★)',flag:'🇦🇹'},
+  {day:11,date:'07/24(五)',loc:'維也納 → 桃園（搭機返台）',meals:['飯店','機上','機上'],hotel:'機上',flag:'🇦🇹'},
+  {day:12,date:'07/25(六)',loc:'桃園國際機場抵達',meals:['自理','自理','自理'],hotel:'溫暖的家 🏠',flag:'🇹🇼'},
 ];
 
-let checkedSet = new Set(JSON.parse(localStorage.getItem('travel_checks') || '[]'));
-
-function buildChecklist() {
-  const parent = document.getElementById('checklist-groups');
-  parent.innerHTML = '';
-
-  checkItems.forEach((group, gi) => {
-    const div = document.createElement('div');
-    div.className = 'check-group';
-    div.innerHTML = `<div class="check-group-title">${group.cat}</div><div class="check-grid"></div>`;
-    const grid = div.querySelector('.check-grid');
-    group.items.forEach((item, ii) => {
-      const key = `${gi}-${ii}`;
-      const label = document.createElement('label');
-      label.className = 'check-item' + (checkedSet.has(key) ? ' checked' : '');
-      label.innerHTML = `
-        <div class="check-box">${checkedSet.has(key) ? '✓' : ''}</div>
-        <span class="check-text">${item}</span>`;
-      label.addEventListener('click', () => {
-        if (checkedSet.has(key)) checkedSet.delete(key);
-        else checkedSet.add(key);
-        localStorage.setItem('travel_checks', JSON.stringify([...checkedSet]));
-        label.classList.toggle('checked');
-        label.querySelector('.check-box').textContent = checkedSet.has(key) ? '✓' : '';
-        updateProgress();
-      });
-      grid.appendChild(label);
-    });
-    parent.appendChild(div);
-  });
-  updateProgress();
-}
-
-function updateProgress() {
-  const total = checkItems.reduce((s, g) => s + g.items.length, 0);
-  const done = checkedSet.size;
-  const pct = total > 0 ? Math.round(done / total * 100) : 0;
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('progress-text').textContent = `${done} / ${total} 項完成 (${pct}%)`;
-}
-
-buildChecklist();
-
-// ── DAILY ITINERARY DATA ───────────────────────
-const W = 'https://upload.wikimedia.org/wikipedia/commons/thumb/';
-const days = [
-  {
-    n:1, date:'2026/07/14 (二)', title:'桃園 → 布拉格', country:'✈',
-    breakfast:'敬請自理', lunch:'敬請自理', dinner:'機上簡餐', hotel:'機上',
-    spots: [
-      { icon:'✈️', name:'中華航空 CI67 出發', badge:'', desc:'晚間23:50自桃園國際機場出發，飛行約14小時05分，翌日清晨抵達捷克布拉格。' },
-      { icon:'🎧', name:'隨行小禮贈送', badge:'special', desc:'出發時領取：導覽耳機×1、行李束帶×1、歐規轉接插頭×1、20G網卡×1。' }
-    ]
-  },
-  {
-    n:2, date:'2026/07/15 (三)', title:'布拉格城堡區・聖維特大教堂・黃金小巷・查理士橋', country:'🇨🇿 捷克',
-    breakfast:'機上簡餐', lunch:'米其林推薦餐', dinner:'飯店主廚料理', hotel:'Prague Marriott Hotel（5★）',
-    spots: [
-      { icon:'⛪️', name:'聖維特大教堂', badge:'ticket', img: W+'4/4e/St._Vitus_Cathedral_from_south.jpg/480px-St._Vitus_Cathedral_from_south.jpg', desc:'布拉格城堡最重要地標，建築近700年，哥德式建築精華。王室加冕儀式與遺體安葬之地，保存王冠與加冕權杖。' },
-      { icon:'🏰', name:'布拉格古堡區', badge:'walkin', img: W+'7/72/Praha_-_Hradcany_%28js%29.jpg/480px-Praha_-_Hradcany_%28js%29.jpg', desc:'俯瞰整座布拉格老城，感受波希米亞王朝的歷史氛圍。' },
-      { icon:'🏘', name:'黃金小巷', badge:'ticket', img: W+'6/6a/Zlata_ulicka_Prague.jpg/480px-Zlata_ulicka_Prague.jpg', desc:'16、17世紀煉金術士聚居之地，童話般色彩小屋。第22號公寓因卡夫卡而聞名。' },
-      { icon:'🌉', name:'查理士橋', badge:'walkin', img: W+'e/ec/Charles_Bridge_2016.jpg/480px-Charles_Bridge_2016.jpg', desc:'建於1357年，14世紀最具藝術價值石橋，橫跨伏爾塔瓦河。橋上第8尊聖約翰雕像是守護者。' }
-    ]
-  },
-  {
-    n:3, date:'2026/07/16 (四)', title:'布拉格老城廣場・猶太墓區・火藥塔・泰恩教堂', country:'🇨🇿 捷克',
-    breakfast:'飯店早餐', lunch:'古城肋排風味餐', dinner:'敬請自理（布拉格自由活動）', hotel:'Prague Marriott Hotel（5★）',
-    spots: [
-      { icon:'🏛', name:'老城廣場（胡斯廣場）', badge:'walkin', img: W+'a/ad/Prazsky_orloj.jpg/480px-Prazsky_orloj.jpg', desc:'布拉格最富名氣的廣場，立有宗教改革先驅揚‧胡斯雕像，亦是台灣歌手蔡依林同名歌曲靈感地。' },
-      { icon:'⛪️', name:'聖尼古拉斯教堂', badge:'walkin', img: W+'2/24/Mala_strana_Prague_St_Nicholas.jpg/480px-Mala_strana_Prague_St_Nicholas.jpg', desc:'巴洛克風格教堂，外觀精緻，為布拉格小城區重要地標。' },
-      { icon:'⚰️', name:'猶太墓區', badge:'walkin', img: W+'4/4c/Prag_Alter_judischer_Friedhof.jpg/480px-Prag_Alter_judischer_Friedhof.jpg', desc:'保存完整的猶太歷史遺跡，訴說著布拉格多元文化歷史。' },
-      { icon:'💣', name:'火藥塔', badge:'walkin', img: W+'d/d3/Praga_-_Polvora.jpg/480px-Praga_-_Polvora.jpg', desc:'布拉格老城標誌性城門，哥德式建築，連接老城與新城。' },
-      { icon:'⛪️', name:'泰恩教堂', badge:'walkin', img: W+'c/cb/Prague_-_Old_Town_Square_Tyn_Church.jpg/480px-Prague_-_Old_Town_Square_Tyn_Church.jpg', desc:'老城廣場標誌性的雙塔哥德式教堂，塔尖高達80公尺，是布拉格天際線的重要元素。' }
-    ]
-  },
-  {
-    n:4, date:'2026/07/17 (五)', title:'琥珀卡城堡（含小火車）→ 克倫洛夫 → 林茨', country:'🇨🇿→🇦🇹',
-    breakfast:'飯店早餐', lunch:'南波希米亞料理', dinner:'飯店主廚料理', hotel:'Courtyard by Marriott Linz',
-    spots: [
-      { icon:'🏰', name:'琥珀卡城堡', badge:'ticket', img: W+'3/35/Zamek_Hluboka.jpg/480px-Zamek_Hluboka.jpg', desc:'捷克最美麗城堡之一，19世紀以英國溫莎城堡為藍本重修，哥德復興式建築。雪白浪漫外觀，又稱「白色城堡」，俯瞰伏爾塔瓦河。含城堡小火車體驗。' },
-      { icon:'🏘', name:'克倫洛夫舊城區', badge:'walkin', img: W+'f/fa/Cesky_Krumlov_2_%28js%29.jpg/480px-Cesky_Krumlov_2_%28js%29.jpg', desc:'中世紀童話小鎮，1992年被列為世界文化遺產。馬蹄鐵形伏爾塔瓦河環抱，哥德式和巴洛克式建築林立。' },
-      { icon:'🗼', name:'彩繪塔', badge:'walkin', img: W+'b/ba/Cesky_Krumlov_zamecka_vez.jpg/480px-Cesky_Krumlov_zamecka_vez.jpg', desc:'高54.5公尺六層塔樓，16世紀外牆幻影彩繪技法，利用光線色彩達到立體視覺效果，為克倫洛夫最著名地標。' }
-    ]
-  },
-  {
-    n:5, date:'2026/07/18 (六)', title:'薩爾茲堡 → 薩爾斯干馬格特湖區', country:'🇦🇹 奧地利',
-    breakfast:'飯店早餐', lunch:'古城小酒館風味餐', dinner:'中式料理八菜一湯', hotel:'Strandhotel Margaretha',
-    spots: [
-      { icon:'🌹', name:'米拉貝爾花園', badge:'walkin', img: W+'4/44/Mirabell_Palace_and_Garden.jpg/480px-Mirabell_Palace_and_Garden.jpg', desc:'薩爾茲堡必遊巴洛克式花園，電影《真善美》取景地。' },
-      { icon:'🛍', name:'蓋特萊德巷', badge:'walkin', img: W+'0/0b/Getreidegasse_Salzburg.jpg/480px-Getreidegasse_Salzburg.jpg', desc:'薩爾茲堡最著名購物街，鍛鐵招牌林立，名品與特產齊聚。' },
-      { icon:'🎹', name:'莫札特故居', badge:'walkin', img: W+'a/a8/Mozarts_Geburtshaus_Salzburg_2014.jpg/480px-Mozarts_Geburtshaus_Salzburg_2014.jpg', desc:'音樂神童莫札特出生地，可近距離感受天才音樂家的成長環境。' },
-      { icon:'⛪️', name:'主教廣場・大教堂・主教宮殿', badge:'walkin', img: W+'f/f3/Festung_Hohensalzburg_vom_Kapuzinerberg.jpg/480px-Festung_Hohensalzburg_vom_Kapuzinerberg.jpg', desc:'薩爾茲堡宗教文化核心區域，巴洛克建築群與廣場相互輝映，「北方羅馬」之名由此而來。' },
-      { icon:'🎵', name:'莫札特廣場', badge:'walkin', desc:'薩爾茲堡市中心廣場，豎立著莫札特紀念雕像，是感受薩爾茲堡音樂氛圍的最佳場所。' }
-    ]
-  },
-  {
-    n:6, date:'2026/07/19 (日)', title:'國王湖遊船 → 貝希特斯登鹽礦探秘', country:'🇩🇪 德國（日遊）',
-    breakfast:'飯店早餐', lunch:'德式豬腳風味餐', dinner:'國王湖鱒魚風味料理', hotel:'Strandhotel Margaretha',
-    spots: [
-      { icon:'🚢', name:'國王湖遊湖電動船', badge:'special', img: W+'5/56/Koenigssee_mit_Watzmann_-_Berchtesgadener_Land.jpg/480px-Koenigssee_mit_Watzmann_-_Berchtesgadener_Land.jpg', desc:'德國四大名湖之一，全德最美最乾淨湖泊。自1909年規定只能電力船，水質清澈如鏡。可近距離欣賞紅蔥頭聖巴多羅買教堂。（天候不佳退費€15/人）' },
-      { icon:'⛏️', name:'貝希特斯登鹽礦探秘之旅', badge:'ticket', img: W+'9/90/Salzbergwerk_Berchtesgaden.jpg/480px-Salzbergwerk_Berchtesgaden.jpg', desc:'搭礦井列車深入大山，Kaiser Franz水槽、礦工滑梯、鏡湖等體驗，進入神秘鹽世界。（如關閉改前往哈萊茵鹽礦）' }
-    ]
-  },
-  {
-    n:7, date:'2026/07/20 (一)', title:'戈紹・登山纜車 → 哈爾施塔特', country:'🇦🇹 奧地利',
-    breakfast:'飯店早餐', lunch:'山頂景觀餐廳', dinner:'湖區風味料理', hotel:'Strandhotel Margaretha',
-    spots: [
-      { icon:'🚡', name:'戈紹登山纜車', badge:'ticket', img: W+'c/cd/Gosausee_-_Panorama.jpg/480px-Gosausee_-_Panorama.jpg', desc:'搭纜車前往茨維瑟拉爾姆翠綠高山牧場，欣賞戈紹卡姆山脊岩石山峰、清澈戈紹湖與冰川。環球旅行家亞歷山大稱之為「上帝之眼」。' },
-      { icon:'🏘', name:'哈爾施塔特', badge:'walkin', img: W+'2/25/Hallstatt_Austria.jpg/480px-Hallstatt_Austria.jpg', desc:'1997年列入世界文化遺產。公元前850年克里特民族因鹽礦定居於此。湖光山色之間的彩色房屋倒影，是世界上最美小鎮之一。' }
-    ]
-  },
-  {
-    n:8, date:'2026/07/21 (二)', title:'梅爾克修道院 → 維也納', country:'🇦🇹 奧地利',
-    breakfast:'飯店早餐', lunch:'梅爾克修道院餐廳', dinner:'中式料理八菜一湯', hotel:'InterContinental Vienna（5★）',
-    spots: [
-      { icon:'⛪️', name:'梅爾克修道院', badge:'ticket', img: W+'6/61/Stift_Melk_Panorama.jpg/480px-Stift_Melk_Panorama.jpg', desc:'成立於1089年，本篤會修道院坐落山岩上俯瞰多瑙河，1702-1736年巴洛克建築，精美壁畫與中世紀手稿圖書館，與瓦豪河谷並列世界文化遺產。' },
-      { icon:'🕍', name:'聖史提芬大教堂', badge:'walkin', img: W+'5/55/Wien-Stephansdom.jpg/480px-Wien-Stephansdom.jpg', desc:'世界第二高哥德式尖塔教堂，位於維也納心臟舊城區。13世紀羅馬式大門與雙塔，14、15世紀哥德式尖塔，琉璃瓦拼花屋頂拼成哈布斯堡徽章。' },
-      { icon:'🏛', name:'維也納老城區', badge:'walkin', img: W+'0/0c/Wien_Innere_Stadt_%28aerial_view%29.jpg/480px-Wien_Innere_Stadt_%28aerial_view%29.jpg', desc:'散步感受歐洲帝都風情，精品購物、咖啡館文化盡在其中。' }
-    ]
-  },
-  {
-    n:9, date:'2026/07/22 (三)', title:'熊布朗宮 → 布拉提斯拉瓦 → 維也納', country:'🇦🇹+🇸🇰',
-    breakfast:'飯店早餐', lunch:'斯洛伐克烤鵝風味餐', dinner:'紅頂商人特色餐＋酒水無限暢飲', hotel:'InterContinental Vienna（5★）',
-    spots: [
-      { icon:'🏯', name:'熊布朗宮（美泉宮）', badge:'ticket', img: W+'6/6d/Schonbrunn_Palace_Vienna_June_2012.jpg/480px-Schonbrunn_Palace_Vienna_June_2012.jpg', desc:'哈布斯堡王朝夏宮，1743年女皇瑪麗亞·特蕾莎所建，總面積2.6萬平方米，僅次於凡爾賽宮的巴洛克式花園宮殿。' },
-      { icon:'🏰', name:'布拉提斯拉瓦舊城區・大廣場', badge:'walkin', img: W+'a/ac/Bratislava_from_castle.jpg/480px-Bratislava_from_castle.jpg', desc:'斯洛伐克首都，西元3世紀凱爾特人城市化聚居地，老城曾是奧匈帝國首都，中世紀匈牙利風格歷史建築薈萃。中心廣場（大廣場）為舊城精華，噴泉與市政廳環繞。' },
-      { icon:'🏛', name:'布拉提斯拉瓦城堡', badge:'walkin', img: W+'7/76/Bratislava_castle_%282013%29.jpg/480px-Bratislava_castle_%282013%29.jpg', desc:'俯瞰多瑙河的白色城堡，斯洛伐克的象徵地標，曾是匈牙利國王加冕場所。' }
-    ]
-  },
-  {
-    n:10, date:'2026/07/23 (四)', title:'上美景宮 + 帽子博物館', country:'🇦🇹 奧地利・維也納',
-    breakfast:'飯店早餐', lunch:'敬請自理（維也納自由活動）', dinner:'帽子餐廳特色餐', hotel:'InterContinental Vienna（5★）',
-    spots: [
-      { icon:'🎩', name:'弗朗茲·約瑟夫皇帝帽子博物館', badge:'special', desc:'維也納頭飾時尚巔峰時期的珍藏，貴族頭飾與帝國軍隊制服引人入勝。特色互動體驗：可試戴歷史帽子留影！' },
-      { icon:'🖼', name:'上美景宮', badge:'ticket', img: W+'0/04/Belvedere_Vienna_June_2012.jpg/480px-Belvedere_Vienna_June_2012.jpg', desc:'歐根親王夏宮，融合巴洛克建築之美。收藏34,000+件藝術作品，涵蓋梵谷、莫內、羅丹名作，最具代表性為克林姆特《吻》(The Kiss)。' }
-    ]
-  },
-  {
-    n:11, date:'2026/07/24 (五)', title:'維也納 → 返台', country:'✈',
-    breakfast:'飯店早餐', lunch:'機上簡餐', dinner:'機上簡餐', hotel:'機上',
-    spots: [
-      { icon:'✈️', name:'中華航空 CI64 返程', badge:'', desc:'上午11:15自維也納國際機場 T1A 出發，飛行約12小時15分，翌日清晨05:30抵達桃園國際機場。帶走滿滿浪漫回憶！' }
-    ]
-  },
-  {
-    n:12, date:'2026/07/25 (六)', title:'桃園國際機場抵達', country:'🏠',
-    breakfast:'敬請自理', lunch:'敬請自理', dinner:'敬請自理', hotel:'溫暖的家',
-    spots: [
-      { icon:'🏠', name:'歡迎回家', badge:'', desc:'今日飛抵桃園機場，團員互道珍重再見，平平安安歸向闊別多日的家園，結束美好難忘的歐洲之旅。' }
-    ]
-  }
+const DAILY = [
+  {day:1,date:'07/14(二)',title:'出發日',flag:'🇹🇼',spots:[
+    {icon:'✈️',name:'桃園國際機場 T1 出發',desc:'CI67 23:50 起飛，建議提前3小時到機場辦理登機'},
+    {icon:'🌙',name:'飛機上過夜',desc:'建議攜帶眼罩、頸枕確保睡眠品質'},
+  ],meals:['自理','自理','機上'],hotel:'機上'},
+  {day:2,date:'07/15(三)',title:'布拉格城堡區',flag:'🇨🇿',spots:[
+    {icon:'🏰',name:'布拉格城堡區',desc:'世界最大城堡群，俯瞰全城美景',badge:'ticket'},
+    {icon:'⛪',name:'聖維特大教堂',desc:'波希米亞守護神聖維特的哥德式大教堂',badge:'ticket'},
+    {icon:'🥇',name:'黃金小巷',desc:'昔日鍊金術士工作的童話小街',badge:'ticket'},
+    {icon:'🌉',name:'查理士橋',desc:'14世紀石橋，兩側30尊聖人雕像',badge:'walkin'},
+  ],meals:['機上','米其林','飯店'],hotel:'Prague Marriott Hotel (5★)'},
+  {day:3,date:'07/16(四)',title:'布拉格舊城',flag:'🇨🇿',spots:[
+    {icon:'🏛️',name:'老城廣場',desc:'布拉格最迷人的廣場，中世紀建築環繞',badge:'walkin'},
+    {icon:'⛪',name:'聖尼古拉斯教堂',desc:'巴洛克風格精華之作',badge:'ticket'},
+    {icon:'🪦',name:'猶太墓區',desc:'歐洲最古老猶太公墓之一',badge:'ticket'},
+    {icon:'🔫',name:'火藥塔',desc:'哥德式城門塔，布拉格舊城象徵',badge:'ticket'},
+    {icon:'⛪',name:'泰恩教堂',desc:'老城廣場最顯眼的哥德式教堂',badge:'walkin'},
+  ],meals:['飯店','肋排','自理'],hotel:'Prague Marriott Hotel (5★)'},
+  {day:4,date:'07/17(五)',title:'琥珀卡城堡・克倫洛夫・林茨',flag:'🇨🇿',spots:[
+    {icon:'🏰',name:'琥珀卡城堡',desc:'含小火車體驗，波希米亞隱藏瑰寶',badge:'ticket'},
+    {icon:'🏘️',name:'克倫洛夫',desc:'UNESCO世界遺產，中世紀小鎮',badge:'walkin'},
+    {icon:'🏙️',name:'林茨',desc:'奧地利第三大城，多瑙河畔美景',badge:'walkin'},
+  ],meals:['飯店','波希米亞','飯店'],hotel:'Courtyard Marriott Linz'},
+  {day:5,date:'07/18(六)',title:'薩爾茲堡・湖區',flag:'🇦🇹',spots:[
+    {icon:'🎵',name:'薩爾茲堡',desc:'莫札特故鄉，音樂之都',badge:'walkin'},
+    {icon:'💐',name:'米拉貝爾宮花園',desc:'《真善美》取景地，絕美花園',badge:'walkin'},
+    {icon:'🏔️',name:'薩爾斯干馬格特湖區',desc:'阿爾卑斯湖區精華',badge:'walkin'},
+  ],meals:['飯店','小酒館','中式'],hotel:'Strandhotel Margaretha'},
+  {day:6,date:'07/19(日)',title:'國王湖・鹽礦',flag:'🇩🇪',spots:[
+    {icon:'⛵',name:'國王湖遊船',desc:'純電動船，百年禁止汽油船的神聖湖泊',badge:'ticket'},
+    {icon:'⛏️',name:'貝希特斯登鹽礦',desc:'千年礦坑探險，乘礦車穿梭地底',badge:'ticket'},
+  ],meals:['飯店','豬腳','鱒魚'],hotel:'Strandhotel Margaretha'},
+  {day:7,date:'07/20(一)',title:'戈紹・哈爾施塔特',flag:'🇦🇹',spots:[
+    {icon:'🏔️',name:'戈紹・戈紹湖',desc:'翡翠綠湖倒映雪山，人間仙境',badge:'walkin'},
+    {icon:'🚡',name:'登山纜車',desc:'俯瞰戈紹湖全景',badge:'ticket'},
+    {icon:'🪷',name:'哈爾施塔特',desc:'世界最美小鎮之一，UNESCO遺產',badge:'walkin'},
+  ],meals:['飯店','山頂餐廳','湖區'],hotel:'Strandhotel Margaretha'},
+  {day:8,date:'07/21(二)',title:'梅爾克・維也納',flag:'🇦🇹',spots:[
+    {icon:'⛪',name:'梅爾克修道院',desc:'多瑙河畔巴洛克式修道院，歐洲最美之一',badge:'ticket'},
+    {icon:'🏙️',name:'維也納',desc:'哈布斯堡帝國首都，音樂與藝術之城',badge:'walkin'},
+    {icon:'⛪',name:'聖史提芬大教堂',desc:'維也納地標，哥德式建築精華',badge:'walkin'},
+  ],meals:['飯店','修道院','中式'],hotel:'InterContinental Vienna (5★)'},
+  {day:9,date:'07/22(三)',title:'熊布朗宮・布拉提斯拉瓦',flag:'🇦🇹',spots:[
+    {icon:'🏰',name:'熊布朗宮（申布倫宮）',desc:'哈布斯堡夏宮，UNESCO世界遺產',badge:'ticket'},
+    {icon:'🇸🇰',name:'布拉提斯拉瓦',desc:'斯洛伐克首都一日遊，多瑙河畔古城',badge:'walkin'},
+    {icon:'🍷',name:'紅頂商人晚宴',desc:'維也納百年老店，精緻奧地利料理',badge:'special'},
+  ],meals:['飯店','烤鵝','紅頂商人'],hotel:'InterContinental Vienna (5★)'},
+  {day:10,date:'07/23(四)',title:'上美景宮・帽子博物館',flag:'🇦🇹',spots:[
+    {icon:'🎨',name:'上美景宮',desc:'克林姆《吻》原作所在，巴洛克宮殿花園',badge:'ticket'},
+    {icon:'🎩',name:'帽子博物館',desc:'維也納獨特主題博物館',badge:'special'},
+  ],meals:['飯店','自理','帽子餐廳'],hotel:'InterContinental Vienna (5★)'},
+  {day:11,date:'07/24(五)',title:'返程',flag:'🇦🇹',spots:[
+    {icon:'🛍️',name:'維也納最後購物',desc:'納許市場、格拉本步行街最後採購'},
+    {icon:'✈️',name:'CI64 11:15 返台',desc:'維也納機場T1A出發，直飛桃園'},
+  ],meals:['飯店','機上','機上'],hotel:'機上'},
+  {day:12,date:'07/25(六)',title:'返抵台灣',flag:'🇹🇼',spots:[
+    {icon:'🏠',name:'桃園國際機場抵達',desc:'05:30 入境，歡迎回家！'},
+  ],meals:['自理','自理','自理'],hotel:'溫暖的家 🏠'},
 ];
 
-// ── 景點圖片（Wikimedia Commons 直連）──
-const dayImages = {
-  2:  'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Charles_Bridge_2016.jpg/900px-Charles_Bridge_2016.jpg',
-  3:  'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Prazsky_orloj.jpg/900px-Prazsky_orloj.jpg',
-  4:  'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Cesky_Krumlov_2_%28js%29.jpg/900px-Cesky_Krumlov_2_%28js%29.jpg',
-  5:  'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Festung_Hohensalzburg_vom_Kapuzinerberg.jpg/900px-Festung_Hohensalzburg_vom_Kapuzinerberg.jpg',
-  6:  'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Koenigssee_mit_Watzmann_-_Berchtesgadener_Land.jpg/900px-Koenigssee_mit_Watzmann_-_Berchtesgadener_Land.jpg',
-  7:  'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Hallstatt_Austria.jpg/900px-Hallstatt_Austria.jpg',
-  8:  'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Stift_Melk_Panorama.jpg/900px-Stift_Melk_Panorama.jpg',
-  9:  'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Schonbrunn_Palace_Vienna_June_2012.jpg/900px-Schonbrunn_Palace_Vienna_June_2012.jpg',
-  10: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Belvedere_Vienna_June_2012.jpg/900px-Belvedere_Vienna_June_2012.jpg',
+const NOTICES = [
+  {type:'',icon:'⚠️',title:'特殊餐食申請',body:'如有不吃牛、雞、羊、海鮮、蛋奶素或嚴格素等需求，請務必<strong>於報名時</strong>告知業務，避免出發當天作業來不及。'},
+  {type:'',icon:'🛏️',title:'大床需求',body:'需求一大床（King Size）者，請於<strong>報名時</strong>提前告知業務，以利提早安排，無法保證但盡力配合。'},
+  {type:'',icon:'🌊',title:'國王湖遊船',body:'遊湖電動船天候影響大，如因大霧或天候不佳無法乘船，<strong>領隊現場退費每人 15 歐</strong>，請諒解。'},
+  {type:'',icon:'⛏️',title:'鹽礦備案',body:'如遇貝希特斯加登鹽礦維修或關閉，將改前往<strong>奧德邊境哈萊茵鹽礦</strong>，造成不便敬請見諒。'},
+  {type:'',icon:'🧳',title:'託運行李限制',body:'中華航空飛往歐洲航班可攜帶<strong>每位 2 件託運行李</strong>，每件限重 <strong>23 公斤</strong>；手提行李 1 件，限重 <strong>7 公斤</strong>。'},
+  {type:'green',icon:'🛡️',title:'旅行業責任保險',body:'本行程已投保旅行業責任保險：<strong>意外死殘保額 NT$500萬</strong>、<strong>意外醫療保額 NT$20萬</strong>（實支實付）。'},
+  {type:'red',icon:'💶',title:'服務小費（自付）',body:'司機、領隊、導遊服務小費<strong>不含</strong>於團費內。每天 <strong>€12/人</strong>，12天合計 <strong>€144/人</strong>，請自行備妥。'},
+  {type:'',icon:'👕',title:'飛機穿著建議',body:'長途飛行建議穿著舒適寬鬆衣物及舒適鞋子。建議攜帶<strong>口罩、眼罩、空水瓶、保暖外套</strong>，確保睡眠品質。'},
+  {type:'',icon:'🔌',title:'行程附贈物品',body:'行程已包含：<strong>全程導覽耳機</strong>每人一副、<strong>行李束帶</strong>每人一條、<strong>歐規轉接插頭</strong>每人一個、<strong>20G流量網卡</strong>每人一張。'},
+  {type:'',icon:'👟',title:'舒適步行鞋',body:'奧捷城市多為石板路及坡道，建議攜帶<strong>防滑、已穿走合腳</strong>的步行鞋，避免新鞋磨腳。'},
+  {type:'',icon:'💶',title:'貨幣準備',body:'奧地利、斯洛伐克使用<strong>歐元 (EUR)</strong>；捷克使用<strong>捷克克朗 (CZK)</strong>。建議兌換適量現金，或以信用卡為主。'},
+  {type:'',icon:'☀️',title:'七月天氣',body:'奧捷七月白天氣溫約 <strong>25～35°C</strong>，日照時間長（日落約晚上9點）。高山地區（戈紹、國王湖）氣溫較低約 5～8°C，仍需備薄外套。午後偶有雷陣雨，建議攜帶折疊傘。'},
+  {type:'',icon:'📸',title:'攝影準備',body:'哈爾施塔特、庫倫洛夫、國王湖均為絕美拍攝地點，建議備妥<strong>充足電量、記憶卡</strong>，及輕便三腳架。'},
+];
+
+const CHECKLIST = [
+  {cat:'📄 證件 & 財務', items:['護照（有效期6個月以上）','護照彩色影本（備份）','申根簽證確認','信用卡（Visa/Master）','歐元現金','捷克克朗現金','海外旅遊保險','身分證（備份）']},
+  {cat:'💊 健康 & 醫藥', items:['個人藥品（慢性病）','腸胃藥/止瀉藥','感冒藥/退燒藥','止痛藥','暈車藥','消毒棉片','OK繃','喉糖/潤喉藥']},
+  {cat:'👗 服裝 & 鞋類', items:['輕薄防風外套','洋蔥式內層衣物','防水步行鞋','拖鞋','紳士/淑女正式服裝（晚宴）','太陽眼鏡','帽子（遮陽/保暖）','雨傘或輕便雨衣']},
+  {cat:'🔌 3C & 旅行工具', items:['手機充電器','行動電源','歐規轉接插頭（已含）','相機/充電器','記憶卡（備份）','耳機','頸枕（飛機用）','眼罩/耳塞']},
+  {cat:'🧴 盥洗 & 個人用品', items:['牙刷/牙膏','護膚乳液（防乾燥）','防曬乳','洗髮精/沐浴乳（小容量）','化妝棉/卸妝液','衛生用品','摺疊傘','小包衛生紙']},
+  {cat:'📦 行李 & 其他', items:['行李束帶（已含）','行李鎖','輕便購物袋','零食/泡麵（應急）','導覽耳機（已含）','流量網卡（已含）','旅遊手冊/行程表','緊急聯絡人清單']},
+];
+
+const LIVE_CONFIG = {
+  flights:[
+    {no:'CI67',airline:'中華航空',from:'TPE',to:'PRG',fromName:'桃園國際機場',toName:'布拉格機場',date:'2026-07-14',dir:'去程 ✈'},
+    {no:'CI64',airline:'中華航空',from:'VIE',to:'TPE',fromName:'維也納機場',toName:'桃園國際機場',date:'2026-07-25',dir:'返程 🏠'},
+  ],
+  rates:[
+    {to:'EUR',label:'歐元',hint:'奧地利・斯洛伐克',symbol:'€',flag:'🇪🇺'},
+    {to:'CZK',label:'捷克克朗',hint:'捷克',symbol:'Kč',flag:'🇨🇿'},
+  ],
+  cities:[
+    {name:'Prague',label:'布拉格',flag:'🇨🇿',days:'D2–D3',lat:50.0755,lon:14.4378},
+    {name:'Salzburg',label:'薩爾茲堡',flag:'🇦🇹',days:'D5',lat:47.8095,lon:13.0550},
+    {name:'Hallstatt',label:'哈爾施塔特',flag:'🇦🇹',days:'D7',lat:47.5622,lon:13.6493},
+    {name:'Berchtesgaden',label:'貝希特斯登',flag:'🇩🇪',days:'D6',lat:47.6309,lon:13.0041},
+    {name:'Vienna',label:'維也納',flag:'🇦🇹',days:'D8–D11',lat:48.2082,lon:16.3738},
+    {name:'Bratislava',label:'布拉提斯拉瓦',flag:'🇸🇰',days:'D9',lat:48.1486,lon:17.1077},
+  ],
+  autoRefreshMs: 10 * 60 * 1000,
 };
 
-// ── BUILD DAY SELECTOR & CARDS ─────────────────
-const selectorEl = document.getElementById('day-selector');
-const cardsEl = document.getElementById('day-cards');
+// ── INIT ──
+let autoTimer = null;
+let autoOn = false;
+const DEPART_DATE = new Date('2026-07-14');
 
-const badgeMap = { ticket: '含門票', walkin: '下車參觀', special: '特別安排', '': '' };
+function init(){
+  renderCountdown();
+  renderOverview();
+  renderNotices();
+  renderDailyCards();
+  renderChecklist();
+  loadApiKey();
+  renderFlightStatus();
+  refreshLive();
+  setInterval(renderCountdown, 60000);
+}
 
-days.forEach((d, idx) => {
-  // Selector button
-  const btn = document.createElement('button');
-  btn.className = 'day-btn' + (idx === 0 ? ' active' : '');
-  btn.textContent = `第${d.n}天`;
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('day-card-' + d.n).classList.add('active');
-  });
-  selectorEl.appendChild(btn);
+function renderCountdown(){
+  const now = new Date();
+  const diff = Math.ceil((DEPART_DATE - now) / 86400000);
+  const el = document.getElementById('cdDays');
+  if(el) el.textContent = diff > 0 ? diff : (diff === 0 ? '今天出發！' : '已出發');
+}
 
-  // Spots HTML — with photo card layout
-  const spotsHtml = d.spots.map(s => {
-    const imgHtml = s.img ? `
-      <div class="spot-img-wrap">
-        <img src="${s.img}" alt="${s.name}" loading="lazy"
-          onload="this.style.opacity=1;"
-          onerror="this.parentElement.style.display='none';"
-          style="opacity:0; transition:opacity 0.5s ease;">
-        <div class="spot-img-credit">© Wikimedia Commons</div>
-      </div>` : '';
-    return `
-    <div class="spot">
-      ${imgHtml}
-      <div class="spot-body">
-        <div class="spot-icon">${s.icon}</div>
-        <div>
-          <div class="spot-name">${s.name}${s.badge ? `<span class="spot-badge ${s.badge}">${badgeMap[s.badge]}</span>` : ''}</div>
-          <div class="spot-desc">${s.desc}</div>
-        </div>
+// ── TAB SWITCH ──
+function switchTab(idx){
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',i===idx));
+  document.querySelectorAll('.tab-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
+  document.getElementById('contentArea').scrollTop = 0;
+  const btn = document.querySelector(`.tab-btn[data-idx="${idx}"]`);
+  if(btn) btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+}
+
+// ── OVERVIEW ──
+function renderOverview(){
+  const today = new Date();
+  const container = document.getElementById('overviewCards');
+  container.innerHTML = OVERVIEW.map(d => {
+    const dDate = new Date('2026-07-' + (d.day + 13 < 10 ? '0' : '') + String(parseInt(d.date.split('/')[1])));
+    let cls = '';
+    if(today >= new Date('2026-07-14') && today <= new Date('2026-07-25')){
+      const dayDiff = Math.floor((today - new Date('2026-07-14')) / 86400000) + 1;
+      if(dayDiff === d.day) cls = 'day-current';
+      else if(dayDiff > d.day) cls = 'day-past';
+    }
+    const mealLabels = ['早','午','晚'];
+    const mealsHtml = d.meals.map((m,i) =>
+      `<span class="ov-meal"><span class="meal-icon">${['🍳','☀️','🌙'][i]}</span>${mealLabels[i]}:${m}</span>`
+    ).join('');
+    const isHotel = d.hotel !== '機上' && d.hotel !== '溫暖的家 🏠';
+    const hotelHtml = isHotel ? `<span class="ov-hotel">🏨 ${d.hotel}</span>` : `<span class="ov-hotel">${d.hotel}</span>`;
+    return `<div class="ov-card ${cls}">
+      <div class="ov-card-header">
+        <span class="ov-day-num">DAY ${d.day}</span>
+        <span style="font-size:18px;">${d.flag}</span>
+        <span class="ov-date">${d.date}</span>
       </div>
+      <div class="ov-location-text">${d.loc}</div>
+      <div class="ov-footer">${mealsHtml}${hotelHtml}</div>
     </div>`;
   }).join('');
-
-  // Hero image
-  const imgSrc = dayImages[d.n];
-  const heroHtml = imgSrc ? `
-    <div class="day-hero" id="hero-${d.n}">
-      <img src="${imgSrc}" alt="${d.title}"
-        onload="this.style.opacity=1;"
-        onerror="document.getElementById('hero-${d.n}').style.display='none';"
-        style="opacity:0; transition:opacity 0.5s ease;">
-      <div class="day-hero-caption">© Wikimedia Commons</div>
-    </div>` : '';
-
-  // Day card
-  const card = document.createElement('div');
-  card.className = 'day-card' + (idx === 0 ? ' active' : '');
-  card.id = 'day-card-' + d.n;
-  card.innerHTML = `
-    <div class="day-header">
-      <div>
-        <div class="day-title">${d.title}</div>
-        <div class="day-date">${d.country} ｜ ${d.date}</div>
-      </div>
-      <div class="day-number">D${String(d.n).padStart(2,'0')}</div>
-    </div>
-    ${heroHtml}
-    <div class="meals">
-      <div class="meal-tag breakfast">🌅 早｜${d.breakfast}</div>
-      <div class="meal-tag lunch">🌞 午｜${d.lunch}</div>
-      <div class="meal-tag dinner">🌙 晚｜${d.dinner}</div>
-    </div>
-    <div class="hotel-tag">🏨 住宿｜${d.hotel}</div>
-    <div class="spots">${spotsHtml}</div>`;
-  cardsEl.appendChild(card);
-});
-
-// ═══════════════════════════════════════════════
-// 即時資訊模組
-// ═══════════════════════════════════════════════
-
-// ── 設定 ───────────────────────────────────────
-const LIVE_CONFIG = {
-  flights: [
-    { no: 'CI67', from: 'TPE', to: 'PRG', fromName: '桃園國際機場', toName: '布拉格機場', date: '2026-07-14', dir: '去程 ✈' },
-    { no: 'CI64', from: 'VIE', to: 'TPE', fromName: '維也納機場',   toName: '桃園國際機場', date: '2026-07-24', dir: '返程 🏠' }
-  ],
-  rates: [
-    { from: 'TWD', to: 'EUR', label: '歐元', hint: '奧地利・斯洛伐克・德國', symbol: '€', flag: '🇪🇺' },
-    { from: 'TWD', to: 'CZK', label: '捷克克朗', hint: '捷克', symbol: 'Kč', flag: '🇨🇿' }
-  ],
-  cities: [
-    { name: 'Prague',         label: '布拉格',     flag: '🇨🇿', days: 'D2–D3' },
-    { name: 'Salzburg',       label: '薩爾茲堡',   flag: '🇦🇹', days: 'D5' },
-    { name: 'Hallstatt',      label: '哈爾施塔特', flag: '🇦🇹', days: 'D7' },
-    { name: 'Berchtesgaden',  label: '貝希特斯登', flag: '🇩🇪', days: 'D6' },
-    { name: 'Vienna',         label: '維也納',     flag: '🇦🇹', days: 'D8–D11' },
-    { name: 'Bratislava',     label: '布拉提斯拉瓦', flag: '🇸🇰', days: 'D9' }
-  ],
-  autoRefreshMs: 10 * 60 * 1000  // 10 分鐘
-};
-
-const WMO_ICON = {
-  0:'☀️', 1:'🌤', 2:'⛅', 3:'☁️',
-  45:'🌫', 48:'🌫',
-  51:'🌦', 53:'🌦', 55:'🌧',
-  61:'🌧', 63:'🌧', 65:'🌧',
-  71:'🌨', 73:'🌨', 75:'❄️',
-  80:'🌦', 81:'🌧', 82:'⛈',
-  95:'⛈', 96:'⛈', 99:'⛈'
-};
-const WMO_DESC = {
-  0:'晴天', 1:'大致晴', 2:'局部多雲', 3:'陰天',
-  45:'有霧', 48:'有霧',
-  51:'毛毛雨', 53:'毛毛雨', 55:'毛毛雨',
-  61:'小雨', 63:'中雨', 65:'大雨',
-  71:'小雪', 73:'中雪', 75:'大雪',
-  80:'陣雨', 81:'陣雨', 82:'大陣雨',
-  95:'雷雨', 96:'雷雨夾雹', 99:'大雷雨夾雹'
-};
-
-let aviKey = localStorage.getItem('avi_key') || '';
-let autoRefreshOn = false;
-let autoRefreshTimer = null;
-let prevRates = JSON.parse(localStorage.getItem('prev_rates') || '{}');
-let liveInited = false;
-
-function initLivePanel() {
-  if (!liveInited) {
-    liveInited = true;
-    renderFlightSkeleton();
-    renderRateSkeleton();
-    renderWeatherSkeleton();
-    if (aviKey) {
-      document.getElementById('avi-key-input').value = '••••••••••••••••';
-      document.getElementById('key-status-msg').textContent = '✅ API Key 已儲存';
-      document.getElementById('key-status-msg').className = 'key-status ok';
-    }
-    refreshAll();
-  }
 }
 
-function saveAviKey() {
-  const val = document.getElementById('avi-key-input').value.trim();
-  if (!val || val.startsWith('•')) return;
-  aviKey = val;
-  localStorage.setItem('avi_key', val);
-  document.getElementById('avi-key-input').value = '••••••••••••••••';
-  document.getElementById('key-status-msg').textContent = '✅ Key 已儲存，下次更新時生效';
-  document.getElementById('key-status-msg').className = 'key-status ok';
-  fetchFlights();
+// ── NOTICES ──
+function renderNotices(){
+  const container = document.getElementById('noticeCards');
+  container.innerHTML = NOTICES.map(n =>
+    `<div class="notice-card ${n.type}">
+      <div class="notice-header">${n.icon} ${n.title}</div>
+      <div class="notice-body">${n.body}</div>
+    </div>`
+  ).join('');
 }
 
-function clearAviKey() {
-  aviKey = '';
-  localStorage.removeItem('avi_key');
-  document.getElementById('avi-key-input').value = '';
-  document.getElementById('key-status-msg').textContent = '已清除 — 航班狀態將顯示為需設定 Key';
-  document.getElementById('key-status-msg').className = 'key-status none';
-  fetchFlights();
-}
-
-// ── 自動更新 ────────────────────────────────────
-function toggleAutoRefresh() {
-  autoRefreshOn = !autoRefreshOn;
-  const toggle = document.getElementById('auto-toggle');
-  const label  = document.getElementById('auto-label');
-  toggle.className = 'toggle-switch' + (autoRefreshOn ? ' on' : '');
-  label.textContent = autoRefreshOn ? `自動更新（每10分鐘）` : '自動更新（關）';
-  if (autoRefreshOn) {
-    autoRefreshTimer = setInterval(refreshAll, LIVE_CONFIG.autoRefreshMs);
-  } else {
-    clearInterval(autoRefreshTimer);
-  }
-}
-
-// ── 全部更新 ────────────────────────────────────
-async function refreshAll() {
-  const btn = document.getElementById('refresh-btn');
-  btn.classList.add('loading');
-  btn.querySelector('.refresh-icon').textContent = '⏳';
-  await Promise.all([fetchFlights(), fetchRates(), fetchWeather()]);
-  btn.classList.remove('loading');
-  btn.querySelector('.refresh-icon').textContent = '🔄';
-  const now = new Date();
-  document.getElementById('last-update-time').textContent =
-    now.toLocaleString('zh-TW', { month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' });
-}
-
-// ── FLIGHT STATUS ────────────────────────────────
-function renderFlightSkeleton() {
-  const grid = document.getElementById('flight-status-grid');
-  grid.innerHTML = LIVE_CONFIG.flights.map(() => `
-    <div class="flight-status-card">
-      <div class="flt-direction" style="font-size:1.4rem">✈</div>
-      <div class="flt-info">
-        <div class="sk-line skeleton" style="width:120px"></div>
-        <div class="sk-line skeleton" style="width:180px;margin-top:8px"></div>
-      </div>
-      <div class="sk-line skeleton" style="width:70px;height:28px;border-radius:20px"></div>
-    </div>`).join('');
-}
-
-async function fetchFlights() {
-  const grid = document.getElementById('flight-status-grid');
-  grid.innerHTML = LIVE_CONFIG.flights.map(f => buildFlightCard(f, 'pending', '查詢中…', '')).join('');
-
-  // 用 Claude API + web_search 查詢航班狀態，繞過 CSP 限制
-  for (const f of LIVE_CONFIG.flights) {
-    try {
-      const resp = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 500,
-          tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-          messages: [{
-            role: 'user',
-            content: `請用 web_search 查詢中華航空 ${f.no} 班機在 ${f.date} 的航班狀態（${f.fromName} → ${f.toName}）。
-只回傳 JSON（不加說明文字或 markdown）：
-{"status":"scheduled|active|landed|cancelled|delayed|unknown","dep":"HH:MM或空字串","arr":"HH:MM或空字串","delay_min":數字或0,"note":"簡短說明，如準時/延誤/取消"}`
-          }]
-        })
-      });
-      const data = await resp.json();
-      const text = data.content.filter(b => b.type === 'text').map(b => b.text).join('');
-      const clean = text.replace(/```[a-z]*|```/g, '').trim();
-      const start = clean.indexOf('{'), end = clean.lastIndexOf('}');
-      const json = JSON.parse(clean.slice(start, end + 1));
-      let detail = '';
-      if (json.dep) detail += `出發：${json.dep} `;
-      if (json.arr) detail += `抵達：${json.arr} `;
-      if (json.delay_min > 0) detail += `⚠ 延誤約 ${json.delay_min} 分鐘`;
-      if (json.note) detail += (detail ? ' ／ ' : '') + json.note;
-      const stMap = { scheduled:'scheduled', active:'active', landed:'landed', cancelled:'cancelled', delayed:'delayed' };
-      const st = stMap[json.status] || 'pending';
-      updateFlightCard(f.no, st, statusLabel(json.status), detail || `出發日期：${f.date}`);
-    } catch (e) {
-      // 出發日期尚未到，無即時資料屬正常
-      updateFlightCard(f.no, 'scheduled', '行前查詢', `預定出發日：${f.date}`);
-    }
-  }
-}
-
-function buildFlightCard(f, statusClass, statusText, detail) {
-  return `<div class="flight-status-card" id="flt-${f.no}">
-    <div class="flt-direction">${f.dir}</div>
-    <div class="flt-info">
-      <div class="flt-number">${f.no}</div>
-      <div class="flt-route">${f.fromName} (${f.from}) → ${f.toName} (${f.to})</div>
-      <div class="flt-date">📅 ${f.date}${detail ? '<br><span class="flt-detail">'+detail+'</span>' : ''}</div>
-    </div>
-    <div class="flt-status-badge ${statusClass}">${statusText}</div>
-  </div>`;
-}
-
-function updateFlightCard(flightNo, statusClass, statusText, detail) {
-  const el = document.getElementById('flt-' + flightNo);
-  if (!el) return;
-  el.querySelector('.flt-status-badge').className = `flt-status-badge ${statusClass}`;
-  el.querySelector('.flt-status-badge').textContent = statusText;
-  const dateEl = el.querySelector('.flt-date');
-  const f = LIVE_CONFIG.flights.find(x => x.no === flightNo);
-  dateEl.innerHTML = `📅 ${f.date}` + (detail ? `<br><span class="flt-detail">${detail}</span>` : '');
-}
-
-function statusLabel(st) {
-  const map = { scheduled:'準時', active:'飛行中', landed:'已落地', cancelled:'已取消', incident:'異常', diverted:'改降' };
-  return map[st] || st;
-}
-
-// ── EXCHANGE RATES（open.er-api.com 免費版，支援 TWD，支援 CORS）────────
-function renderRateSkeleton() {
-  document.getElementById('rate-grid').innerHTML = LIVE_CONFIG.rates.map(() => `
-    <div class="rate-card">
-      <div class="sk-line skeleton" style="width:80px;margin:0 auto"></div>
-      <div class="sk-big skeleton" style="width:120px;margin:10px auto"></div>
-      <div class="sk-line skeleton" style="width:100px;margin:0 auto"></div>
-    </div>`).join('');
-}
-
-async function fetchRates() {
-  try {
-    // open.er-api.com 免費版支援 TWD 基準貨幣，每日更新，無需 API Key
-    const resp = await fetch('https://open.er-api.com/v6/latest/TWD');
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    const json = await resp.json();
-    if (json.result !== 'success') throw new Error(json['error-type'] || '查詢失敗');
-    const rates = json.rates;
-    document.getElementById('rate-grid').innerHTML = LIVE_CONFIG.rates.map(r => {
-      const val = rates[r.to];
-      if (!val) return `<div class="rate-card"><div class="fetch-error"><div class="err-icon">⚠️</div>無法取得${r.label}</div></div>`;
-      const prev = prevRates[r.to] || val;
-      const diff = val - prev;
-      const sign = diff > 0.00001 ? 'up' : diff < -0.00001 ? 'down' : 'flat';
-      const arrow = sign === 'up' ? '▲' : sign === 'down' ? '▼' : '─';
-      const diffTxt = Math.abs(diff) > 0.00001 ? `${arrow} ${Math.abs(diff * 100).toFixed(4)}%` : `${arrow} 持平`;
-      prevRates[r.to] = val;
-      localStorage.setItem('prev_rates', JSON.stringify(prevRates));
-      // val = 1 TWD 可換多少外幣；per1 = 1外幣 = 多少台幣
-      const per1 = (1 / val).toFixed(2);
-      const tenK = Math.round(val * 10000);
-      return `
-        <div class="rate-card">
-          <div class="rate-pair">${r.flag} TWD → ${r.to}</div>
-          <div class="rate-value">1 = ${val.toFixed(5)}</div>
-          <div class="rate-unit">${r.symbol}（${r.label}）</div>
-          <div class="rate-change ${sign}">${diffTxt}</div>
-          <div class="rate-hint">💡 NT$10,000 ≈ ${r.symbol} ${tenK.toLocaleString()}<br>1 ${r.to} ≈ NT$ ${per1}<br>${r.hint}</div>
-        </div>`;
-    }).join('');
-  } catch (e) {
-    document.getElementById('rate-grid').innerHTML =
-      `<div class="fetch-error" style="grid-column:1/-1"><div class="err-icon">⚠️</div>匯率查詢失敗：${e.message}</div>`;
-  }
-}
-
-// ── WEATHER（Open-Meteo 完全免費、支援 CORS）──────────────────────────
-const CITY_COORDS = {
-  'Prague':        { lat:50.0755, lon:14.4378 },
-  'Salzburg':      { lat:47.8095, lon:13.0550 },
-  'Hallstatt':     { lat:47.5622, lon:13.6493 },
-  'Berchtesgaden': { lat:47.6309, lon:13.0041 },
-  'Vienna':        { lat:48.2082, lon:16.3738 },
-  'Bratislava':    { lat:48.1486, lon:17.1077 }
-};
-
-function renderWeatherSkeleton() {
-  document.getElementById('weather-grid').innerHTML = LIVE_CONFIG.cities.map(() => `
-    <div class="weather-card">
-      <div class="sk-line skeleton" style="width:100px"></div>
-      <div class="sk-big skeleton" style="width:80px;margin-top:12px"></div>
-      <div class="sk-line skeleton" style="width:120px;margin-top:8px"></div>
-    </div>`).join('');
-}
-
-async function fetchWeather() {
-  const cards = await Promise.all(LIVE_CONFIG.cities.map(async city => {
-    const c = CITY_COORDS[city.name];
-    if (!c) return `<div class="weather-card"><div class="fetch-error"><div class="err-icon">🌍</div>無座標資料</div></div>`;
-    try {
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${c.lat}&longitude=${c.lon}` +
-        `&current=temperature_2m,weathercode,windspeed_10m,relativehumidity_2m` +
-        `&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=4`;
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error('HTTP ' + resp.status);
-      const d = await resp.json();
-      const cur = d.current, daily = d.daily;
-      const wc = cur.weathercode;
-      const fcHtml = [1,2,3].map(i => {
-        const dt = new Date(daily.time[i]);
-        const lbl = ['日','一','二','三','四','五','六'][dt.getDay()];
-        return `<div class="forecast-day">
-          <div class="f-label">週${lbl}</div>
-          <div class="f-icon">${WMO_ICON[daily.weathercode[i]]||'🌡'}</div>
-          <div class="f-hi">${Math.round(daily.temperature_2m_max[i])}°</div>
-          <div class="f-lo">${Math.round(daily.temperature_2m_min[i])}°</div>
-        </div>`;
-      }).join('');
-      return `
-        <div class="weather-card">
-          <div class="weather-city"><span class="city-flag">${city.flag}</span>${city.label}
-            <span style="color:var(--muted);font-size:0.7rem">${city.days}</span></div>
-          <div class="weather-main">
-            <div class="weather-icon">${WMO_ICON[wc]||'🌡'}</div>
-            <div><div class="weather-temp">${Math.round(cur.temperature_2m)}°C</div>
-            <div class="weather-desc">${WMO_DESC[wc]||'未知'}</div></div>
-          </div>
-          <div class="weather-details">
-            <div class="weather-detail">💨 ${Math.round(cur.windspeed_10m)} km/h</div>
-            <div class="weather-detail">💧 ${cur.relativehumidity_2m}%</div>
-          </div>
-          <div class="weather-forecast">${fcHtml}</div>
-        </div>`;
-    } catch(e) {
-      return `<div class="weather-card"><div class="fetch-error"><div class="err-icon">⚠️</div>天氣查詢失敗</div></div>`;
-    }
-  }));
-  document.getElementById('weather-grid').innerHTML = cards.join('');
-}
-
-// ── FLIGHT STATUS（AviationStack 免費版，多 Proxy 容錯）──────────────
-function renderFlightSkeleton() {
-  document.getElementById('flight-status-grid').innerHTML = LIVE_CONFIG.flights.map(() => `
-    <div class="flight-status-card">
-      <div class="flt-direction">✈</div>
-      <div class="flt-info">
-        <div class="sk-line skeleton" style="width:120px"></div>
-        <div class="sk-line skeleton" style="width:180px;margin-top:8px"></div>
-      </div>
-      <div class="sk-line skeleton" style="width:70px;height:28px;border-radius:20px"></div>
-    </div>`).join('');
-}
-
-// 多個免費 CORS Proxy，依序嘗試直到成功
-const FLIGHT_PROXIES = [
-  u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
-  u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
-  u => `https://thingproxy.freeboard.io/fetch/${u}`
-];
-
-async function tryFetch(url, timeoutMs = 8000) {
-  for (const proxyFn of FLIGHT_PROXIES) {
-    try {
-      const resp = await fetch(proxyFn(url), { signal: AbortSignal.timeout(timeoutMs) });
-      if (!resp.ok) continue;
-      const text = await resp.text();
-      const json = JSON.parse(text);
-      return json;
-    } catch (e) { continue; }
-  }
-  throw new Error('所有代理伺服器皆無法連線');
-}
-
-async function fetchFlights() {
-  const grid = document.getElementById('flight-status-grid');
-  if (!aviKey) {
-    grid.innerHTML = LIVE_CONFIG.flights.map(f => buildFlightCard(f, 'nokey', '需設定 API Key', '')).join('');
-    return;
-  }
-  grid.innerHTML = LIVE_CONFIG.flights.map(f => buildFlightCard(f, 'pending', '查詢中…', '')).join('');
-
-  for (const f of LIVE_CONFIG.flights) {
-    // 判斷是否為未來班次（今天之前不會有即時資料）
-    const today = new Date(); today.setHours(0,0,0,0);
-    const fDate = new Date(f.date);
-    if (fDate > today) {
-      const daysLeft = Math.round((fDate - today) / 86400000);
-      updateFlightCard(f.no, 'scheduled',
-        daysLeft > 30 ? '行前查詢' : `${daysLeft} 天後出發`,
-        `預定出發：${f.date} ／ 出發當天可查詢即時狀態`);
-      continue;
-    }
-
-    try {
-      const apiUrl = `http://api.aviationstack.com/v1/flights?access_key=${aviKey}&flight_iata=${f.no}&flight_date=${f.date}`;
-      const json = await tryFetch(apiUrl);
-      if (json.error) throw new Error(json.error.message || 'API 錯誤');
-      const data = json.data && json.data[0];
-      if (!data) { updateFlightCard(f.no, 'pending', '尚無班表', `出發日期：${f.date}`); continue; }
-      const st    = data.flight_status || 'scheduled';
-      const dep   = data.departure?.actual || data.departure?.estimated || data.departure?.scheduled || '';
-      const arr   = data.arrival?.actual   || data.arrival?.estimated   || data.arrival?.scheduled   || '';
-      const delay = data.departure?.delay;
-      let detail  = '';
-      if (dep) detail += `出發：${dep.slice(11,16)} `;
-      if (arr) detail += `抵達：${arr.slice(11,16)} `;
-      if (delay > 0) detail += `⚠ 延誤 ${delay} 分`;
-      updateFlightCard(f.no, st, statusLabel(st), detail || `查詢時間：${new Date().toLocaleTimeString('zh-TW')}`);
-    } catch (e) {
-      updateFlightCard(f.no, 'pending', '暫無資料', '出發當天再查詢即時狀態');
-    }
-  }
-}
-</script>
-
-<!-- ── PWA: Service Worker 註冊 ── -->
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js', { scope: './' })
-      .then(reg => console.log('[PWA] Service Worker 已註冊:', reg.scope))
-      .catch(err => console.warn('[PWA] Service Worker 註冊失敗:', err));
-  });
-}
-
-// iOS 安裝提示（首次造訪時顯示）
-window.addEventListener('load', () => {
-  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-  const isStandalone = window.navigator.standalone === true;
-  const shown = sessionStorage.getItem('iosPromptShown');
-  if (isIOS && !isStandalone && !shown) {
-    sessionStorage.setItem('iosPromptShown', '1');
-    const banner = document.createElement('div');
-    banner.id = 'ios-install-banner';
-    banner.style.cssText = `
-      position:fixed; bottom:0; left:0; right:0; z-index:9999;
-      background:linear-gradient(135deg,#1A1208,#2D2112);
-      border-top:1px solid #C9A84C;
-      padding:14px 20px 28px; display:flex; gap:14px;
-      align-items:center; box-shadow:0 -4px 24px rgba(0,0,0,0.35);
-      animation: slideUp 0.4s ease;
-    `;
-    banner.innerHTML = `
-      <style>@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}</style>
-      <div style="font-size:2.4rem;flex-shrink:0">🧳</div>
-      <div style="flex:1">
-        <div style="color:#E8C97A;font-size:0.88rem;font-weight:600;margin-bottom:4px">加入 iPhone 主畫面</div>
-        <div style="color:#7A6240;font-size:0.75rem;line-height:1.6">
-          點選下方 <strong style="color:#C9A84C">分享</strong> 按鈕
-          （<span style="font-size:1rem">⬆</span>），<br>
-          再選「<strong style="color:#C9A84C">加入主畫面</strong>」即可離線使用
+// ── DAILY ──
+const BADGE_MAP = {ticket:'ticket 含門票',walkin:'walkin 下車參觀',special:'special 特殊安排'};
+function renderDailyCards(){
+  const container = document.getElementById('dailyCards');
+  container.innerHTML = DAILY.map(d => {
+    const spotsHtml = d.spots.map(s => {
+      const badgeHtml = s.badge ? `<span class="spot-badge badge-${s.badge}">${s.badge==='ticket'?'含門票':s.badge==='walkin'?'下車參觀':'特殊安排'}</span>` : '';
+      return `<div class="spot-item">
+        <span class="spot-icon">${s.icon}</span>
+        <div>
+          <div class="spot-name">${s.name}${badgeHtml}</div>
+          <div class="spot-desc">${s.desc}</div>
         </div>
+      </div>`;
+    }).join('');
+    const mealChips = ['🍳早:'+d.meals[0],'☀️午:'+d.meals[1],'🌙晚:'+d.meals[2]].map(m=>`<span class="meal-chip">${m}</span>`).join('');
+    const hotelChip = `<span class="hotel-chip">🏨 ${d.hotel}</span>`;
+    return `<div class="day-card">
+      <div class="day-card-header">
+        <div>
+          <div class="day-card-num">DAY ${d.day}</div>
+          <div class="day-card-date">${d.date}</div>
+        </div>
+        <span class="day-flag">${d.flag}</span>
       </div>
-      <button onclick="document.getElementById('ios-install-banner').remove()"
-        style="background:none;border:1px solid #7A6240;color:#7A6240;border-radius:50%;
-               width:28px;height:28px;font-size:1rem;cursor:pointer;flex-shrink:0;
-               display:flex;align-items:center;justify-content:center">✕</button>
-    `;
-    document.body.appendChild(banner);
+      <div class="day-card-title">${d.title}</div>
+      <div class="spot-list">${spotsHtml}</div>
+      <div class="day-meals-hotel">${mealChips}${hotelChip}</div>
+    </div>`;
+  }).join('');
+}
+
+// ── CHECKLIST ──
+let checkState = {};
+function loadCheckState(){
+  try{ checkState = JSON.parse(localStorage.getItem('cl_state') || '{}'); }catch(e){ checkState={}; }
+}
+function saveCheckState(){ try{ localStorage.setItem('cl_state', JSON.stringify(checkState)); }catch(e){} }
+function renderChecklist(){
+  loadCheckState();
+  const container = document.getElementById('checklistItems');
+  let totalItems = 0, checkedItems = 0;
+  container.innerHTML = CHECKLIST.map((cat, ci) => {
+    const itemsHtml = cat.items.map((item, ii) => {
+      const key = cat.cat + '::' + item;
+      const checked = !!checkState[key];
+      totalItems++;
+      if(checked) checkedItems++;
+      return `<div class="cl-item ${checked?'checked':''}" data-ci="${ci}" data-ii="${ii}" onclick="toggleItemEl(this)">
+        <div class="cl-checkbox"></div>
+        <div class="cl-label">${item}</div>
+      </div>`;
+    }).join('');
+    return `<div class="cl-category">     <div class="cl-cat-title">${cat.cat}</div>
+      <div class="cl-items">${itemsHtml}</div>
+    </div>`;
+  }).join('');
+  updateProgress(checkedItems, totalItems);
+}
+function toggleItem(key, el){
+  const rawKey = key.replace(/\:/g, ':').replace(/\\./g, '.');
+  checkState[rawKey] = !checkState[rawKey];
+  el.classList.toggle('checked', !!checkState[rawKey]);
+  saveCheckState();
+  recalcProgress();
+}
+function recalcProgress(){
+  let total=0, done=0;
+  CHECKLIST.forEach(cat => cat.items.forEach(item => {
+    total++;
+    if(checkState[cat.cat+'::'+item]) done++;
+  }));
+  updateProgress(done, total);
+}
+function updateProgress(done, total){
+  document.getElementById('progressText').textContent = done + ' / ' + total + ' 項完成';
+  document.getElementById('progressFill').style.width = total ? (done/total*100)+'%' : '0%';
+}
+function resetChecklist(){ checkState={}; saveCheckState(); renderChecklist(); }
+
+// ── LIVE ──
+function loadApiKey(){
+  const k = localStorage.getItem('aviation_key') || '';
+  if(k){ document.getElementById('apiKeyInput').value = k; document.getElementById('apiKeyStatus').textContent = '✅ API Key 已設定'; }
+}
+function saveApiKey(){
+  const k = document.getElementById('apiKeyInput').value.trim();
+  localStorage.setItem('aviation_key', k);
+  document.getElementById('apiKeyStatus').textContent = k ? '✅ API Key 已設定' : '已清除';
+  refreshAll();
+}
+function clearApiKey(){ localStorage.removeItem('aviation_key'); document.getElementById('apiKeyInput').value=''; document.getElementById('apiKeyStatus').textContent='尚未設定'; }
+function toggleAuto(){
+  autoOn = !autoOn;
+  document.getElementById('autoToggle').classList.toggle('on', autoOn);
+  if(autoOn){ autoTimer = setInterval(refreshAll, LIVE_CONFIG.autoRefreshMs); }
+  else{ clearInterval(autoTimer); }
+}
+function refreshAll(){ refreshLive(); renderFlightStatus(); }
+
+function renderFlightStatus(){
+  const key = localStorage.getItem('aviation_key') || '';
+  const container = document.getElementById('flightStatusCards');
+  const now = new Date();
+  container.innerHTML = LIVE_CONFIG.flights.map(f => {
+    const dep = new Date(f.date);
+    const diffDays = Math.ceil((dep - now) / 86400000);
+    const statusText = diffDays > 0 ? `⏳ 約 ${diffDays} 天後出發` : diffDays === 0 ? '🟡 今日航班' : '✅ 已出發';
+    return `<div class="flight-status-card">
+      <div class="fsc-icon">✈️</div>
+      <div class="fsc-info">
+        <div class="fsc-no">${f.no}</div>
+        <div class="fsc-route">${f.fromName} → ${f.toName}</div>
+        <div class="fsc-status">${statusText}</div>
+      </div>
+      <div style="font-size:11px;color:var(--text-muted);text-align:right;">${f.dir}<br>${f.date}</div>
+    </div>`;
+  }).join('');
+  if(key){
+    LIVE_CONFIG.flights.forEach((f, idx) => {
+      const dep = new Date(f.date);
+      const diffDays = Math.ceil((dep - new Date()) / 86400000);
+      if(diffDays > 1) return;
+      const apiUrl = `http://api.aviationstack.com/v1/flights?access_key=${key}&flight_iata=${f.no}`;
+      const proxies = [
+        u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+        u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+      ];
+      (async () => {
+        for(const proxy of proxies){
+          try{
+            const r = await fetch(proxy(apiUrl), {signal: AbortSignal.timeout(5000)});
+            const data = await r.json();
+            if(data && data.data && data.data[0]){
+              const fl = data.data[0];
+              const status = fl.flight_status || '－';
+              const cards = document.querySelectorAll('.flight-status-card');
+              if(cards[idx]){
+                cards[idx].querySelector('.fsc-status').textContent = '🛫 ' + status.toUpperCase();
+              }
+              break;
+            }
+          }catch(e){ continue; }
+        }
+      })();
+    });
   }
-});
+}
+
+async function refreshLive(){
+  document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString('zh-TW');
+  await Promise.all([fetchRates(), fetchWeather()]);
+}
+
+async function fetchRates(){
+  const container = document.getElementById('rateCards');
+  try{
+    const r = await fetch('https://open.er-api.com/v6/latest/TWD');
+    const data = await r.json();
+    if(data.result !== 'success') throw new Error();
+    container.innerHTML = LIVE_CONFIG.rates.map(rc => {
+      const val = data.rates[rc.to];
+      const per1 = val ? (1/val).toFixed(2) : '－';
+      const perTwd = val ? val.toFixed(5) : '－';
+      return `<div class="rate-card">
+        <div class="rate-flag">${rc.flag}</div>
+        <div class="rate-label">${rc.label}</div>
+        <div class="rate-value">${perTwd} ${rc.symbol}</div>
+        <div class="rate-hint">1 TWD ≈ ${perTwd} ${rc.symbol}</div>
+        <div class="rate-hint" style="margin-top:4px;font-weight:600;color:var(--brown);">1 ${rc.symbol} ≈ NT$ ${per1}</div>
+        <div class="rate-hint">${rc.hint}</div>
+      </div>`;
+    }).join('');
+  }catch(e){
+    container.innerHTML = '<div class="loading-spinner" style="grid-column:span 2">匯率載入失敗</div>';
+  }
+}
+
+const WX_CODE = {0:'晴天☀️',1:'大致晴☀️',2:'局部多雲⛅',3:'陰天☁️',45:'霧🌫️',48:'霧❄️',51:'毛毛雨🌦️',53:'毛毛雨🌦️',55:'毛毛雨🌦️',61:'小雨🌧️',63:'中雨🌧️',65:'大雨🌧️',71:'小雪❄️',73:'中雪❄️',75:'大雪❄️',80:'陣雨🌦️',81:'中陣雨🌦️',82:'強陣雨⛈️',95:'雷雨⛈️',96:'雷冰雹⛈️',99:'強雷雹⛈️'};
+
+async function fetchWeather(){
+  const container = document.getElementById('weatherCards');
+  container.innerHTML = '<div class="loading-spinner">天氣載入中…</div>';
+  const results = await Promise.all(LIVE_CONFIG.cities.map(async city => {
+    try{
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,weathercode&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto&forecast_days=3`;
+      const r = await fetch(url);
+      const data = await r.json();
+      const cur = data.current;
+      const daily = data.daily;
+      const wxDesc = WX_CODE[cur.weathercode] || '－';
+      const [icon, desc] = wxDesc.split(/(?=[☀⛅☁🌫❄🌦🌧⛈])/);
+      const tMax = Math.round(daily.temperature_2m_max[0]);
+      const tMin = Math.round(daily.temperature_2m_min[0]);
+      return `<div class="weather-card">
+        <div class="wc-city">${city.flag} ${city.label}</div>
+        <div class="wc-days">${city.days}</div>
+        <div class="wc-icon">${wxDesc.match(/[☀⛅☁🌫❄🌦🌧⛈]/)?.[0] || '🌡️'}</div>
+        <div class="wc-temp">${Math.round(cur.temperature_2m)}°C</div>
+        <div class="wc-desc">${tMin}°~${tMax}°</div>
+        <div class="wc-desc" style="margin-top:2px;">${desc||wxDesc}</div>
+      </div>`;
+    }catch(e){ return `<div class="weather-card"><div class="wc-city">${city.flag} ${city.label}</div><div class="wc-icon">－</div></div>`; }
+  }));
+  container.innerHTML = results.join('');
+}
+
+init();
 </script>
 </body>
 </html>
