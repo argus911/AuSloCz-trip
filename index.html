@@ -40,10 +40,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── HERO HEADER ── */
+/* ── HERO HEADER (compact) ── */
 .hero {
   background: linear-gradient(160deg, #2A1800 0%, #3D2200 40%, #5C3500 100%);
-  padding: calc(var(--safe-top) + 16px) 20px 20px;
+  padding: calc(var(--safe-top) + 10px) 16px 12px;
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
@@ -54,50 +54,53 @@ body {
   background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.06'%3E%3Cpath d='M30 0l2 8-6-4 6-4zM30 60l2-8-6 4 6 4zM0 30l8-2-4 6-4-6zM60 30l-8-2 4 6 4-6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   opacity: 0.5;
 }
+.hero-top-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 6px; position: relative;
+}
 .hero-badge {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; gap: 5px;
   background: rgba(201,168,76,0.2); border: 1px solid rgba(201,168,76,0.4);
-  color: var(--gold-light); font-size: 11px; font-weight: 500;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;
-  position: relative;
+  color: var(--gold-light); font-size: 10px; font-weight: 500;
+  letter-spacing: 1px;
+  padding: 3px 10px; border-radius: 20px;
 }
 .hero-title {
   font-family: 'Noto Serif TC', serif;
-  font-size: 28px; font-weight: 700;
+  font-size: 22px; font-weight: 700;
   color: var(--gold-light);
-  letter-spacing: 2px; line-height: 1.2;
+  letter-spacing: 1px; line-height: 1.2;
   position: relative;
   text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
-.hero-title span { font-size: 22px; opacity: 0.9; }
+.hero-title span { font-size: 18px; opacity: 0.9; }
 .hero-countries {
-  color: rgba(232,201,106,0.7); font-size: 11px;
-  letter-spacing: 3px; margin: 6px 0 14px;
+  color: rgba(232,201,106,0.65); font-size: 10px;
+  letter-spacing: 2.5px; margin: 3px 0 10px;
   font-weight: 400; position: relative;
 }
 .hero-dates {
-  display: flex; gap: 16px; position: relative;
+  display: flex; gap: 8px; position: relative;
 }
 .hero-date-item {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 7px;
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(201,168,76,0.25);
-  border-radius: 10px; padding: 8px 14px;
+  border-radius: 9px; padding: 6px 12px;
   flex: 1;
 }
-.hero-date-item .icon { font-size: 18px; }
-.hero-date-item .label { font-size: 10px; color: rgba(232,201,106,0.7); letter-spacing: 0.5px; }
-.hero-date-item .date { font-size: 13px; color: var(--gold-light); font-weight: 600; letter-spacing: 0.5px; }
+.hero-date-item .icon { font-size: 16px; }
+.hero-date-item .label { font-size: 9.5px; color: rgba(232,201,106,0.7); letter-spacing: 0.3px; }
+.hero-date-item .date { font-size: 12px; color: var(--gold-light); font-weight: 600; }
 .hero-countdown {
-  margin-top: 12px; position: relative;
-  background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
-  border-radius: 10px; padding: 8px 14px;
+  margin-top: 8px; position: relative;
+  background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 9px; padding: 6px 12px;
   display: flex; align-items: center; justify-content: space-between;
 }
-.hero-countdown .cd-label { font-size: 11px; color: rgba(232,201,106,0.7); }
-.hero-countdown .cd-num { font-size: 20px; font-weight: 700; color: var(--gold-light); }
-.hero-countdown .cd-unit { font-size: 11px; color: rgba(232,201,106,0.6); }
+.hero-countdown .cd-label { font-size: 10px; color: rgba(232,201,106,0.7); }
+.hero-countdown .cd-num { font-size: 17px; font-weight: 700; color: var(--gold-light); }
+.hero-countdown .cd-unit { font-size: 10px; color: rgba(232,201,106,0.6); }
 
 /* ── TABS ── */
 .tab-bar {
@@ -310,33 +313,62 @@ body {
 .daily-wrap { padding: 0 12px; }
 .day-card {
   background: var(--white); border-radius: var(--radius);
-  margin-bottom: 12px; overflow: hidden;
-  box-shadow: 0 2px 10px rgba(60,30,0,0.08);
+  margin-bottom: 16px; overflow: hidden;
+  box-shadow: 0 3px 12px rgba(60,30,0,0.1);
 }
-.day-card-header {
+/* Hero image banner for each day */
+.day-hero-img {
+  width: 100%; height: 140px; object-fit: cover; display: block;
   background: linear-gradient(135deg, var(--brown) 0%, var(--brown-mid) 100%);
-  padding: 14px 16px;
-  display: flex; align-items: center; justify-content: space-between;
 }
-.day-card-num { font-size: 12px; color: rgba(232,201,106,0.7); letter-spacing: 1px; }
-.day-card-date { font-size: 16px; font-weight: 700; color: var(--gold-light); }
+.day-hero-img-wrap {
+  position: relative; height: 140px; overflow: hidden;
+  background: linear-gradient(135deg, var(--brown) 0%, #7A5020 100%);
+}
+.day-hero-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  opacity: 0.75;
+}
+.day-hero-img-wrap::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(26,8,0,0.65) 100%);
+}
+.day-hero-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 14px;
+  z-index: 1;
+  display: flex; align-items: flex-end; justify-content: space-between;
+}
+.day-hero-num-wrap { }
+.day-card-num { font-size: 10px; color: rgba(232,201,106,0.75); letter-spacing: 1.5px; font-weight: 600; }
+.day-card-date { font-size: 17px; font-weight: 700; color: var(--white); line-height: 1.1; }
+.day-flag { font-size: 22px; }
 .day-card-title {
-  font-size: 13px; color: rgba(232,201,106,0.8);
-  line-height: 1.4; padding: 10px 16px 0;
+  font-size: 12px; color: var(--text-muted);
+  line-height: 1.4; padding: 10px 14px 6px;
+  font-style: italic;
 }
-.day-flag { font-size: 18px; }
-.spot-list { padding: 10px 16px 4px; }
+/* Spot cards (image + info) */
+.spot-cards { padding: 4px 14px 8px; display: flex; flex-direction: column; gap: 0; }
 .spot-item {
   display: flex; align-items: flex-start; gap: 10px;
   padding: 9px 0; border-bottom: 1px solid var(--cream-dark);
 }
 .spot-item:last-child { border-bottom: none; }
-.spot-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-.spot-name { font-size: 13px; font-weight: 500; color: var(--text); }
-.spot-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+.spot-img-wrap {
+  width: 56px; height: 56px; border-radius: 10px; overflow: hidden; flex-shrink: 0;
+  background: var(--cream-dark);
+}
+.spot-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.spot-img-placeholder {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  font-size: 24px; background: var(--cream-dark);
+}
+.spot-info { flex: 1; min-width: 0; }
+.spot-name { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.3; }
+.spot-desc { font-size: 11px; color: var(--text-muted); margin-top: 3px; line-height: 1.4; }
 .spot-badge {
   display: inline-block; font-size: 9px; font-weight: 600;
-  padding: 2px 6px; border-radius: 4px; margin-left: 6px; vertical-align: middle;
+  padding: 2px 6px; border-radius: 4px; margin-top: 4px;
   letter-spacing: 0.3px;
 }
 .badge-ticket { background: #FFF3CD; color: #856404; }
@@ -344,8 +376,7 @@ body {
 .badge-special { background: #F8D7DA; color: #721C24; }
 .day-meals-hotel {
   display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
-  padding: 10px 16px 14px; border-top: 1px solid var(--cream-dark);
-  margin-top: 4px;
+  padding: 10px 14px 13px; border-top: 1px solid var(--cream-dark);
 }
 .meal-chip {
   font-size: 11px; background: var(--cream); border: 1px solid rgba(201,168,76,0.2);
@@ -354,7 +385,7 @@ body {
 .hotel-chip {
   font-size: 11px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
   color: var(--brown-mid); padding: 4px 10px; border-radius: 8px;
-  margin-left: auto; font-weight: 500;
+  margin-left: auto; font-weight: 500; max-width: 55%; text-align: right;
 }
 
 /* ── NOTICE CARDS ── */
@@ -453,21 +484,40 @@ body {
 .rate-value { font-size: 20px; font-weight: 700; color: var(--brown); }
 .rate-hint { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
 .weather-scroll {
-  display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px;
+  display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px;
   scrollbar-width: none; -webkit-overflow-scrolling: touch;
   margin-bottom: 10px;
 }
 .weather-scroll::-webkit-scrollbar { display: none; }
 .weather-card {
-  flex: none; background: var(--white); border-radius: var(--radius);
-  padding: 14px; min-width: 110px; text-align: center;
-  box-shadow: 0 2px 8px rgba(60,30,0,0.07);
+  flex: none; border-radius: var(--radius);
+  width: 130px; overflow: hidden;
+  box-shadow: 0 3px 10px rgba(60,30,0,0.1);
+  background: linear-gradient(160deg, #2A1800 0%, #3D2600 100%);
 }
-.wc-city { font-size: 12px; font-weight: 600; color: var(--brown); }
-.wc-days { font-size: 10px; color: var(--text-muted); margin-bottom: 8px; }
-.wc-icon { font-size: 28px; margin: 4px 0; }
-.wc-temp { font-size: 18px; font-weight: 700; color: var(--brown); }
-.wc-desc { font-size: 10px; color: var(--text-muted); margin-top: 4px; }
+.wc-header {
+  padding: 10px 12px 6px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.wc-city { font-size: 12px; font-weight: 700; color: var(--gold-light); }
+.wc-days { font-size: 9px; color: rgba(232,201,106,0.5); margin-top: 1px; }
+.wc-current {
+  padding: 4px 12px 10px;
+  display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+.wc-icon { font-size: 26px; }
+.wc-temp-block {}
+.wc-temp { font-size: 22px; font-weight: 700; color: var(--white); line-height: 1; }
+.wc-range { font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+.wc-forecast { padding: 6px 12px 10px; }
+.wc-forecast-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 3px 0; font-size: 10px; color: rgba(255,255,255,0.6);
+}
+.wc-forecast-row .wf-day { width: 24px; font-weight: 600; color: rgba(232,201,106,0.7); }
+.wc-forecast-row .wf-icon { font-size: 13px; }
+.wc-forecast-row .wf-range { color: rgba(255,255,255,0.55); text-align: right; }
 .loading-spinner { text-align: center; padding: 20px; color: var(--text-muted); font-size: 13px; }
 .live-footer {
   margin-top: 16px; font-size: 11px; color: var(--text-muted);
@@ -481,9 +531,11 @@ body {
 
 <!-- ── HERO ── -->
 <div class="hero">
-  <div class="hero-badge">✦ 歐洲深度遊 ✦</div>
+  <div class="hero-top-row">
+    <div class="hero-badge">✦ 歐洲深度遊 ✦</div>
+    <div style="font-size:10px;color:rgba(232,201,106,0.5);letter-spacing:2px;position:relative;">AUSTRIA · CZECH · SLOVAKIA</div>
+  </div>
   <div class="hero-title">奧斯捷饗宴 <span>12天</span></div>
-  <div class="hero-countries">AUSTRIA · CZECH · SLOVAKIA</div>
   <div class="hero-dates">
     <div class="hero-date-item">
       <span class="icon">✈️</span>
@@ -877,33 +929,84 @@ function renderNotices(){
 
 // ── DAILY ──
 const BADGE_MAP = {ticket:'ticket 含門票',walkin:'walkin 下車參觀',special:'special 特殊安排'};
+// Spot image map (Wikimedia Commons)
+const SPOT_IMGS = {
+  '布拉格城堡區': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Prague_castle_from_mala_strana.jpg/480px-Prague_castle_from_mala_strana.jpg',
+  '聖維特大教堂': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/St_Vitus_Cathedral_Prague.jpg/480px-St_Vitus_Cathedral_Prague.jpg',
+  '黃金小巷': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Prague_-_Golden_Lane.jpg/480px-Prague_-_Golden_Lane.jpg',
+  '查理士橋': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Prague_-_Charles_Bridge.jpg/480px-Prague_-_Charles_Bridge.jpg',
+  '老城廣場': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Prague_Old_Town_Square.jpg/480px-Prague_Old_Town_Square.jpg',
+  '猶太墓區': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Jewish_Cemetery_Prague.jpg/480px-Jewish_Cemetery_Prague.jpg',
+  '泰恩教堂': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Tyn_church_Prague.jpg/480px-Tyn_church_Prague.jpg',
+  '克倫洛夫': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Cesky_Krumlov_3.jpg/480px-Cesky_Krumlov_3.jpg',
+  '薩爾茲堡': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Hohensalzburg_01.jpg/480px-Hohensalzburg_01.jpg',
+  '米拉貝爾宮花園': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Mirabell_palace_Salzburg.jpg/480px-Mirabell_palace_Salzburg.jpg',
+  '國王湖遊船': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Koenigssee.jpg/480px-Koenigssee.jpg',
+  '貝希特斯登鹽礦': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Berchtesgaden_Salzbergwerk.jpg/480px-Berchtesgaden_Salzbergwerk.jpg',
+  '哈爾施塔特': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Hallstatt_2008.jpg/480px-Hallstatt_2008.jpg',
+  '戈紹湖': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Gosausee.jpg/480px-Gosausee.jpg',
+  '梅爾克修道院': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Stift_Melk_2010.jpg/480px-Stift_Melk_2010.jpg',
+  '聖史提芬大教堂': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Wiener_Stephansdom_%2802%29.jpg/480px-Wiener_Stephansdom_%2802%29.jpg',
+  '熊布朗宮（申布倫宮）': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Schonbrunn_Palace.jpg/480px-Schonbrunn_Palace.jpg',
+  '布拉提斯拉瓦': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Bratislava_hrad.jpg/480px-Bratislava_hrad.jpg',
+  '上美景宮': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Schloss_Belvedere_Wien.jpg/480px-Schloss_Belvedere_Wien.jpg',
+};
+
+// Day banner images (one per day)
+const DAY_BANNERS = [
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Taoyuan_International_Airport_Terminal_2.jpg/480px-Taoyuan_International_Airport_Terminal_2.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Prague_castle_from_mala_strana.jpg/480px-Prague_castle_from_mala_strana.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Prague_Old_Town_Square.jpg/480px-Prague_Old_Town_Square.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Cesky_Krumlov_3.jpg/480px-Cesky_Krumlov_3.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Hohensalzburg_01.jpg/480px-Hohensalzburg_01.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Koenigssee.jpg/480px-Koenigssee.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Hallstatt_2008.jpg/480px-Hallstatt_2008.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Stift_Melk_2010.jpg/480px-Stift_Melk_2010.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Schonbrunn_Palace.jpg/480px-Schonbrunn_Palace.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Schloss_Belvedere_Wien.jpg/480px-Schloss_Belvedere_Wien.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Wiener_Stephansdom_%2802%29.jpg/480px-Wiener_Stephansdom_%2802%29.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Taoyuan_International_Airport_Terminal_2.jpg/480px-Taoyuan_International_Airport_Terminal_2.jpg',
+];
+
 function renderDailyCards(){
   const container = document.getElementById('dailyCards');
-  container.innerHTML = DAILY.map(d => {
+  container.innerHTML = DAILY.map((d, idx) => {
     const spotsHtml = d.spots.map(s => {
-      const badgeHtml = s.badge ? `<span class="spot-badge badge-${s.badge}">${s.badge==='ticket'?'含門票':s.badge==='walkin'?'下車參觀':'特殊安排'}</span>` : '';
-      return `<div class="spot-item">
-        <span class="spot-icon">${s.icon}</span>
-        <div>
-          <div class="spot-name">${s.name}${badgeHtml}</div>
-          <div class="spot-desc">${s.desc}</div>
-        </div>
-      </div>`;
+      const imgSrc = Object.keys(SPOT_IMGS).find(k => s.name.includes(k) || k.includes(s.name.slice(0,4)));
+      const imgHtml = imgSrc
+        ? '<div class="spot-img-wrap"><img src="' + SPOT_IMGS[imgSrc] + '" alt="' + s.name + '" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=spot-img-placeholder>\'+\'' + s.icon + '\'+ \'</div>\'"></div>'
+        : '<div class="spot-img-wrap"><div class="spot-img-placeholder">' + s.icon + '</div></div>';
+      const badgeHtml = s.badge
+        ? '<span class="spot-badge badge-' + s.badge + '">' + (s.badge==='ticket'?'含門票':s.badge==='walkin'?'下車參觀':'特殊安排') + '</span>'
+        : '';
+      return '<div class="spot-item">'
+        + imgHtml
+        + '<div class="spot-info">'
+        + '<div class="spot-name">' + s.name + '</div>'
+        + (s.desc ? '<div class="spot-desc">' + s.desc + '</div>' : '')
+        + (badgeHtml ? '<div>' + badgeHtml + '</div>' : '')
+        + '</div>'
+        + '</div>';
     }).join('');
-    const mealChips = ['🍳早:'+d.meals[0],'☀️午:'+d.meals[1],'🌙晚:'+d.meals[2]].map(m=>`<span class="meal-chip">${m}</span>`).join('');
-    const hotelChip = `<span class="hotel-chip">🏨 ${d.hotel}</span>`;
-    return `<div class="day-card">
-      <div class="day-card-header">
-        <div>
-          <div class="day-card-num">DAY ${d.day}</div>
-          <div class="day-card-date">${d.date}</div>
-        </div>
-        <span class="day-flag">${d.flag}</span>
-      </div>
-      <div class="day-card-title">${d.title}</div>
-      <div class="spot-list">${spotsHtml}</div>
-      <div class="day-meals-hotel">${mealChips}${hotelChip}</div>
-    </div>`;
+    const mealChips = ['🍳 早：'+d.meals[0], '☀️ 午：'+d.meals[1], '🌙 晚：'+d.meals[2]]
+      .map(m => '<span class="meal-chip">' + m + '</span>').join('');
+    const hotelChip = '<span class="hotel-chip">🏨 ' + d.hotel + '</span>';
+    const bannerSrc = DAY_BANNERS[idx] || DAY_BANNERS[0];
+    return '<div class="day-card">'
+      + '<div class="day-hero-img-wrap">'
+      + '<img src="' + bannerSrc + '" alt="Day ' + d.day + '" loading="lazy">'
+      + '<div class="day-hero-overlay">'
+      + '<div class="day-hero-num-wrap">'
+      + '<div class="day-card-num">DAY ' + d.day + '</div>'
+      + '<div class="day-card-date">' + d.date + '</div>'
+      + '</div>'
+      + '<span class="day-flag">' + d.flag + '</span>'
+      + '</div>'
+      + '</div>'
+      + '<div class="day-card-title">' + d.title + '</div>'
+      + '<div class="spot-cards">' + spotsHtml + '</div>'
+      + '<div class="day-meals-hotel">' + mealChips + hotelChip + '</div>'
+      + '</div>';
   }).join('');
 }
 
@@ -913,6 +1016,19 @@ function loadCheckState(){
   try{ checkState = JSON.parse(localStorage.getItem('cl_state') || '{}'); }catch(e){ checkState={}; }
 }
 function saveCheckState(){ try{ localStorage.setItem('cl_state', JSON.stringify(checkState)); }catch(e){} }
+
+// Must be global for onclick in innerHTML
+window.toggleItemEl = function(el){
+  const ci = parseInt(el.getAttribute('data-ci'));
+  const ii = parseInt(el.getAttribute('data-ii'));
+  if(isNaN(ci)||isNaN(ii)) return;
+  const key = CHECKLIST[ci].cat + '::' + CHECKLIST[ci].items[ii];
+  checkState[key] = !checkState[key];
+  el.classList.toggle('checked', !!checkState[key]);
+  saveCheckState();
+  recalcProgress();
+};
+
 function renderChecklist(){
   loadCheckState();
   const container = document.getElementById('checklistItems');
@@ -923,23 +1039,17 @@ function renderChecklist(){
       const checked = !!checkState[key];
       totalItems++;
       if(checked) checkedItems++;
-      return `<div class="cl-item ${checked?'checked':''}" data-ci="${ci}" data-ii="${ii}" onclick="toggleItemEl(this)">
-        <div class="cl-checkbox"></div>
-        <div class="cl-label">${item}</div>
-      </div>`;
+      return '<div class="cl-item ' + (checked?'checked':'') + '" data-ci="' + ci + '" data-ii="' + ii + '" onclick="toggleItemEl(this)">'
+        + '<div class="cl-checkbox"></div>'
+        + '<div class="cl-label">' + item + '</div>'
+        + '</div>';
     }).join('');
-    return `<div class="cl-category">     <div class="cl-cat-title">${cat.cat}</div>
-      <div class="cl-items">${itemsHtml}</div>
-    </div>`;
+    return '<div class="cl-category">'
+      + '<div class="cl-cat-title">' + cat.cat + '</div>'
+      + '<div class="cl-items">' + itemsHtml + '</div>'
+      + '</div>';
   }).join('');
   updateProgress(checkedItems, totalItems);
-}
-function toggleItem(key, el){
-  const rawKey = key.replace(/\:/g, ':').replace(/\\./g, '.');
-  checkState[rawKey] = !checkState[rawKey];
-  el.classList.toggle('checked', !!checkState[rawKey]);
-  saveCheckState();
-  recalcProgress();
 }
 function recalcProgress(){
   let total=0, done=0;
@@ -1054,30 +1164,52 @@ async function fetchRates(){
 }
 
 const WX_CODE = {0:'晴天☀️',1:'大致晴☀️',2:'局部多雲⛅',3:'陰天☁️',45:'霧🌫️',48:'霧❄️',51:'毛毛雨🌦️',53:'毛毛雨🌦️',55:'毛毛雨🌦️',61:'小雨🌧️',63:'中雨🌧️',65:'大雨🌧️',71:'小雪❄️',73:'中雪❄️',75:'大雪❄️',80:'陣雨🌦️',81:'中陣雨🌦️',82:'強陣雨⛈️',95:'雷雨⛈️',96:'雷冰雹⛈️',99:'強雷雹⛈️'};
+const WX_EMOJI = c => { const s=WX_CODE[c]||'🌡️'; const m=s.match(/[☀️⛅☁🌫❄🌦🌧⛈]/u); return m?m[0]:'🌡️'; };
+const WEEKDAY_ZH = ['日','一','二','三','四','五','六'];
 
 async function fetchWeather(){
   const container = document.getElementById('weatherCards');
   container.innerHTML = '<div class="loading-spinner">天氣載入中…</div>';
   const results = await Promise.all(LIVE_CONFIG.cities.map(async city => {
     try{
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,weathercode&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto&forecast_days=3`;
+      const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + city.lat + '&longitude=' + city.lon
+        + '&current=temperature_2m,weathercode'
+        + '&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto&forecast_days=4';
       const r = await fetch(url);
       const data = await r.json();
       const cur = data.current;
       const daily = data.daily;
-      const wxDesc = WX_CODE[cur.weathercode] || '－';
-      const [icon, desc] = wxDesc.split(/(?=[☀⛅☁🌫❄🌦🌧⛈])/);
-      const tMax = Math.round(daily.temperature_2m_max[0]);
-      const tMin = Math.round(daily.temperature_2m_min[0]);
-      return `<div class="weather-card">
-        <div class="wc-city">${city.flag} ${city.label}</div>
-        <div class="wc-days">${city.days}</div>
-        <div class="wc-icon">${wxDesc.match(/[☀⛅☁🌫❄🌦🌧⛈]/)?.[0] || '🌡️'}</div>
-        <div class="wc-temp">${Math.round(cur.temperature_2m)}°C</div>
-        <div class="wc-desc">${tMin}°~${tMax}°</div>
-        <div class="wc-desc" style="margin-top:2px;">${desc||wxDesc}</div>
-      </div>`;
-    }catch(e){ return `<div class="weather-card"><div class="wc-city">${city.flag} ${city.label}</div><div class="wc-icon">－</div></div>`; }
+      const curEmoji = WX_EMOJI(cur.weathercode);
+      const curDesc = (WX_CODE[cur.weathercode]||'').replace(/[☀️⛅☁🌫❄🌦🌧⛈\uFE0F]/gu,'').trim();
+      const tMax0 = Math.round(daily.temperature_2m_max[0]);
+      const tMin0 = Math.round(daily.temperature_2m_min[0]);
+      // 3-day forecast rows (today + 2)
+      const forecastRows = [0,1,2].map(i => {
+        const dateStr = daily.time ? daily.time[i] : '';
+        const dow = dateStr ? WEEKDAY_ZH[new Date(dateStr).getDay()] : ['今','明','後'][i];
+        return '<div class="wc-forecast-row">'
+          + '<span class="wf-day">(' + dow + ')</span>'
+          + '<span class="wf-icon">' + WX_EMOJI(daily.weathercode[i]) + '</span>'
+          + '<span class="wf-range">' + Math.round(daily.temperature_2m_min[i]) + '°~' + Math.round(daily.temperature_2m_max[i]) + '°</span>'
+          + '</div>';
+      }).join('');
+      return '<div class="weather-card">'
+        + '<div class="wc-header">'
+        + '<div><div class="wc-city">' + city.flag + ' ' + city.label + '</div>'
+        + '<div class="wc-days">' + city.days + '</div></div>'
+        + '</div>'
+        + '<div class="wc-current">'
+        + '<div class="wc-icon">' + curEmoji + '</div>'
+        + '<div class="wc-temp-block">'
+        + '<div class="wc-temp">' + Math.round(cur.temperature_2m) + '°</div>'
+        + '<div class="wc-range">' + tMin0 + '°~' + tMax0 + '° ' + curDesc + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<div class="wc-forecast">' + forecastRows + '</div>'
+        + '</div>';
+    }catch(e){
+      return '<div class="weather-card"><div class="wc-header"><div class="wc-city">' + city.flag + ' ' + city.label + '</div></div><div class="wc-current" style="justify-content:center;padding:16px;color:rgba(255,255,255,0.4);font-size:11px;">無法取得</div></div>';
+    }
   }));
   container.innerHTML = results.join('');
 }
