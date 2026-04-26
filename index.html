@@ -929,52 +929,55 @@ function renderNotices(){
 
 // ── DAILY ──
 const BADGE_MAP = {ticket:'ticket 含門票',walkin:'walkin 下車參觀',special:'special 特殊安排'};
-// Spot image map (Wikimedia Commons)
+// Spot image map — 本地 SVG（存放於 GitHub Pages images/ 資料夾，永不失效）
 const SPOT_IMGS = {
-  '布拉格城堡區': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Prague_castle_from_mala_strana.jpg/480px-Prague_castle_from_mala_strana.jpg',
-  '聖維特大教堂': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/St_Vitus_Cathedral_Prague.jpg/480px-St_Vitus_Cathedral_Prague.jpg',
-  '黃金小巷': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Prague_-_Golden_Lane.jpg/480px-Prague_-_Golden_Lane.jpg',
-  '查理士橋': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Prague_-_Charles_Bridge.jpg/480px-Prague_-_Charles_Bridge.jpg',
-  '老城廣場': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Prague_Old_Town_Square.jpg/480px-Prague_Old_Town_Square.jpg',
-  '猶太墓區': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Jewish_Cemetery_Prague.jpg/480px-Jewish_Cemetery_Prague.jpg',
-  '泰恩教堂': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Tyn_church_Prague.jpg/480px-Tyn_church_Prague.jpg',
-  '克倫洛夫': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Cesky_Krumlov_3.jpg/480px-Cesky_Krumlov_3.jpg',
-  '薩爾茲堡': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Hohensalzburg_01.jpg/480px-Hohensalzburg_01.jpg',
-  '米拉貝爾宮花園': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Mirabell_palace_Salzburg.jpg/480px-Mirabell_palace_Salzburg.jpg',
-  '國王湖遊船': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Koenigssee.jpg/480px-Koenigssee.jpg',
-  '貝希特斯登鹽礦': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Berchtesgaden_Salzbergwerk.jpg/480px-Berchtesgaden_Salzbergwerk.jpg',
-  '哈爾施塔特': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Hallstatt_2008.jpg/480px-Hallstatt_2008.jpg',
-  '戈紹湖': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Gosausee.jpg/480px-Gosausee.jpg',
-  '梅爾克修道院': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Stift_Melk_2010.jpg/480px-Stift_Melk_2010.jpg',
-  '聖史提芬大教堂': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Wiener_Stephansdom_%2802%29.jpg/480px-Wiener_Stephansdom_%2802%29.jpg',
-  '熊布朗宮（申布倫宮）': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Schonbrunn_Palace.jpg/480px-Schonbrunn_Palace.jpg',
-  '布拉提斯拉瓦': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Bratislava_hrad.jpg/480px-Bratislava_hrad.jpg',
-  '上美景宮': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Schloss_Belvedere_Wien.jpg/480px-Schloss_Belvedere_Wien.jpg',
+  '布拉格城堡區':     'images/spot_castle.svg',
+  '聖維特大教堂':     'images/spot_cathedral.svg',
+  '黃金小巷':         'images/spot_castle.svg',
+  '查理士橋':         'images/spot_charles.svg',
+  '老城廣場':         'images/spot_oldtown.svg',
+  '猶太墓區':         'images/spot_oldtown.svg',
+  '泰恩教堂':         'images/spot_cathedral.svg',
+  '克倫洛夫':         'images/spot_krumlov.svg',
+  '薩爾茲堡':         'images/spot_salzburg.svg',
+  '米拉貝爾宮':       'images/spot_salzburg.svg',
+  '國王湖':           'images/spot_lake.svg',
+  '鹽礦':             'images/spot_saltmine.svg',
+  '哈爾施塔特':       'images/spot_hallstatt.svg',
+  '戈紹':             'images/spot_gosau.svg',
+  '梅爾克':           'images/spot_melk.svg',
+  '聖史提芬':         'images/spot_stefan.svg',
+  '熊布朗宮':         'images/spot_schonbrunn.svg',
+  '申布倫':           'images/spot_schonbrunn.svg',
+  '布拉提斯拉瓦':     'images/spot_bratislava.svg',
+  '上美景宮':         'images/spot_belvedere.svg',
+  '維也納':           'images/spot_schonbrunn.svg',
 };
 
-// Day banner images (one per day)
+// Day banner SVGs — 存放於 images/day01.svg … day12.svg
 const DAY_BANNERS = [
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Taoyuan_International_Airport_Terminal_2.jpg/480px-Taoyuan_International_Airport_Terminal_2.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Prague_castle_from_mala_strana.jpg/480px-Prague_castle_from_mala_strana.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Prague_Old_Town_Square.jpg/480px-Prague_Old_Town_Square.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Cesky_Krumlov_3.jpg/480px-Cesky_Krumlov_3.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Hohensalzburg_01.jpg/480px-Hohensalzburg_01.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Koenigssee.jpg/480px-Koenigssee.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Hallstatt_2008.jpg/480px-Hallstatt_2008.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Stift_Melk_2010.jpg/480px-Stift_Melk_2010.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Schonbrunn_Palace.jpg/480px-Schonbrunn_Palace.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Schloss_Belvedere_Wien.jpg/480px-Schloss_Belvedere_Wien.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Wiener_Stephansdom_%2802%29.jpg/480px-Wiener_Stephansdom_%2802%29.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Taoyuan_International_Airport_Terminal_2.jpg/480px-Taoyuan_International_Airport_Terminal_2.jpg',
+  'images/day01.svg',
+  'images/day02.svg',
+  'images/day03.svg',
+  'images/day04.svg',
+  'images/day05.svg',
+  'images/day06.svg',
+  'images/day07.svg',
+  'images/day08.svg',
+  'images/day09.svg',
+  'images/day10.svg',
+  'images/day11.svg',
+  'images/day12.svg',
 ];
 
 function renderDailyCards(){
   const container = document.getElementById('dailyCards');
   container.innerHTML = DAILY.map((d, idx) => {
     const spotsHtml = d.spots.map(s => {
-      const imgSrc = Object.keys(SPOT_IMGS).find(k => s.name.includes(k) || k.includes(s.name.slice(0,4)));
+      const imgKey = Object.keys(SPOT_IMGS).find(k => s.name.includes(k));
+      const imgSrc = imgKey ? SPOT_IMGS[imgKey] : null;
       const imgHtml = imgSrc
-        ? '<div class="spot-img-wrap"><img src="' + SPOT_IMGS[imgSrc] + '" alt="' + s.name + '" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=spot-img-placeholder>\'+\'' + s.icon + '\'+ \'</div>\'"></div>'
+        ? '<div class="spot-img-wrap"><img src="' + imgSrc + '" alt="' + s.name + '" loading="lazy"></div>'
         : '<div class="spot-img-wrap"><div class="spot-img-placeholder">' + s.icon + '</div></div>';
       const badgeHtml = s.badge
         ? '<span class="spot-badge badge-' + s.badge + '">' + (s.badge==='ticket'?'含門票':s.badge==='walkin'?'下車參觀':'特殊安排') + '</span>'

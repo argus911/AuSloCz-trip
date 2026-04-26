@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2e2000"/>
+      <stop offset="100%" stop-color="#7a6000"/>
+    </linearGradient>
+    <linearGradient id="mt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a6000" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#2e2000" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  <!-- 背景 -->
+  <rect width="800" height="480" fill="url(#sky)"/>
+  <!-- 星點 -->
+  <circle cx="50" cy="30" r="1.5" fill="white" opacity="0.3"/><circle cx="187" cy="127" r="1.5" fill="white" opacity="0.43333333333333335"/><circle cx="324" cy="224" r="1.5" fill="white" opacity="0.5666666666666667"/><circle cx="461" cy="77" r="1.5" fill="white" opacity="0.3"/><circle cx="598" cy="174" r="1.5" fill="white" opacity="0.43333333333333335"/><circle cx="735" cy="27" r="1.5" fill="white" opacity="0.5666666666666667"/><circle cx="72" cy="124" r="1.5" fill="white" opacity="0.3"/><circle cx="209" cy="221" r="1.5" fill="white" opacity="0.43333333333333335"/><circle cx="346" cy="74" r="1.5" fill="white" opacity="0.5666666666666667"/><circle cx="483" cy="171" r="1.5" fill="white" opacity="0.3"/><circle cx="620" cy="24" r="1.5" fill="white" opacity="0.43333333333333335"/><circle cx="757" cy="121" r="1.5" fill="white" opacity="0.5666666666666667"/><circle cx="94" cy="218" r="1.5" fill="white" opacity="0.3"/><circle cx="231" cy="71" r="1.5" fill="white" opacity="0.43333333333333335"/><circle cx="368" cy="168" r="1.5" fill="white" opacity="0.5666666666666667"/><circle cx="505" cy="21" r="1.5" fill="white" opacity="0.3"/><circle cx="642" cy="118" r="1.5" fill="white" opacity="0.43333333333333335"/><circle cx="779" cy="215" r="1.5" fill="white" opacity="0.5666666666666667"/><circle cx="116" cy="68" r="1.5" fill="white" opacity="0.3"/><circle cx="253" cy="165" r="1.5" fill="white" opacity="0.43333333333333335"/><circle cx="390" cy="18" r="1.5" fill="white" opacity="0.5666666666666667"/><circle cx="527" cy="115" r="1.5" fill="white" opacity="0.3"/><circle cx="664" cy="212" r="1.5" fill="white" opacity="0.43333333333333335"/><circle cx="1" cy="65" r="1.5" fill="white" opacity="0.5666666666666667"/><circle cx="138" cy="162" r="1.5" fill="white" opacity="0.3"/><circle cx="275" cy="15" r="1.5" fill="white" opacity="0.43333333333333335"/><circle cx="412" cy="112" r="1.5" fill="white" opacity="0.5666666666666667"/><circle cx="549" cy="209" r="1.5" fill="white" opacity="0.3"/><circle cx="686" cy="62" r="1.5" fill="white" opacity="0.43333333333333335"/><circle cx="23" cy="159" r="1.5" fill="white" opacity="0.5666666666666667"/>
+  <!-- 山形 -->
+  <polygon points="40.0,480 200.0,184 360.0,480" fill="url(#mt)"/>
+  <polygon points="240.0,480 440.00000000000006,144 640.0,480" fill="url(#mt)"/>
+  <polygon points="480.0,480 640.0,204 800,480" fill="url(#mt)"/>
+  <!-- 地面 -->
+  <rect x="0" y="314" width="800" height="480" fill="#2e2000" opacity="0.5"/>
+  <!-- 裝飾線 -->
+  <line x1="0" y1="314" x2="800" y2="314" stroke="white" stroke-opacity="0.15" stroke-width="1"/>
+  <!-- 文字背景 -->
+  <rect x="0" y="400" width="800" height="80" fill="black" opacity="0.45"/>
+  <!-- emoji + 標題 -->
+  <text x="24" y="442" font-size="28" font-family="serif">⛪</text>
+  <text x="64" y="444" font-size="20" font-family="Noto Serif TC, serif" fill="#E8C96A" font-weight="bold">梅爾克 → 維也納</text>
+  <text x="64" y="466" font-size="12" font-family="sans-serif" fill="rgba(232,201,106,0.6)" letter-spacing="2">DAY08</text>
+</svg>
