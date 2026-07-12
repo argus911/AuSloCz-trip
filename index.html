@@ -146,11 +146,30 @@ body {
   display: flex; align-items: center; gap: 10px;
   margin: 0 16px 14px; padding: 10px 14px;
   background: linear-gradient(135deg, var(--brown), var(--brown-mid));
-  border: 1px solid rgba(201,168,76,0.5);
+  border: 1.5px solid var(--gold);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  animation: selGlow 2s ease-in-out infinite;
 }
-.day-select-icon { font-size: 18px; }
+/* 金色呼吸光暈：邊框光暈亮→暗→亮循環 */
+@keyframes selGlow {
+  0%, 100% { box-shadow: 0 0 4px rgba(232,201,106,0.35), var(--shadow); border-color: rgba(201,168,76,0.55); }
+  50%      { box-shadow: 0 0 14px rgba(232,201,106,0.85), var(--shadow); border-color: var(--gold-light); }
+}
+/* 手指圖示上下跳動 */
+.day-select-icon { font-size: 20px; animation: selBounce 1.2s ease-in-out infinite; }
+@keyframes selBounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+/* 「點我選擇」金色膠囊提示標籤 */
+.day-select-hint {
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--dark); font-size: 11px; font-weight: 800;
+  padding: 4px 10px; border-radius: 99px;
+  letter-spacing: 0.5px; pointer-events: none;
+  animation: selBounce 1.2s ease-in-out infinite;
+}
 .day-select-bar select {
   flex: 1; appearance: none; -webkit-appearance: none;
   background: transparent url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23E8C96A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 4px center;
@@ -701,10 +720,11 @@ body {
     <span class="section-title">每日行程</span>
   </div>
   <div class="day-select-bar">
-    <span class="day-select-icon">📅</span>
+    <span class="day-select-icon">👆</span>
     <select id="daySelect" onchange="filterDay(this.value)">
       <option value="all">全部行程（12 天）</option>
     </select>
+    <span class="day-select-hint">點我選擇 ▼</span>
   </div>
   <div class="daily-wrap" id="dailyCards"></div>
 </div>
@@ -1056,6 +1076,13 @@ window.filterDay = function(val){
   });
   const area = document.querySelector('.content-area');
   if(area) area.scrollTo({ top: 0, behavior: 'smooth' });
+  // 使用者已學會操作 → 移除提示標籤並停止光暈/跳動動畫
+  const hint = document.querySelector('.day-select-hint');
+  if(hint) hint.remove();
+  const bar = document.querySelector('.day-select-bar');
+  if(bar) bar.style.animation = 'none';
+  const icon = document.querySelector('.day-select-icon');
+  if(icon){ icon.style.animation = 'none'; icon.textContent = '📅'; }
 }
 
 // ── CHECKLIST ──
