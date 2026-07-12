@@ -1076,13 +1076,6 @@ window.filterDay = function(val){
   });
   const area = document.querySelector('.content-area');
   if(area) area.scrollTo({ top: 0, behavior: 'smooth' });
-  // 使用者已學會操作 → 移除提示標籤並停止光暈/跳動動畫
-  const hint = document.querySelector('.day-select-hint');
-  if(hint) hint.remove();
-  const bar = document.querySelector('.day-select-bar');
-  if(bar) bar.style.animation = 'none';
-  const icon = document.querySelector('.day-select-icon');
-  if(icon){ icon.style.animation = 'none'; icon.textContent = '📅'; }
 }
 
 // ── CHECKLIST ──
