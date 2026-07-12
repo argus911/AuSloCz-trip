@@ -140,6 +140,25 @@ body {
 }
 .tab-panel { display: none; padding: 0 0 20px; }
 .tab-panel.active { display: block; }
+/* ── 每日行程下拉選單 ── */
+.day-select-bar {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; gap: 10px;
+  margin: 0 16px 14px; padding: 10px 14px;
+  background: linear-gradient(135deg, var(--brown), var(--brown-mid));
+  border: 1px solid rgba(201,168,76,0.5);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.day-select-icon { font-size: 18px; }
+.day-select-bar select {
+  flex: 1; appearance: none; -webkit-appearance: none;
+  background: transparent url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23E8C96A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 4px center;
+  border: none; outline: none;
+  color: var(--gold-light); font-size: 15px; font-weight: 700;
+  padding: 4px 26px 4px 2px; cursor: pointer;
+}
+.day-select-bar select option { color: var(--text); background: var(--cream); font-weight: 600; }
 
 /* ── SECTION TITLE ── */
 .section-header {
@@ -681,6 +700,12 @@ body {
   <div class="section-header">
     <span class="section-title">每日行程</span>
   </div>
+  <div class="day-select-bar">
+    <span class="day-select-icon">📅</span>
+    <select id="daySelect" onchange="filterDay(this.value)">
+      <option value="all">全部行程（12 天）</option>
+    </select>
+  </div>
   <div class="daily-wrap" id="dailyCards"></div>
 </div>
 
@@ -995,7 +1020,7 @@ function renderDailyCards(){
       .map(m => '<span class="meal-chip">' + m + '</span>').join('');
     const hotelChip = '<span class="hotel-chip">🏨 ' + d.hotel + '</span>';
     const bannerSrc = DAY_BANNERS[idx] || DAY_BANNERS[0];
-    return '<div class="day-card">'
+    return '<div class="day-card" data-day="' + d.day + '">'
       + '<div class="day-hero-img-wrap">'
       + '<img src="' + bannerSrc + '" alt="Day ' + d.day + '" loading="lazy">'
       + '<div class="day-hero-overlay">'
@@ -1011,6 +1036,26 @@ function renderDailyCards(){
       + '<div class="day-meals-hotel">' + mealChips + hotelChip + '</div>'
       + '</div>';
   }).join('');
+
+  // 自動產生下拉選單的選項（DAY N・日期・標題）
+  const sel = document.getElementById('daySelect');
+  if(sel && sel.options.length <= 1){
+    DAILY.forEach(d => {
+      const opt = document.createElement('option');
+      opt.value = d.day;
+      opt.textContent = 'DAY ' + d.day + '・' + d.date + '・' + d.title;
+      sel.appendChild(opt);
+    });
+  }
+}
+
+// 選擇某一天：只顯示該天卡片；選 all 顯示全部（必須掛在 window，onchange 才呼叫得到）
+window.filterDay = function(val){
+  document.querySelectorAll('#dailyCards .day-card').forEach(c => {
+    c.style.display = (val === 'all' || c.getAttribute('data-day') === String(val)) ? '' : 'none';
+  });
+  const area = document.querySelector('.content-area');
+  if(area) area.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ── CHECKLIST ──
