@@ -792,7 +792,7 @@ body {
     <div class="rate-grid" id="rateCards"><div class="loading-spinner" style="grid-column:span 2">載入中…</div></div>
     <div class="live-section-title">🌤 目的地天氣預報</div>
     <div class="weather-scroll" id="weatherCards"><div class="loading-spinner">載入中…</div></div>
-    <div class="live-footer">✦ 奧斯捷饗宴 12天 ｜ 2026.07.14 ~ 2026.07.25 ✦<br>中華航空 CI67 / CI64 · 實際行程以說明會資料為準 · v3.1</div>
+    <div class="live-footer">✦ 奧斯捷饗宴 12天 ｜ 2026.07.14 ~ 2026.07.25 ✦<br>中華航空 CI67 / CI64 · 實際行程以說明會資料為準 · v3.2</div>
   </div>
 </div>
 
@@ -906,7 +906,7 @@ const LIVE_CONFIG = {
     {no:'CI67',airline:'中華航空',from:'TPE',to:'PRG',fromName:'桃園國際機場',toName:'布拉格機場',
      date:'2026-07-14',dir:'去程 ✈',
      schedDep:'23:50',schedArr:'06:47',arrDate:'2026-07-15',
-     terminal:'1',gate:'A7',boardMin:40},
+     terminal:'1',gate:'－',boardMin:40},
     {no:'CI64',airline:'中華航空',from:'VIE',to:'TPE',fromName:'維也納機場',toName:'桃園國際機場',
      date:'2026-07-24',dir:'返程 🏠',
      schedDep:'11:15',schedArr:'05:30',arrDate:'2026-07-25',
@@ -1205,7 +1205,17 @@ function renderFlightStatus(){
       badge = now < dep ? '準時' : '已起飛';
     }
     else { statusText = '✅ 已出發'; badge = '已起飛'; }
-    const boarding = calcBoarding(f.date, f.schedDep, f.boardMin);
+    // 判斷此航班是否在即時查詢範圍內（出發前1天～當天之後）
+    const inLiveWindow = diffDays <= 1;
+    const queryHint = inLiveWindow
+      ? (key ? '🔄 查詢即時資料中…' : '⚠️ 尚未設定 API 金鑰，請點下方按鈕查詢')
+      : statusText;
+    if(inLiveWindow) statusText = queryHint;
+    // 即時查詢範圍內：不顯示預設值，等待 API 填入；範圍外僅顯示表定時間
+    const PH = '－';
+    const showDep = inLiveWindow ? PH : (f.schedDep || PH);
+    const showArr = inLiveWindow ? PH : (f.schedArr || PH);
+    const boarding = inLiveWindow ? PH : calcBoarding(f.date, f.schedDep, f.boardMin);
     // FlightAware 網址：CI → CAL + 航班數字（如 CI67 → CAL67）
     const faNo = 'CAL' + f.no.replace(/\D/g,'');
     return '<div class="flight-status-card">'
@@ -1219,11 +1229,11 @@ function renderFlightStatus(){
       +   (badge ? '<div class="fsc-badge ' + badgeCls + '" id="fscBadge' + idx + '">' + badge + '</div>' : '')
       + '</div>'
       + '<div class="fsc-detail-grid">'
-      +   '<div class="fsc-cell"><div class="fsc-cell-label">航廈</div><div class="fsc-cell-value" id="fscTerm' + idx + '">T' + (f.terminal || '－') + '</div></div>'
-      +   '<div class="fsc-cell"><div class="fsc-cell-label">登機門</div><div class="fsc-cell-value gold" id="fscGate' + idx + '">' + (f.gate || '－') + '</div></div>'
+      +   '<div class="fsc-cell"><div class="fsc-cell-label">航廈</div><div class="fsc-cell-value" id="fscTerm' + idx + '">T' + (f.terminal || PH) + '</div></div>'
+      +   '<div class="fsc-cell"><div class="fsc-cell-label">登機門</div><div class="fsc-cell-value gold" id="fscGate' + idx + '">' + PH + '</div></div>'
       +   '<div class="fsc-cell"><div class="fsc-cell-label">預估登機</div><div class="fsc-cell-value" id="fscBoard' + idx + '">' + boarding + '</div><div class="fsc-cell-sub">起飛前' + (f.boardMin || 40) + '分</div></div>'
-      +   '<div class="fsc-cell"><div class="fsc-cell-label">表定起飛</div><div class="fsc-cell-value" id="fscDep' + idx + '">' + (f.schedDep || '－') + '</div></div>'
-      +   '<div class="fsc-cell"><div class="fsc-cell-label">預計抵達</div><div class="fsc-cell-value" id="fscArr' + idx + '">' + (f.schedArr || '－') + '</div><div class="fsc-cell-sub">' + (f.arrDate || '') + '</div></div>'
+      +   '<div class="fsc-cell"><div class="fsc-cell-label" id="fscDepLbl' + idx + '">' + (inLiveWindow ? '起飛時間' : '表定起飛') + '</div><div class="fsc-cell-value" id="fscDep' + idx + '">' + showDep + '</div></div>'
+      +   '<div class="fsc-cell"><div class="fsc-cell-label">預計抵達</div><div class="fsc-cell-value" id="fscArr' + idx + '">' + showArr + '</div><div class="fsc-cell-sub">' + (f.arrDate || '') + '</div></div>'
       +   '<div class="fsc-cell"><div class="fsc-cell-label">飛行時間</div><div class="fsc-cell-value" style="font-size:13px;">' + (idx === 0 ? '12h55m' : '12h15m') + '</div></div>'
       + '</div>'
       + '<div class="fsc-links">'
@@ -1237,36 +1247,54 @@ function renderFlightStatus(){
       const dep = new Date(f.date);
       const diffDays = Math.ceil((dep - new Date()) / 86400000);
       if(diffDays > 1) return;
-      const apiUrl = `http://api.aviationstack.com/v1/flights?access_key=${key}&flight_iata=${f.no}`;
+      // 帶入 flight_date 參數，優先要求 API 只回傳當天航班
+      const apiUrl = `http://api.aviationstack.com/v1/flights?access_key=${key}&flight_iata=${f.no}&flight_date=${f.date}`;
       const proxies = [
         u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
         u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
       ];
+      const setTxt = (id, val) => { const el = document.getElementById(id + idx); if(el && val) el.textContent = val; };
+      // 重要：直接擷取 ISO 字串的 HH:MM（機場當地時間），
+      // 不可用 new Date() 解析，否則會被轉成手機所在時區而顯示錯誤時間
+      const hhmm = iso => (iso && iso.length >= 16) ? iso.substring(11, 16) : '';
       (async () => {
+        let found = false;
         for(const proxy of proxies){
           try{
-            const r = await fetch(proxy(apiUrl), {signal: AbortSignal.timeout(5000)});
+            const r = await fetch(proxy(apiUrl), {signal: AbortSignal.timeout(8000)});
             const data = await r.json();
-            if(data && data.data && data.data[0]){
-              const fl = data.data[0];
+            if(data && data.data && data.data.length){
+              // API 可能回傳多筆（不同日期/共掛班號），必須比對：
+              // ① 航班日期 = 行程日期 ② 出發機場代碼相符
+              const fl = data.data.find(x =>
+                x.flight_date === f.date &&
+                x.departure && x.departure.iata === f.from
+              );
+              if(!fl) continue; // 這個 proxy 回傳的資料沒有正確航班，換下一個
+              found = true;
               const STATUS_ZH = {scheduled:'表定', active:'飛行中', landed:'已降落', cancelled:'已取消', delayed:'延誤', diverted:'轉降'};
               const status = STATUS_ZH[fl.flight_status] || (fl.flight_status || '－').toUpperCase();
-              const setTxt = (id, val) => { const el = document.getElementById(id + idx); if(el && val) el.textContent = val; };
-              const hhmm = iso => { if(!iso) return ''; const d = new Date(iso); return isNaN(d) ? '' : String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0'); };
-              setTxt('fscStatus', '🛫 即時狀態：' + status);
+              setTxt('fscStatus', '🛫 即時狀態：' + status + '（' + f.date + '）');
               if(fl.departure){
                 setTxt('fscGate',  fl.departure.gate);
                 setTxt('fscTerm',  fl.departure.terminal ? 'T' + fl.departure.terminal : '');
-                const depT = hhmm(fl.departure.estimated || fl.departure.scheduled);
+                const depT = hhmm(fl.departure.estimated || fl.departure.actual || fl.departure.scheduled);
                 setTxt('fscDep', depT);
+                const lbl = document.getElementById('fscDepLbl' + idx);
+                if(lbl && fl.departure.estimated) lbl.textContent = '預計起飛';
                 if(depT) setTxt('fscBoard', calcBoarding(f.date, depT, f.boardMin));
               }
               if(fl.arrival){
-                setTxt('fscArr', hhmm(fl.arrival.estimated || fl.arrival.scheduled));
+                setTxt('fscArr', hhmm(fl.arrival.estimated || fl.arrival.actual || fl.arrival.scheduled));
               }
               break;
             }
           }catch(e){ continue; }
+        }
+        if(!found){
+          setTxt('fscStatus', '⚠️ 暫無即時資料，請點下方按鈕查詢');
+          setTxt('fscDep', f.schedDep || '－');
+          setTxt('fscArr', f.schedArr || '－');
         }
       })();
     });
