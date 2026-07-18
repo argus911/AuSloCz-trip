@@ -807,8 +807,8 @@ const OVERVIEW = [
   {day:3,date:'07/16(四)',loc:'老城廣場・聖尼古拉斯教堂・猶太墓區・火藥塔・泰恩教堂',meals:['飯店','肋排','自理'],hotel:'Prague Marriott Hotel (5★)',flag:'🇨🇿'},
   {day:4,date:'07/17(五)',loc:'琥珀卡城堡（含小火車）→ 克倫洛夫 → 林茨',meals:['飯店','波希米亞','飯店'],hotel:'Courtyard Marriott Linz',flag:'🇨🇿'},
   {day:5,date:'07/18(六)',loc:'奧地利 薩爾茲堡 → 薩爾斯干馬格特湖區',meals:['飯店','小酒館','中式'],hotel:'Strandhotel Margaretha',flag:'🇦🇹'},
-  {day:6,date:'07/19(日)',loc:'國王湖遊船 → 貝希特斯登鹽礦',meals:['飯店','豬腳','鱒魚'],hotel:'Strandhotel Margaretha',flag:'🇩🇪'},
-  {day:7,date:'07/20(一)',loc:'戈紹・戈紹湖・登山纜車 → 哈爾施塔特',meals:['飯店','山頂餐廳','湖區'],hotel:'Strandhotel Margaretha',flag:'🇦🇹'},
+  {day:6,date:'07/19(日)',loc:'戈紹・戈紹湖・登山纜車 → 哈爾施塔特',meals:['飯店','山頂餐廳','湖區'],hotel:'Strandhotel Margaretha',flag:'🇦🇹'},
+  {day:7,date:'07/20(一)',loc:'國王湖遊船 → 貝希特斯登鹽礦',meals:['飯店','豬腳','鱒魚'],hotel:'Strandhotel Margaretha',flag:'🇩🇪'},
   {day:8,date:'07/21(二)',loc:'梅爾克修道院 → 維也納・聖史提芬大教堂',meals:['飯店','修道院','中式'],hotel:'InterContinental Vienna (5★)',flag:'🇦🇹'},
   {day:9,date:'07/22(三)',loc:'熊布朗宮 → 斯洛伐克 布拉提斯拉瓦 → 維也納',meals:['飯店','烤鵝','紅頂商人'],hotel:'InterContinental Vienna (5★)',flag:'🇦🇹🇸🇰'},
   {day:10,date:'07/23(四)',loc:'上美景宮 + 帽子博物館',meals:['飯店','自理','帽子餐廳'],hotel:'InterContinental Vienna (5★)',flag:'🇦🇹'},
@@ -844,15 +844,15 @@ const DAILY = [
     {icon:'💐',name:'米拉貝爾宮花園',desc:'《真善美》取景地，絕美花園',badge:'walkin'},
     {icon:'🏔️',name:'薩爾斯干馬格特湖區',desc:'阿爾卑斯湖區精華',badge:'walkin'},
   ],meals:['飯店','小酒館','中式'],hotel:'Strandhotel Margaretha'},
-  {day:6,date:'07/19(日)',title:'國王湖・鹽礦',flag:'🇩🇪',spots:[
-    {icon:'⛵',name:'國王湖遊船',desc:'純電動船，百年禁止汽油船的神聖湖泊',badge:'ticket'},
-    {icon:'⛏️',name:'貝希特斯登鹽礦',desc:'千年礦坑探險，乘礦車穿梭地底',badge:'ticket'},
-  ],meals:['飯店','豬腳','鱒魚'],hotel:'Strandhotel Margaretha'},
-  {day:7,date:'07/20(一)',title:'戈紹・哈爾施塔特',flag:'🇦🇹',spots:[
+  {day:6,date:'07/19(日)',title:'戈紹・哈爾施塔特',flag:'🇦🇹',spots:[
     {icon:'🏔️',name:'戈紹・戈紹湖',desc:'翡翠綠湖倒映雪山，人間仙境',badge:'walkin'},
     {icon:'🚡',name:'登山纜車',desc:'俯瞰戈紹湖全景',badge:'ticket'},
     {icon:'🪷',name:'哈爾施塔特',desc:'世界最美小鎮之一，UNESCO遺產',badge:'walkin'},
   ],meals:['飯店','山頂餐廳','湖區'],hotel:'Strandhotel Margaretha'},
+  {day:7,date:'07/20(一)',title:'國王湖・鹽礦',flag:'🇩🇪',spots:[
+    {icon:'⛵',name:'國王湖遊船',desc:'純電動船，百年禁止汽油船的神聖湖泊',badge:'ticket'},
+    {icon:'⛏️',name:'貝希特斯登鹽礦',desc:'千年礦坑探險，乘礦車穿梭地底',badge:'ticket'},
+  ],meals:['飯店','豬腳','鱒魚'],hotel:'Strandhotel Margaretha'},
   {day:8,date:'07/21(二)',title:'梅爾克・維也納',flag:'🇦🇹',spots:[
     {icon:'⛪',name:'梅爾克修道院',desc:'多瑙河畔巴洛克式修道院，歐洲最美之一',badge:'ticket'},
     {icon:'🏙️',name:'維也納',desc:'哈布斯堡帝國首都，音樂與藝術之城',badge:'walkin'},
@@ -919,8 +919,8 @@ const LIVE_CONFIG = {
   cities:[
     {name:'Prague',label:'布拉格',flag:'🇨🇿',days:'D2–D3',lat:50.0755,lon:14.4378},
     {name:'Salzburg',label:'薩爾茲堡',flag:'🇦🇹',days:'D5',lat:47.8095,lon:13.0550},
-    {name:'Hallstatt',label:'哈爾施塔特',flag:'🇦🇹',days:'D7',lat:47.5622,lon:13.6493},
-    {name:'Berchtesgaden',label:'貝希特斯登',flag:'🇩🇪',days:'D6',lat:47.6309,lon:13.0041},
+    {name:'Hallstatt',label:'哈爾施塔特',flag:'🇦🇹',days:'D6',lat:47.5622,lon:13.6493},
+    {name:'Berchtesgaden',label:'貝希特斯登',flag:'🇩🇪',days:'D7',lat:47.6309,lon:13.0041},
     {name:'Vienna',label:'維也納',flag:'🇦🇹',days:'D8–D11',lat:48.2082,lon:16.3738},
     {name:'Bratislava',label:'布拉提斯拉瓦',flag:'🇸🇰',days:'D9',lat:48.1486,lon:17.1077},
   ],

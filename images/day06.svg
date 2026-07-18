@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480">
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#001a3e"/>
-      <stop offset="100%" stop-color="#1a6a9e"/>
+      <stop offset="0%" stop-color="#002e3e"/>
+      <stop offset="100%" stop-color="#1a7a9e"/>
     </linearGradient>
     <linearGradient id="mt" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1a6a9e" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#001a3e" stop-opacity="0.9"/>
+      <stop offset="0%" stop-color="#1a7a9e" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#002e3e" stop-opacity="0.9"/>
     </linearGradient>
   </defs>
   <!-- 背景 -->
@@ -18,13 +18,13 @@
   <polygon points="240.0,480 440.00000000000006,144 640.0,480" fill="url(#mt)"/>
   <polygon points="480.0,480 640.0,204 800,480" fill="url(#mt)"/>
   <!-- 地面 -->
-  <rect x="0" y="314" width="800" height="480" fill="#001a3e" opacity="0.5"/>
+  <rect x="0" y="314" width="800" height="480" fill="#002e3e" opacity="0.5"/>
   <!-- 裝飾線 -->
   <line x1="0" y1="314" x2="800" y2="314" stroke="white" stroke-opacity="0.15" stroke-width="1"/>
   <!-- 文字背景 -->
   <rect x="0" y="400" width="800" height="80" fill="black" opacity="0.45"/>
   <!-- emoji + 標題 -->
-  <text x="24" y="442" font-size="28" font-family="serif">⛵</text>
-  <text x="64" y="444" font-size="20" font-family="Noto Serif TC, serif" fill="#E8C96A" font-weight="bold">國王湖</text>
-  <text x="64" y="466" font-size="12" font-family="sans-serif" fill="rgba(232,201,106,0.6)" letter-spacing="2">DAY06</text>
+  <text x="24" y="442" font-size="28" font-family="serif">🌊</text>
+  <text x="64" y="444" font-size="20" font-family="Noto Serif TC, serif" fill="#E8C96A" font-weight="bold">哈爾施塔特</text>
+  <text x="64" y="466" font-size="12" font-family="sans-serif" fill="rgba(232,201,106,0.6)" letter-spacing="2">DAY07</text>
 </svg>
